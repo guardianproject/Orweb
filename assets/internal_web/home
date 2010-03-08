@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Browse with Orweb</title>
+
+</head>
+
+<body>
+
+
+<b class="b1h"></b><b class="b2h"></b><b class="b3h"></b><b class="b4h"></b>
+
+<div class="headh">
+
+<h3>Welcome to Orweb</h3>
+
+</div>
+
+<div class="contenth">
+
+<div>
+
+<p>Before you get started, please remember that:</p>
+<ul>
+<li>your first connection may take a while to get started;</li>
+
+<li>and that browsing in the shadows may be slower than browsing normally.</li>
+
+</ul>
+
+<p>Known issues:</p>
+<ul>
+<li>secure web pages (https) do not work due to a fault in the Android platform</li>
+<li>some form submissions may not work</li>
+</div>
+
+</div>
+
+<b class="b4bh"></b><b class="b3bh"></b><b class="b2bh"></b><b class="b1h"></b>
+
+
+</body>
+</html>

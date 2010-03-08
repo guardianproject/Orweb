@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+
+<LinearLayout android:id="@+id/LinearLayout01" android:layout_height="wrap_content" xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:gravity="center_vertical">
+
+
+<CheckBox android:text="CheckBox01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/siteCheckbox" android:textSize="15dip" android:textColor="#000000" android:drawablePadding="20dip"></CheckBox>
+</LinearLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="fill_parent" android:layout_height="wrap_content">
+
+<LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent">
+<EditText android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_weight="1" android:imeOptions="actionGo" android:inputType="textUri" android:text="http://" android:id="@+id/site_entry"></EditText>
+
+</LinearLayout>
+
+</ScrollView>

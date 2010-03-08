@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>An error has occurred</title>
+</head>
+
+<body>
+
+
+<b class="b1h"></b><b class="b2h"></b><b class="b3h"></b><b class="b4h"></b>
+
+<div class="headh">
+
+	<h3>An error has occurred</h3>
+
+</div>
+
+<div class="contenth">
+
+	<div>
+
+		<p>To remedy this try:</p>
+
+		<ul>
+		<li>loading this page again (<a href='javascript:window.location.reload();'>click here to refresh</a>);</li>
+		<li>or stopping and starting the TorProxy anonymous data connection and trying again.</li>
+		</ul>
+
+		<div class='errordetail_wrapper' id='errordetail_wrapper'>
+		<img id='errordetail_img' style='float:left; margin-right: 5px; margin-top: -2px;' src='http://shadow/down.png'/> <a href='javascript:toggleDetail();' id='errordetail_link'>Hide error detail</a><br/>
+		<div id='errordetail' style='white-space: pre-wrap;'></div>
+		</div>
+	</div>
+
+</div>
+
+<b class="b4bh"></b><b class="b3bh"></b><b class="b2bh"></b><b class="b1h"></b>
+
+
+</body>
+<script language='javascript'>
+var storedDetail = "";
+var currentlyShown = false;
+
+function start() {
+	errordetail = document.getElementById("errordetail");
+	if (errordetail.innerHTML.length == 0) {
+		document.getElementById("errordetail_wrapper").innerHTML = "";
+	} else {
+		storedDetail = errordetail.innerHTML;
+		hideDetail();
+	}
+}
+
+function toggleDetail() {
+	if (currentlyShown) hideDetail();
+	else showDetail();
+}
+
+function hideDetail() {
+	currentlyShown = false;
+	errordetail = document.getElementById("errordetail");
+	errordetail.innerHTML = "";
+	errordetail.style.visibility = "hidden";
+	document.getElementById("errordetail_link").innerHTML = "Show error detail";
+	document.getElementById("errordetail_img").src = "http://shadow/right.png";
+}
+
+function showDetail() {
+	currentlyShown = true;
+	errordetail = document.getElementById("errordetail");
+	errordetail.innerHTML = storedDetail;
+	errordetail.style.visibility = "visible";
+	document.getElementById("errordetail_link").innerHTML = "Hide error detail";
+	document.getElementById("errordetail_img").src = "http://shadow/down.png";
+}
+
+start();
+</script>
+</html>

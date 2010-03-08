@@ -1,0 +1,9 @@
+<resources><string-array name="cookiePreferences"><item>Accept all cookies</item>
+<item>Only accept whitelisted cookies</item>
+<item>Block all cookies</item>
+</string-array>
+<string-array name="cookiePreferencesValues"><item>accept</item>
+<item>whitelist</item>
+<item>block</item>
+</string-array>
+</resources>
