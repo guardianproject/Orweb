@@ -1,0 +1,14 @@
+
+Orweb provides anonymous and uncensored access to the web from Android devices.
+
+Orweb is a companion browser for Orbot, the port of Tor to Android. Orweb routes all browser traffic
+through a SOCKS5 proxy connection to Tor service running with Orbot. Web traffic is then anonymized
+through circuits created by Tor.
+
+Tor Project: http://torproject.org
+Orbot: http://guardianproject.info/apps/orbot
+
+/*** About Shadow ***/
+This work is the result of a ten week summer project in the Digital Technology Group.
+The software was written by Connell Gauld and supervised by Alastair Beresford and Andrew Rice.
+http://www.cl.cam.ac.uk/research/dtg/android/tor/
