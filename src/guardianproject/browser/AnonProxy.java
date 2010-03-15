@@ -34,6 +34,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -47,7 +48,9 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.conn.params.ConnRoutePNames;
 import org.apache.http.conn.routing.HttpRoute;
 import org.apache.http.conn.routing.HttpRoutePlanner;
 import org.apache.http.conn.routing.RouteInfo;
@@ -67,6 +70,7 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.protocol.HttpContext;
 
+import android.util.Log;
 import android.webkit.PluginData;
 
 /**
@@ -77,7 +81,6 @@ import android.webkit.PluginData;
  */
 public class AnonProxy {
 	
-	private int mPort = 0;
 	private DefaultHttpClient mClient = null;
 	
 	// The PostProcessor is used to rewrite POST forms as GET
@@ -95,59 +98,58 @@ public class AnonProxy {
 	 * Set the port for the HTTP proxy
 	 * @param port
 	 */
-	public void setPort(int port) {
+	public AnonProxy ()
+	{
 		
-		if (this.mPort != port) {
+			
+	//	SOCKSHttpClient client = new SOCKSHttpClient();
 		
-			// Proxy port has changed so set up appropriate HttpClient
-			this.mPort = port;
-			
-			/*
-			HttpHost proxy = new HttpHost("127.0.0.1", 8118, "http");
-			
-			//mClient.getHostConfiguration().setProxy("myproxyhost", 8080);
-			 
-			SchemeRegistry supportedSchemes = new SchemeRegistry();
-			
-			 supportedSchemes.register(new Scheme("http", 
-		                PlainSocketFactory.getSocketFactory(), 80));
-		        supportedSchemes.register(new Scheme("https", 
-		                SSLSocketFactory.getSocketFactory(), 443));
-		     
-			
-	        // prepare parameters
-	        HttpParams params = new BasicHttpParams();
-	        HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
-	        HttpProtocolParams.setContentCharset(params, "UTF-8");
-	        HttpProtocolParams.setUseExpectContinue(params, true);
+		HttpHost proxy = new HttpHost("127.0.0.1", 8118, "http");
+		SchemeRegistry supportedSchemes = new SchemeRegistry();
+		// Register the "http" and "https" protocol schemes, they are
+		// required by the default operator to look up socket factories.
+		supportedSchemes.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+		supportedSchemes.register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
+		// prepare parameters
+		HttpParams hparams = new BasicHttpParams();
+		HttpProtocolParams.setVersion(hparams, HttpVersion.HTTP_1_1);
+		HttpProtocolParams.setContentCharset(hparams, "UTF-8");
+		HttpProtocolParams.setUseExpectContinue(hparams, true);
+		ClientConnectionManager ccm = new ThreadSafeClientConnManager(hparams, supportedSchemes);
 
-	        ClientConnectionManager ccm = new ThreadSafeClientConnManager(params, supportedSchemes);
-			*/
-			
-	        mClient = new DefaultHttpClient();
-	        
-	       /// mClient.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, proxy);
-	        mClient.setRoutePlanner(new HttpRoutePlanner() {
+		mClient = new DefaultHttpClient(ccm, hparams);
+		mClient.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, proxy);
+		
+	}
+	
+	public HttpHost makeHttpHost (String url)
+	{
+		String TAG = "AnonProxy";
 
-	            public HttpRoute determineRoute(
-	                    HttpHost target, 
-	                    HttpRequest request, 
-	                    HttpContext context) throws HttpException {
-	                try {
-						return new HttpRoute(target, InetAddress.getLocalHost(),  new HttpHost("127.0.0.1", 8118), 
-						        "https".equalsIgnoreCase(target.getSchemeName()));
-						        //RouteInfo.TunnelType.PLAIN, RouteInfo.LayerType.PLAIN);
-					} catch (UnknownHostException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-						return null;
-					}
-	            }
-	            
-	        });
+		URI rURI = null;
+		try {
+			rURI = new URI(url);
+		} catch (URISyntaxException e) {
+			Log.e("AnonProxy","error parsing uri: " + url,e);
+		
+			return null;
 
 		}
+		
+		int port = rURI.getPort();
+		
+		if (port == -1)
+		{
+			if (rURI.getScheme().equalsIgnoreCase("http"))
+				port = 80;
+			else if (rURI.getScheme().equalsIgnoreCase("https"))
+				port = 443;
+		}
+		
+		return new HttpHost(rURI.getHost(),port, rURI.getScheme());
+		
 	}
+	
 	
 	/**
 	 * Perform an HTTP request
@@ -164,13 +166,18 @@ public class AnonProxy {
 		// If the port hasn't been set don't allow any requests to be made
 		if (mClient == null) throw new IOException();
 		
+		Log.i("Orweb","fetching: " + url);
+		
 		boolean isPost = false;
 		HttpRequestBase g = null;
+		HttpHost host = makeHttpHost(url);
+		URI uri = new URI(url);
+		
 		// POST processing
 		try {
 			boolean makePost = false;
-			URI u = new URI(url);
-			String query = u.getQuery();
+			
+			String query = uri.getQuery();
 			
 			if (query != null) {
 				// There is a querystring. Search for magic POST identifier
@@ -186,13 +193,13 @@ public class AnonProxy {
 				}
 				// If this was supposed to be a POST, turn it into one
 				if (makePost) {
-					HttpPost p = new HttpPost(url);
+					HttpPost p = new HttpPost(uri.getPath());
 					p.setEntity(new StringEntity(query));
 					g = p;
 					isPost = true;
 				}
 			}
-		} catch (URISyntaxException e1) {
+		} catch (Exception e1) {
 			// Not much we can do but just send the request...
 		}
 		
@@ -215,7 +222,7 @@ public class AnonProxy {
 							cacheObj.getStatus());	
 				}
 			}
-			g = new HttpGet(url);
+			g = new HttpGet(uri.getPath());
 		}
 		
 		synchronized(mLatestRequests) {
@@ -256,10 +263,10 @@ public class AnonProxy {
 		HttpResponse r;
 		mClient.getCookieStore().clear();
 
-		r = mClient.execute(g);
+		r = mClient.execute(host,g);
 		//Log.d("AnonProxy", "Execution done");
 		
-		URI requestUri = g.getURI();
+		URI requestUri = uri;// g.getURI();
 		
 		
 		int port = requestUri.getPort();

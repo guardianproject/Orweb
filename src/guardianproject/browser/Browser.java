@@ -522,12 +522,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 	//	if (status == TorProxyLib.STATUS_ON) {
 		if (true)
 		{
-			try {
-				mAnonProxy.setPort(9050);
-			} catch (Exception e) {
-				// Let's hope that the port was set
-				e.printStackTrace();
-			}
+			
 			mNoTorLayout.setVisibility(View.GONE);
 			mWebLayout.setVisibility(View.VISIBLE);
 			if (mLastIsTorActive == false)
