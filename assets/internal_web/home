@@ -24,13 +24,13 @@
 <ul>
 <li>your first connection may take a while to get started;</li>
 
-<li>and that browsing in the shadows may be slower than browsing normally.</li>
+<li>and that browsing via Tor may be slower than browsing normally.</li>
 
 </ul>
 
 <p>Known issues:</p>
 <ul>
-<li>secure web pages (https) do not work due to a fault in the Android platform</li>
+<li>This browser will only connect to Tor on Android 1.x devices (NOT Droid or NexusOne)</li>
 <li>some form submissions may not work</li>
 </div>
 
