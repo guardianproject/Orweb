@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Androlate>
+    <operation>
+        <filename>/home/n8fr8/dev/Guardian/repo/github/orweb/res/values/arrays.xml</filename>
+        <translate>
+            <string>
+                <name>cookiePreferences</name>
+                <value>Accept all cookies</value>
+                <index>0</index>
+            </string>
+            <string>
+                <name>cookiePreferences</name>
+                <value>Only accept whitelisted cookies</value>
+                <index>1</index>
+            </string>
+            <string>
+                <name>cookiePreferences</name>
+                <value>Block all cookies</value>
+                <index>2</index>
+            </string>
+        </translate>
+        <ignore/>
+        <allstrings>
+            <string>
+                <name>cookiePreferences</name>
+                <value>Accept all cookies</value>
+                <index>0</index>
+            </string>
+            <string>
+                <name>cookiePreferences</name>
+                <value>Only accept whitelisted cookies</value>
+                <index>1</index>
+            </string>
+            <string>
+                <name>cookiePreferences</name>
+                <value>Block all cookies</value>
+                <index>2</index>
+            </string>
+            <string>
+                <name>cookiePreferencesValues</name>
+                <value>accept</value>
+                <index>0</index>
+            </string>
+            <string>
+                <name>cookiePreferencesValues</name>
+                <value>whitelist</value>
+                <index>1</index>
+            </string>
+            <string>
+                <name>cookiePreferencesValues</name>
+                <value>block</value>
+                <index>2</index>
+            </string>
+        </allstrings>
+    </operation>
+    <operation>
+        <filename>/home/n8fr8/dev/Guardian/repo/github/orweb/res/values/strings.xml</filename>
+        <translate>
+            <string>
+                <name>torInactive</name>
+                <value>Anonymous data connection not running</value>
+            </string>
+            <string>
+                <name>torConnecting</name>
+                <value>Connecting...</value>
+            </string>
+            <string>
+                <name>starttor</name>
+                <value>Open preferences</value>
+            </string>
+            <string>
+                <name>search_label</name>
+                <value>Browser</value>
+            </string>
+            <string>
+                <name>search_hint</name>
+                <value>Type Web address</value>
+            </string>
+            <string>
+                <name>search_button_text</name>
+                <value>Go</value>
+            </string>
+            <string>
+                <name>torProxyNotInstalled</name>
+                <value>Orweb requires the Orbot application to be installed.</value>
+            </string>
+            <string>
+                <name>cookiesBlockedFirstLine</name>
+                <value>Cookies</value>
+            </string>
+            <string>
+                <name>cookiesBlockedSecondLine</name>
+                <value>Blocked</value>
+            </string>
+            <string>
+                <name>allCookiesAreBlocked</name>
+                <value>All cookies are blocked. You can change this behaviour in the settings.</value>
+            </string>
+            <string>
+                <name>acceptCookiesFrom</name>
+                <value>Accept cookies from:</value>
+            </string>
+            <string>
+                <name>willAddToWhitelist</name>
+                <value>Ticking these sites will add them to your cookie whitelist.</value>
+            </string>
+        </translate>
+        <ignore/>
+        <allstrings>
+            <string>
+                <name>pref_images</name>
+                <value>pref_images</value>
+            </string>
+            <string>
+                <name>pref_javascript</name>
+                <value>pref_javascript</value>
+            </string>
+            <string>
+                <name>app_name</name>
+                <value>Orweb v2</value>
+            </string>
+            <string>
+                <name>errorHtml</name>
+                <value>&amp;lt;b&amp;gt;Sorry, but something went wrong...&amp;lt;/b&amp;gt;</value>
+            </string>
+            <string>
+                <name>torInactive</name>
+                <value>Anonymous data connection not running</value>
+            </string>
+            <string>
+                <name>torConnecting</name>
+                <value>Connecting...</value>
+            </string>
+            <string>
+                <name>starttor</name>
+                <value>Open preferences</value>
+            </string>
+            <string>
+                <name>search_label</name>
+                <value>Browser</value>
+            </string>
+            <string>
+                <name>search_hint</name>
+                <value>Type Web address</value>
+            </string>
+            <string>
+                <name>search_button_text</name>
+                <value>Go</value>
+            </string>
+            <string>
+                <name>anondisplay</name>
+                <value>powered by the guardian project</value>
+            </string>
+            <string>
+                <name>default_homepage</name>
+                <value>https://check.torproject.org</value>
+            </string>
+            <string>
+                <name>pref_homepage</name>
+                <value>pref_homepage</value>
+            </string>
+            <string>
+                <name>pref_clearcache</name>
+                <value>pref_clearcache</value>
+            </string>
+            <string>
+                <name>internal_web_url</name>
+                <value>http://orweb/</value>
+            </string>
+            <string>
+                <name>torProxyNotInstalled</name>
+                <value>Orweb requires the Orbot application to be installed.</value>
+            </string>
+            <string>
+                <name>cookiesBlockedFirstLine</name>
+                <value>Cookies</value>
+            </string>
+            <string>
+                <name>cookiesBlockedSecondLine</name>
+                <value>Blocked</value>
+            </string>
+            <string>
+                <name>allCookiesAreBlocked</name>
+                <value>All cookies are blocked. You can change this behaviour in the settings.</value>
+            </string>
+            <string>
+                <name>acceptCookiesFrom</name>
+                <value>Accept cookies from:</value>
+            </string>
+            <string>
+                <name>willAddToWhitelist</name>
+                <value>Ticking these sites will add them to your cookie whitelist.</value>
+            </string>
+        </allstrings>
+    </operation>
+    <target_language>
+        <display>ARABIC</display>
+        <iso639_1>ar</iso639_1>
+        <directory>ar</directory>
+    </target_language>
+    <target_language>
+        <display>CHINESE_SIMPLIFIED</display>
+        <iso639_1>zh-CN</iso639_1>
+        <directory>zh-rCN</directory>
+    </target_language>
+    <target_language>
+        <display>CHINESE_TRADITIONAL</display>
+        <iso639_1>zh-TW</iso639_1>
+        <directory>zh-rTW</directory>
+    </target_language>
+    <target_language>
+        <display>DUTCH</display>
+        <iso639_1>nl</iso639_1>
+        <directory>nl</directory>
+    </target_language>
+    <target_language>
+        <display>ENGLISH</display>
+        <iso639_1>en</iso639_1>
+        <directory>en</directory>
+    </target_language>
+    <target_language>
+        <display>FRENCH</display>
+        <iso639_1>fr</iso639_1>
+        <directory>fr</directory>
+    </target_language>
+    <target_language>
+        <display>GERMAN</display>
+        <iso639_1>de</iso639_1>
+        <directory>de</directory>
+    </target_language>
+    <target_language>
+        <display>JAPANESE</display>
+        <iso639_1>ja</iso639_1>
+        <directory>ja</directory>
+    </target_language>
+    <target_language>
+        <display>KOREAN</display>
+        <iso639_1>ko</iso639_1>
+        <directory>ko</directory>
+    </target_language>
+    <target_language>
+        <display>PORTUGUESE</display>
+        <iso639_1>pt-PT</iso639_1>
+        <directory>pt</directory>
+    </target_language>
+    <target_language>
+        <display>RUSSIAN</display>
+        <iso639_1>ru</iso639_1>
+        <directory>ru</directory>
+    </target_language>
+    <target_language>
+        <display>SPANISH</display>
+        <iso639_1>es</iso639_1>
+        <directory>es</directory>
+    </target_language>
+    <target_language>
+        <display>SPANISH US</display>
+        <iso639_1>es</iso639_1>
+        <directory>es-rUS</directory>
+    </target_language>
+    <target_language>
+        <display>SWEDISH</display>
+        <iso639_1>sv</iso639_1>
+        <directory>sv</directory>
+    </target_language>
+    <target_language>
+        <display>PERSIAN</display>
+        <iso639_1>fa</iso639_1>
+        <directory>fa</directory>
+    </target_language>
+</Androlate>
