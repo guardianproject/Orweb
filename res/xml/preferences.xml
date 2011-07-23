@@ -1,19 +1,19 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 	<CheckBoxPreference android:title="Load images"
-		android:summary="Display images on Web pages" android:defaultValue="false"
+		android:summary="Display images on Web pages" android:defaultValue="true"
 		android:key="@string/pref_images"></CheckBoxPreference>
 	<CheckBoxPreference android:title="Enable JavaScript"
-		android:defaultValue="true" android:key="@string/pref_javascript"></CheckBoxPreference>
-	<guardianproject.browser.BrowserHomepagePreference
+		android:defaultValue="false" android:key="@string/pref_javascript"></CheckBoxPreference>
+	<info.guardianproject.browser.BrowserHomepagePreference
 		android:key="@string/pref_homepage" android:title="Set homepage"
-		android:hint="http://" android:inputType="textUri"
+		android:hint="https://" android:inputType="textUri"
 		android:defaultValue="@string/default_homepage" android:singleLine="true" />
 		
 	
-	
-<PreferenceCategory android:title="Privacy"><guardianproject.browser.ClearCachePreference android:key="@string/pref_clearcache" android:title="Clear cache" android:summary="Clear all cached page content" android:dialogMessage="The cache will be cleared." android:dialogTitle="Clear the cache" android:dialogIcon="@android:drawable/ic_dialog_alert" /><CheckBoxPreference android:defaultValue="false" android:summary="Referrer information may reveal your browsing history" android:title="Send referrer information" android:key="pref_sendreferrer"></CheckBoxPreference>
+<PreferenceCategory android:title="Privacy">
+<info.guardianproject.browser.ClearCachePreference android:key="@string/pref_clearcache" android:title="Clear cache" android:summary="Clear all cached page content" android:dialogMessage="The cache will be cleared." android:dialogTitle="Clear the cache" android:dialogIcon="@android:drawable/ic_dialog_alert" /><CheckBoxPreference android:defaultValue="false" android:summary="Referrer information may reveal your browsing history" android:title="Send referrer information" android:key="pref_sendreferrer"></CheckBoxPreference>
 </PreferenceCategory><PreferenceCategory android:title="Cookies">
-	<guardianproject.browser.ClearCookiesPreference
+	<info.guardianproject.browser.ClearCookiesPreference
 		android:key="pref_clearcookies" android:title="Clear cookie data"
 		android:summary="Clear all the browser cookies" 
 		android:dialogMessage="The cookies will be cleared."
