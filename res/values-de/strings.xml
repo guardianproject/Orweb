@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="torInactive">Anonymous Datenverbindung läuft nicht</string>
+    <string name="torConnecting">Anschließen ...</string>
+    <string name="starttor">Öffnen Sie Einstellungen</string>
+    <string name="search_label">Browser</string>
+    <string name="search_hint">Web-Adresse oder suchen</string>
+    <string name="search_button_text">Gehen</string>
+    <string name="torProxyNotInstalled">Orweb erfordert die Orbot Anwendung installiert werden soll.</string>
+    <string name="cookiesBlockedFirstLine">Kekse</string>
+    <string name="cookiesBlockedSecondLine">Verstopft</string>
+    <string name="allCookiesAreBlocked">Alle Cookies blockiert werden. Sie können dieses Verhalten in den Einstellungen zu ändern.</string>
+    <string name="acceptCookiesFrom">Cookies akzeptieren from:</string>
+    <string name="willAddToWhitelist">Ticking diesen Seiten wird sie zu Ihrem Cookie Whitelist hinzuzufügen.</string>
+    <string name="pref_proxy_group">Proxy Server Einstellungen</string>
+    <string name="pref_proxy_host">Proxy-Host</string>
+    <string name="pref_proxy_host_summary">Der Hostname oder die IP-Adresse des HTTP-Proxy-Server</string>
+    <string name="pref_proxy_port">Proxy Port</string>
+    <string name="pref_proxy_port_summary">Die Socket-Port für den HTTP-Proxy-Server</string>
+    <string name="pref_user_agent_summary">Ändern Sie, wie der Browser selbst identifiziert</string>
+    <string name="pref_user_agent_title">User Agent</string>
+    <string name="errorHtml">&lt;b&gt;Sorry, aber etwas ging schief ...__ lessthan__/b&gt;</string>
+    <string name="menu_go">Gehen</string>
+    <string name="menu_stop">Stopp</string>
+    <string name="menu_forward">Nach vorn</string>
+    <string name="menu_about">Über</string>
+    <string name="menu_settings">Einstellungen</string>
+    <string name="menu_reload">Nachladen</string>
+</resources>

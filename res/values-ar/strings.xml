@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="torInactive">المجهول اتصال البيانات لا يعمل</string>
+    <string name="torConnecting">الاتصال...</string>
+    <string name="starttor">فتح تفضيلات</string>
+    <string name="search_label">متصفح</string>
+    <string name="search_hint">عنوان الويب أو البحث</string>
+    <string name="search_button_text">انتقل</string>
+    <string name="torProxyNotInstalled">Orweb يتطلب تثبيت التطبيق Orbot.</string>
+    <string name="cookiesBlockedFirstLine">الكوكيز</string>
+    <string name="cookiesBlockedSecondLine">حظر</string>
+    <string name="allCookiesAreBlocked">يتم حظر كافة ملفات تعريف الارتباط. يمكنك تغيير هذا السلوك في الإعدادات.</string>
+    <string name="acceptCookiesFrom">الكوكيز from:</string>
+    <string name="willAddToWhitelist">سوف تدق هذه المواقع إضافتها إلى القائمة البيضاء الكوكيز.</string>
+    <string name="pref_proxy_group">إعدادات الخادم الوكيل</string>
+    <string name="pref_proxy_host">الوكيل المضيف</string>
+    <string name="pref_proxy_host_summary">اسم المضيف أو عنوان IP لملقم وكيل HTTP</string>
+    <string name="pref_proxy_port">ميناء الوكيل</string>
+    <string name="pref_proxy_port_summary">منفذ مأخذ للخادم وكيل HTTP</string>
+    <string name="pref_user_agent_summary">تغيير الطريقة التي يحدد المتصفح نفسه</string>
+    <string name="pref_user_agent_title">وكيل المستخدم</string>
+    <string-array name="cookiePreferences">
+        <item>قبول كافة ملفات تعريف الارتباط</item>
+        <item>تقبل الكوكيز اللائحة البيضاء</item>
+        <item>حظر كافة ملفات تعريف الارتباط</item>
+    </string-array>
+<string name="errorHtml">&lt;b&gt;Sorry ذهب ، ولكن شيئا خاطئا...__ lessthan__/b&gt;</string>
+    <string name="menu_go">انتقل</string>
+    <string name="menu_stop">توقف</string>
+    <string name="menu_forward">إلى الأمام</string>
+    <string name="menu_about">حول</string>
+    <string name="menu_settings">إعدادات</string>
+    <string name="menu_reload">تحديث</string>
+</resources>

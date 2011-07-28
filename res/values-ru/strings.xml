@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="torInactive">Анонимные подключения к данным не работает</string>
+    <string name="torConnecting">Подключение ...</string>
+    <string name="starttor">Открыть настройки</string>
+    <string name="search_label">Браузер</string>
+    <string name="search_hint">Интернет-адрес или поиск</string>
+    <string name="search_button_text">Идти</string>
+    <string name="torProxyNotInstalled">Orweb требует Orbot приложения для установки.</string>
+    <string name="cookiesBlockedFirstLine">Печенье</string>
+    <string name="cookiesBlockedSecondLine">Блокированный</string>
+    <string name="allCookiesAreBlocked">Все куки заблокированы. Вы можете изменить это поведение в настройках.</string>
+    <string name="acceptCookiesFrom">Принимать Cookies from:</string>
+    <string name="willAddToWhitelist">Чехол этих сайтов будет добавить их в белый список печенья.</string>
+    <string name="pref_proxy_group">Параметры прокси-сервера</string>
+    <string name="pref_proxy_host">Прокси-сервера</string>
+    <string name="pref_proxy_host_summary">Хоста или IP-адрес прокси-сервер HTTP</string>
+    <string name="pref_proxy_port">Порт прокси</string>
+    <string name="pref_proxy_port_summary">Разъем порт для прокси-сервер HTTP</string>
+    <string name="pref_user_agent_summary">Изменение способа браузер идентифицирует себя</string>
+    <string name="pref_user_agent_title">Агент пользователя</string>
+    <string name="errorHtml">&lt;b&gt;Sorry, но что-то пошло не так ...__ lessthan__/b&gt;</string>
+<string name="menu_go">Идти</string>
+    <string name="menu_stop">Остановить</string>
+    <string name="menu_forward">Вперед</string>
+    <string name="menu_about">О</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="menu_reload">Перезагружать</string>
+</resources>

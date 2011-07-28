@@ -26,8 +26,9 @@
 
 			</LinearLayout>
 
+<!--
 <TextView android:layout_height="wrap_content" android:id="@+id/TextView01" android:layout_alignBottom="@+id/WebView" android:layout_width="fill_parent" android:gravity="center" android:text="@string/anondisplay" android:textColor="#444444" android:background="#cccccc"></TextView>
-
+ -->
 
 </RelativeLayout>
 		

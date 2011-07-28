@@ -8,23 +8,37 @@
 		android:key="@string/pref_homepage" android:title="Set homepage"
 		android:hint="https://" android:inputType="textUri"
 		android:defaultValue="@string/default_homepage" android:singleLine="true" />
-		
-	
+<PreferenceCategory android:title="@string/pref_proxy_group">
+<EditTextPreference
+android:defaultValue="localhost"
+android:key="pref_proxy_host"
+android:title="@string/pref_proxy_host"
+android:summary="@string/pref_proxy_host_summary"
+android:dialogTitle="@string/pref_proxy_host"
+android:enabled="true"/>
+<EditTextPreference
+android:defaultValue="8118"
+android:numeric="integer"
+android:key="pref_proxy_port"
+android:title="@string/pref_proxy_port"
+android:summary="@string/pref_proxy_port_summary"
+android:dialogTitle="@string/pref_proxy_port"
+android:enabled="true"/>
+</PreferenceCategory>
 <PreferenceCategory android:title="Privacy">
+
+<ListPreference android:key="pref_user_agent" android:summary="@string/pref_user_agent_summary" android:title="@string/pref_user_agent_title" android:entries="@array/userAgents" android:entryValues="@array/userAgentValues" android:defaultValue=""></ListPreference>
+
+
 <info.guardianproject.browser.ClearCachePreference android:key="@string/pref_clearcache" android:title="Clear cache" android:summary="Clear all cached page content" android:dialogMessage="The cache will be cleared." android:dialogTitle="Clear the cache" android:dialogIcon="@android:drawable/ic_dialog_alert" /><CheckBoxPreference android:defaultValue="false" android:summary="Referrer information may reveal your browsing history" android:title="Send referrer information" android:key="pref_sendreferrer"></CheckBoxPreference>
 </PreferenceCategory><PreferenceCategory android:title="Cookies">
 	<info.guardianproject.browser.ClearCookiesPreference
 		android:key="pref_clearcookies" android:title="Clear cookie data"
-		android:summary="Clear all the browser cookies" 
+		android:summary="Clear all the browser cookies"
 		android:dialogMessage="The cookies will be cleared."
-		android:dialogTitle="Clear cookies" 
+		android:dialogTitle="Clear cookies"
 		android:dialogIcon="@android:drawable/ic_dialog_alert" />
 <ListPreference android:key="pref_cookiebehaviour" android:summary="Accept or block cookies" android:title="Cookie behvaiour" android:entries="@array/cookiePreferences" android:entryValues="@array/cookiePreferencesValues" android:defaultValue="whitelist"></ListPreference>
-
-
-
 <PreferenceScreen android:summary="Set which website can store cookies" android:title="Cookie whitelist" android:key="pref_cookiewhitelist" android:persistent="false"><Preference android:key="pref_addsite" android:title="Add site to whitelist" android:persistent="false"></Preference><PreferenceCategory android:key="pref_whitelist" android:title="Current cookie whitelist" android:persistent="false"></PreferenceCategory>
-
 </PreferenceScreen></PreferenceCategory>
-
 </PreferenceScreen>

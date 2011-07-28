@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="torInactive">匿名数据连接不运行</string>
+    <string name="torConnecting">连接...</string>
+    <string name="starttor">打开首选项</string>
+    <string name="search_label">浏览器</string>
+    <string name="search_hint">网址或搜索</string>
+    <string name="search_button_text">转到</string>
+    <string name="torProxyNotInstalled">Orweb需要的Orbot应用程序要安装。</string>
+    <string name="cookiesBlockedFirstLine">饼干</string>
+    <string name="cookiesBlockedSecondLine">被阻止</string>
+    <string name="allCookiesAreBlocked">阻止所有Cookie。在设置中你可以改变这种行为。</string>
+    <string name="acceptCookiesFrom">接受cookie from:</string>
+    <string name="willAddToWhitelist">褥套这些网站将它们添加到你的cookie的白名单。</string>
+    <string name="pref_proxy_group">代理服务器设置</string>
+    <string name="pref_proxy_host">代理主机</string>
+    <string name="pref_proxy_host_summary">HTTP代理服务器的主机名或IP地址</string>
+    <string name="pref_proxy_port">代理端口</string>
+    <string name="pref_proxy_port_summary">套接字端口的HTTP代理服务器</string>
+    <string name="pref_user_agent_summary">改变浏览器标识</string>
+    <string name="pref_user_agent_title">用户代理</string>
+    <string name="errorHtml">&lt;b&gt;Sorry，但出现了错误的...__ lessthan__/b&gt;</string>
+<string name="menu_go">转到</string>
+    <string name="menu_stop">停止</string>
+    <string name="menu_forward">前进</string>
+    <string name="menu_about">关于</string>
+    <string name="menu_settings">设置</string>
+    <string name="menu_reload">刷新</string>
+</resources>

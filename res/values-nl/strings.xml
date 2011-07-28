@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="torInactive">Anonieme gegevens-verbinding niet actief</string>
+    <string name="torConnecting">Aansluiten van ...</string>
+    <string name="starttor">Open voorkeuren</string>
+    <string name="search_label">Browser</string>
+    <string name="search_hint">Webadres of zoeken</string>
+    <string name="search_button_text">Gaan</string>
+    <string name="torProxyNotInstalled">Orweb vereist dat de Orbot toepassing die wordt geïnstalleerd.</string>
+    <string name="cookiesBlockedFirstLine">Koekjes</string>
+    <string name="cookiesBlockedSecondLine">Geblokkeerde</string>
+    <string name="allCookiesAreBlocked">Alle cookies worden geblokkeerd. U kunt dit gedrag veranderen in de instellingen.</string>
+    <string name="acceptCookiesFrom">Cookies accepteren from:</string>
+    <string name="willAddToWhitelist">Ticking deze sites zal ze toevoegen aan uw cookie whitelist.</string>
+    <string name="pref_proxy_group">Proxy Server-instellingen</string>
+    <string name="pref_proxy_host">Proxy Host</string>
+    <string name="pref_proxy_host_summary">De hostnaam of IP-adres van de HTTP-proxy-server</string>
+    <string name="pref_proxy_port">Proxy Port</string>
+    <string name="pref_proxy_port_summary">De aansluiting poort voor de HTTP-proxy-server</string>
+    <string name="pref_user_agent_summary">Verander de manier waarop de browser zich identificeert</string>
+    <string name="pref_user_agent_title">User Agent</string>
+    <string name="errorHtml">&lt;b&gt;Sorry, maar ging er iets mis ...__ lessthan__/b&gt;</string>
+    <string name="menu_go">Gaan</string>
+    <string name="menu_stop">Stop</string>
+    <string name="menu_forward">Naar voren</string>
+    <string name="menu_about">Over</string>
+    <string name="menu_settings">Instellingen</string>
+    <string name="menu_reload">Reload</string>
+</resources>

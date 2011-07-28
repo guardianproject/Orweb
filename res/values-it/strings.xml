@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="torInactive">Anonimo connessione dati non è in esecuzione</string>
+    <string name="torConnecting">Collegamento ...</string>
+    <string name="starttor">Apre le preferenze</string>
+    <string name="search_label">Browser</string>
+    <string name="search_hint">Indirizzo web o di ricerca</string>
+    <string name="search_button_text">Andare</string>
+    <string name="torProxyNotInstalled">Orweb richiede l\'applicazione Orbot da installare.</string>
+    <string name="cookiesBlockedFirstLine">Biscotti</string>
+    <string name="cookiesBlockedSecondLine">Bloccato</string>
+    <string name="allCookiesAreBlocked">Tutti i cookie sono bloccati. È possibile modificare questo comportamento nelle impostazioni.</string>
+    <string name="acceptCookiesFrom">Accetta i cookie from:</string>
+    <string name="willAddToWhitelist">Ticchettio questi siti li aggiungerà alla lista bianca cookie.</string>
+    <string name="pref_proxy_group">Impostazioni del server proxy</string>
+    <string name="pref_proxy_host">Proxy Host</string>
+    <string name="pref_proxy_host_summary">L\'hostname o l\'indirizzo IP del server proxy HTTP</string>
+    <string name="pref_proxy_port">Porta proxy</string>
+    <string name="pref_proxy_port_summary">La porta presa per il server proxy HTTP</string>
+    <string name="pref_user_agent_summary">Cambiare il modo il browser si identifica</string>
+    <string name="pref_user_agent_title">User Agent</string>
+    <string name="errorHtml">&lt;b&gt;Sorry, ma qualcosa è andato storto ...__ lessthan__/b&gt;</string>
+<string name="menu_go">Andare</string>
+    <string name="menu_stop">Stop</string>
+    <string name="menu_forward">In avanti</string>
+    <string name="menu_about">Circa</string>
+    <string name="menu_settings">Impostazioni</string>
+    <string name="menu_reload">Ricaricare</string>
+</resources>

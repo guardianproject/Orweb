@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="torInactive">Anonym datatilkobling ikke kjører</string>
+    <string name="torConnecting">Kobler til ...</string>
+    <string name="starttor">Åpne preferanser</string>
+    <string name="search_label">Nettleser</string>
+    <string name="search_hint">Web-adressen eller søk</string>
+    <string name="search_button_text">Go</string>
+    <string name="torProxyNotInstalled">Orweb krever Orbot programmet som skal installeres.</string>
+    <string name="cookiesBlockedFirstLine">Cookies</string>
+    <string name="cookiesBlockedSecondLine">Blokkerte</string>
+    <string name="allCookiesAreBlocked">Alle informasjonskapsler er blokkert. Du kan endre denne oppførselen i innstillingene.</string>
+    <string name="acceptCookiesFrom">Godta informasjonskapsler from:</string>
+    <string name="willAddToWhitelist">Tikker disse nettstedene vil legge dem til din cookie hviteliste.</string>
+    <string name="pref_proxy_group">Proxy Server Settings</string>
+    <string name="pref_proxy_host">Proxy Host</string>
+    <string name="pref_proxy_host_summary">Vertsnavnet eller IP-adressen til HTTP proxy-serveren</string>
+    <string name="pref_proxy_port">Proxy Port</string>
+    <string name="pref_proxy_port_summary">Den socket port for HTTP proxy-serveren</string>
+    <string name="pref_user_agent_summary">Endre hvordan nettleseren identifiserer seg</string>
+    <string name="pref_user_agent_title">User Agent</string>
+    <string name="errorHtml">&lt;b&gt;Sorry, men noe gikk galt ...__ lessthan__/b&gt;</string>
+    <string name="menu_go">Go</string>
+    <string name="menu_stop">Stopp</string>
+    <string name="menu_forward">Forward</string>
+    <string name="menu_about">Om</string>
+    <string name="menu_settings">Innstillinger</string>
+    <string name="menu_reload">Reload</string>
+</resources>
