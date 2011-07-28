@@ -1,19 +1,19 @@
 /**
  * Shadow - Anonymous web browser for Android devices
  * Copyright (C) 2009 Connell Gauld
- * 
+ *
  * Thanks to University of Cambridge,
  * 		Alastair Beresford and Andrew Rice
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * version 2 as published by the Free Software Foundation.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
@@ -163,7 +163,7 @@ public class CookieManager {
 	/**
 	 * Register that a cookie has been blocked
 	 * @param c the cookie that was blocked
-	 * @param header the set-cookie header of the cookie 
+	 * @param header the set-cookie header of the cookie
 	 * @param url the address that added the cookie
 	 */
 	public synchronized void cookieBlocked(Cookie c, String header, String url) {
@@ -219,7 +219,7 @@ public class CookieManager {
 		android.webkit.CookieManager c = android.webkit.CookieManager.getInstance();
 		
 		int size = mBlockedCookies.size();
-		for (int i=0; i<size; i++) { 
+		for (int i=0; i<size; i++) {
 			BlockedCookie thisCookie = mBlockedCookies.get(i);
 			if (thisCookie.domain.equals(domain))
 				c.setCookie(thisCookie.url, thisCookie.header);

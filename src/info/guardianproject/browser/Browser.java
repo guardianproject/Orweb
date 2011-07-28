@@ -1,22 +1,22 @@
 /**
  * Orweb - anonymous, secure, privacy-oriented browser for Android devices
- * 
+ *
  * Based heavily upon:
  * Shadow - Anonymous web browser for Android devices
  * Copyright (C) 2009 Connell Gauld
- * 
+ *
  * Thanks to University of Cambridge,
  * 		Alastair Beresford and Andrew Rice
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * version 2 as published by the Free Software Foundation.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
@@ -40,6 +40,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.http.client.ClientProtocolException;
+import org.torproject.android.OrbotHelper;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -60,6 +61,7 @@ import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.PaintDrawable;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.Message;
 import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -111,6 +113,12 @@ public class Browser extends Activity implements UrlInterceptHandler,
 	private boolean mLastIsTorActive = true;
 	private CookieManager mCookieManager = null;
 
+	public static String DEFAULT_PROXY_HOST = "localhost";
+	public static String DEFAULT_PROXY_PORT = "8118";
+	public static String DEFAULT_SEARCH_ENGINE = "http://3g2upl4pq6kufc4m.onion/?q=";
+	
+	private static String ABOUT_URL = "https://guardianproject.info/apps/orweb";
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -126,22 +134,13 @@ public class Browser extends Activity implements UrlInterceptHandler,
 
 		setContentView(R.layout.main);
 
-		// Register to capture all URLs in the WebView
-		UrlInterceptRegistry.registerHandler(this);
-		boolean disabled = UrlInterceptRegistry.urlInterceptDisabled();
+		// TODO - properly handle initial Intents
+		SharedPreferences prefs = PreferenceManager
+				.getDefaultSharedPreferences(this);
+
 		
-		Log.i("Browser","WebKit URL Intercept enabled? " + disabled);
-		
-		System.setProperty("http.proxyHost", "localhost");
-		System.setProperty("http.proxyPort", "8118");
-		
-		System.setProperty("https.proxyHost", "localhost");
-		System.setProperty("https.proxyPort", "8118");
-		
-		ProxySettings.setProxy(this, "localhost", 8118);
-		
-		//UrlInterceptRegistry.setUrlInterceptDisabled(false);
-	
+		OrbotHelper.setProxy(this, prefs.getString("pref_proxy_host", DEFAULT_PROXY_HOST),Integer.parseInt(prefs.getString("pref_proxy_port", DEFAULT_PROXY_PORT)));
+			
 		
 		mCookieManager = CookieManager.getInstance(this);
 		mAnonProxy = new AnonProxy();
@@ -158,20 +157,17 @@ public class Browser extends Activity implements UrlInterceptHandler,
 		mStartTor.setOnClickListener(this);
 		mWebView.setWebViewClient(mWebViewClient);
 		mWebView.setWebChromeClient(mWebViewChrome);
-		mWebView.getSettings().setBuiltInZoomControls(true);
+		
 		mWebView.getSettings().setLoadsImagesAutomatically(true);
 		mWebView.setBlockedCookiesView(mCookieIcon);
-		mCookieIcon.setOnClickListener(this);
-
 		
+		mCookieIcon.setOnClickListener(this);
+		
+		resetUserAgent(prefs);
 		
 		// Misc
 		mGenericFavicon = getResources().getDrawable(
 				R.drawable.app_web_browser_sm);
-
-		// TODO - properly handle initial Intents
-		SharedPreferences prefs = PreferenceManager
-				.getDefaultSharedPreferences(this);
 
 		String starturl = prefs.getString(getString(R.string.pref_homepage),
 				getString(R.string.default_homepage));
@@ -187,23 +183,18 @@ public class Browser extends Activity implements UrlInterceptHandler,
 		}
 		loadUrl(starturl);
 	}
+	
+	private void resetUserAgent (SharedPreferences prefs)
+	{
 
-	// Service connection to TorProxy service
-	private ServiceConnection mSvcConn = new ServiceConnection() {
+		String ua = prefs.getString("pref_user_agent", mWebView.getSettings().getUserAgentString());
+		if (!ua.equals("-1")) // -1 means use the default Android
+			mWebView.getSettings().setUserAgentString(ua);
+		
+	}
 
-		@Override
-		public void onServiceConnected(ComponentName name, IBinder service) {
-		//	mControlService = ITorProxyControl.Stub.asInterface(service);
-			updateTorStatus();
-		}
-
-		@Override
-		public void onServiceDisconnected(ComponentName name) {
-		//	mControlService = null;
-			updateTorStatus();
-		}
-
-	};
+	
+	
 
 	/*
 	 * Set the title bar icon to the supplied bitmap. Yoinked from the Android
@@ -226,7 +217,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 
 	/**
 	 * Yoinked from android source
-	 * 
+	 *
 	 * @param url
 	 * @return
 	 */
@@ -285,13 +276,19 @@ public class Browser extends Activity implements UrlInterceptHandler,
 			}
 			return inUrl;
 		}
-		return "http://" + url;
+		else if (url.indexOf(' ') != -1 || url.indexOf('.') == -1)
+		{
+			url = DEFAULT_SEARCH_ENGINE + url;
+			return url;
+		}
+		else
+			return "http://" + url;
 	}
 
 	/**
 	 * Yoinked from android browser. Builds and returns the page title, which is
 	 * some combination of the page URL and title.
-	 * 
+	 *
 	 * @param url
 	 *            The URL of the site being loaded.
 	 * @param title
@@ -322,7 +319,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 
 	/*
 	 * Intercept the HTTP requests and tunnel over AnonProxy
-	 * 
+	 *
 	 * @see android.webkit.UrlInterceptHandler#getPluginData(java.lang.String,
 	 * java.util.Map)
 	 */
@@ -361,7 +358,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 
 	/**
 	 * Fetches an asset as if it were an HTTP request.
-	 * 
+	 *
 	 * @param path
 	 *            the path of the asset to get
 	 * @return the PluginData structure containing the asset
@@ -381,7 +378,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 
 	/**
 	 * Returns a PluginData object filled with HTML from a string
-	 * 
+	 *
 	 * @param s
 	 *            the string containing HTML
 	 * @param statuscode
@@ -446,7 +443,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 			return true;
 
 		case R.id.menu_about:
-			loadUrl(getString(R.string.internal_web_url) + "about.htm");
+			loadUrl(ABOUT_URL);
 			return true;
 		}
 		return super.onOptionsItemSelected(arg0);
@@ -478,11 +475,13 @@ public class Browser extends Activity implements UrlInterceptHandler,
 
 	/**
 	 * Navigate to a web address
-	 * 
+	 *
 	 * @param url
 	 *            the address to navigate to
 	 */
 	private void loadUrl(String url) {
+		
+		
 		mAnonProxy.stop();
 		mWebView.loadUrl(url);
 	}
@@ -501,13 +500,6 @@ public class Browser extends Activity implements UrlInterceptHandler,
 	protected void onResume() {
 		super.onResume();
 
-		// Register to receive Tor status update broadcasts
-		//registerReceiver(mBroadcastReceiver, torStatusFilter);
-
-		// Bind to the TorProxy control service
-		//bindService(new Intent().setComponent(new ComponentName(
-			//	TorProxyLib.CONTROL_SERVICE_PACKAGE,
-				//TorProxyLib.CONTROL_SERVICE_CLASS)), mSvcConn, BIND_AUTO_CREATE);
 		updateTorStatus();
 
 		// Update preferences
@@ -597,7 +589,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 
 	/**
 	 * Sets the title of the Activity
-	 * 
+	 *
 	 * @param url
 	 *            the string to set the title to
 	 */
@@ -608,7 +600,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 	/**
 	 * Sets the webview settings given a visited URL. Internal pages should show
 	 * images and run javascript even if the load images option is set to off.
-	 * 
+	 *
 	 * @param url
 	 *            the URL of the current page
 	 */
@@ -627,6 +619,8 @@ public class Browser extends Activity implements UrlInterceptHandler,
 					.setJavaScriptEnabled(
 							prefs.getBoolean(
 									getString(R.string.pref_javascript), true));
+			
+			resetUserAgent(prefs);
 		}
 	}
 
@@ -664,6 +658,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 			updateInLoadMenuItems();
 			super.onPageFinished(view, url);
 		}
+	
 
 		@Override
 		public void onLoadResource(WebView view, String url) {
@@ -671,6 +666,21 @@ public class Browser extends Activity implements UrlInterceptHandler,
 			mInLoad = true;
 			super.onLoadResource(view, url);
 		}
+
+		@Override
+		public void onReceivedError(WebView view, int errorCode,
+				String description, String failingUrl) {
+			super.onReceivedError(view, errorCode, description, failingUrl);
+		}
+
+		@Override
+		public void onTooManyRedirects(WebView view, Message cancelMsg,
+				Message continueMsg) {
+			// TODO Auto-generated method stub
+			super.onTooManyRedirects(view, cancelMsg, continueMsg);
+		}
+		
+		
 
 	};
 
@@ -695,7 +705,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 
 	/**
 	 * Navigate back on the browser
-	 * 
+	 *
 	 * @return whether the browser navigated back
 	 */
 	/*
@@ -766,15 +776,4 @@ public class Browser extends Activity implements UrlInterceptHandler,
 
 	};
 
-	/*private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
-
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			//if (TorProxyLib.STATUS_CHANGE_INTENT.equals(intent.getAction())) {
-				// TorProxy has broadcast a Tor status update
-				//updateTorStatus();
-		//	}
-		}
-
-	};*/
 }

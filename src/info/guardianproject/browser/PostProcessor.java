@@ -1,19 +1,19 @@
 /**
  * Shadow - Anonymous web browser for Android devices
  * Copyright (C) 2009 Connell Gauld
- * 
+ *
  * Thanks to University of Cambridge,
  * 		Alastair Beresford and Andrew Rice
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * version 2 as published by the Free Software Foundation.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
@@ -35,7 +35,7 @@ import java.util.Random;
  * Rewrites HTML to turn POST forms to GET forms.
  * It also adds a hidden input element to each form with a random
  * name/value pair that can be used to determine whether a GET request
- * was once supposed to be a POST request. 
+ * was once supposed to be a POST request.
  * @author cmg47
  *
  */
@@ -219,9 +219,9 @@ public class PostProcessor {
 	}
 
 	/**
-	 * Looks for a string in the upcoming data. Outputs the string to o only 
+	 * Looks for a string in the upcoming data. Outputs the string to o only
 	 * if it is found. Otherwise resets the input back to where it started
-	 * and doesn't touch o. 
+	 * and doesn't touch o.
 	 * @param str the string to look for
 	 * @param b where to look
 	 * @param o output to use if str is found. Pass null if no output is desired
@@ -257,7 +257,7 @@ public class PostProcessor {
 	}
 	
 	/**
-	 * Generates a random string alphanumeric of specified length. 
+	 * Generates a random string alphanumeric of specified length.
 	 * @param length number of characters desired
 	 * @return random alphanumeric string
 	 */
@@ -275,13 +275,13 @@ public class PostProcessor {
 	
 	/**
 	 * Determine whether the supplied mimetype can be processed by
-	 * this class. 
+	 * this class.
 	 * @param type the mimetype to check
 	 * @return true if this class can process this mimetype
 	 */
 	public static boolean canProcessMime(String type) {
 		String t = type.toLowerCase();
-		// Can process html/xml like content 
+		// Can process html/xml like content
 		if (t.contains("text/html")) return true;
 		if (t.contains("application/xhtml+xml")) return true;
 		if (t.contains("text/xml")) return true;

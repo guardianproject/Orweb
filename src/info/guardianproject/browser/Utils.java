@@ -42,11 +42,11 @@ public class Utils {
 			
 			return result;
 	    }
-	 
+	
 	 public static String readString (InputStream stream)
 	    {
 	    	String line = null;
-	    
+	
 	    	StringBuffer out = new StringBuffer();
 	    	
 	    	try {
@@ -72,7 +72,7 @@ public class Utils {
 	 public static String loadTextFile (String path)
 	    {
 	    	String line = null;
-	    
+	
 	    	StringBuffer out = new StringBuffer();
 	    	
 	    	try {
@@ -92,7 +92,7 @@ public class Utils {
 			return out.toString();
 	    	
 	    }
-	 
+	
 
 		/*
 		 * Load the log file text
@@ -104,10 +104,10 @@ public class Utils {
 		    		
 		    		 FileWriter writer = new FileWriter( path, false );
                      writer.write( contents );
-                     
+
                      writer.close();
 
-                     
+
 		    		
 		    		return true;
 			    	

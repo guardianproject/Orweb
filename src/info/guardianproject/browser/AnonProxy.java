@@ -1,19 +1,19 @@
 /**
  * Shadow - Anonymous web browser for Android devices
  * Copyright (C) 2009 Connell Gauld
- * 
+ *
  * Thanks to University of Cambridge,
  * 		Alastair Beresford and Andrew Rice
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * version 2 as published by the Free Software Foundation.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
@@ -101,7 +101,7 @@ public class AnonProxy {
 	public AnonProxy ()
 	{
 		
-		HttpHost proxy = new HttpHost("127.0.0.1", 8118, "http");
+		HttpHost proxy = new HttpHost(Browser.DEFAULT_PROXY_HOST, Integer.parseInt(Browser.DEFAULT_PROXY_PORT), "http");
 		SchemeRegistry supportedSchemes = new SchemeRegistry();
 		
 		// Register the "http" and "https" protocol schemes, they are
@@ -318,8 +318,8 @@ public class AnonProxy {
 				if (!cacheObj.isStale(requestTime)) {
 					// Can serve directly from cache
 					//Log.i("AnonProxy", "Served directly from cache" + url);
-					return new PluginData(cacheObj.getNewInputStream(), 
-							cacheObj.getContentLength(), 
+					return new PluginData(cacheObj.getNewInputStream(),
+							cacheObj.getContentLength(),
 							cacheObj.getHeaders(),
 							cacheObj.getStatus());	
 				}
@@ -414,8 +414,8 @@ public class AnonProxy {
 		if (stat.getStatusCode() == 304) {
 			//Log.i("AnonProxy", "Not modified so serving from cache: " + url);
 			// Not modified so serve from cache
-			return new PluginData(cacheObj.getNewInputStream(), 
-					cacheObj.getContentLength(), 
+			return new PluginData(cacheObj.getNewInputStream(),
+					cacheObj.getContentLength(),
 					cacheObj.getHeaders(),
 					cacheObj.getStatus());
 		}
