@@ -16,6 +16,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.Uri;
+import android.util.Log;
 
 public class OrbotHelper {
 
@@ -25,6 +26,8 @@ public class OrbotHelper {
 	
 	private final static int REQUEST_CODE = 0;
 	
+	private final static String TAG = "OrbotHelpher";
+
 	public static void setProxy (Context ctx)
 	{
 		setProxy (ctx, DEFAULT_HOST, DEFAULT_PORT);
@@ -32,6 +35,13 @@ public class OrbotHelper {
 	
 	public static void setProxy (Context ctx, String host, int port)
 	{
+		setSystemProperties (host, port);
+		setWebkitProxy(ctx, host, port);
+	}
+
+	private static void setSystemProperties (String host, int port)
+	{
+
 		System.setProperty("http.proxyHost", host);
 		System.setProperty("http.proxyPort", port + "");
 		
@@ -41,9 +51,7 @@ public class OrbotHelper {
 		System.setProperty("socks.proxyHost", host);
 		System.setProperty("socks.proxyPort", port + "");
 		
-		setWebkitProxy(ctx, host, port);
 	}
-	
 	  /**
      * Override WebKit Proxy settings
      *
@@ -59,13 +67,13 @@ public class OrbotHelper {
             if (requestQueueObject != null) {
                 //Create Proxy config object and set it into request Q
                 HttpHost httpHost = new HttpHost(host, port, "http");
-                HttpHost httpsHost = new HttpHost(host, port, "https");
+               // HttpHost httpsHost = new HttpHost(host, port, "https");
 
                 setDeclaredField(requestQueueObject, "mProxyHost", httpHost);
                 ret = true;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG, "error setting up webkit proxying", e);
         }
         return ret;
     }

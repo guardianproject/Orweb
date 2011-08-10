@@ -53,6 +53,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -181,7 +182,11 @@ public class Browser extends Activity implements UrlInterceptHandler,
 				return;
 			}
 		}
-		loadUrl(starturl);
+
+		if (savedInstanceState != null)
+		      mWebView.restoreState(savedInstanceState);
+		else
+			loadUrl(starturl);
 	}
 	
 	private void resetUserAgent (SharedPreferences prefs)
@@ -775,5 +780,15 @@ public class Browser extends Activity implements UrlInterceptHandler,
 		}
 
 	};
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		// TODO Auto-generated method stub
+		super.onConfigurationChanged(newConfig);
+	}
+
+	 protected void onSaveInstanceState(Bundle outState) {
+		 mWebView.saveState(outState);
+	  }
 
 }
