@@ -24,7 +24,6 @@
 
 package info.guardianproject.browser;
 
-import info.guardianproject.browser.R;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -499,14 +498,14 @@ public class Browser extends Activity implements UrlInterceptHandler,
 		//unbindService(mSvcConn);
 
 		super.onPause();
+		mWebView.clearHistory();
+		mWebView.clearCache(false);
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-
-		updateTorStatus();
-
+		updateTorStatus();		
 		// Update preferences
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(this);
@@ -770,6 +769,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 			} else {
 				mWebView.setBlockedCookies(false);
 			}
+			
 			super.onProgressChanged(view, newProgress);
 		}
 
