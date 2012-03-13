@@ -1,2 +1,7 @@
 
-TBD
+0.2.2
+- fixed rotation/reload problem
+- now clears browser history and memory cache onPause
+
+0.2.1
+- added in support for Webkit proxying on Android 2.x and 3.x
