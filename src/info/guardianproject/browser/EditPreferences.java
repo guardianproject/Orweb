@@ -21,7 +21,6 @@
 
 package info.guardianproject.browser;
 
-import info.guardianproject.browser.R;
 
 import java.util.ArrayList;
 

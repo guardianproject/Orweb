@@ -17,6 +17,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.util.Log;
+import android.widget.Toast;
 
 public class OrbotHelper {
 
@@ -74,6 +75,7 @@ public class OrbotHelper {
             }
         } catch (Exception e) {
             Log.e(TAG, "error setting up webkit proxying", e);
+            Toast.makeText(ctx, "Error setting up webkit proxy: " + e.getMessage(),Toast.LENGTH_LONG).show();
         }
         return ret;
     }

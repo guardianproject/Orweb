@@ -21,8 +21,6 @@
 
 package info.guardianproject.browser;
 
-import info.guardianproject.browser.R;
-
 import java.net.URISyntaxException;
 
 import android.app.AlertDialog;

@@ -21,7 +21,6 @@
 
 package info.guardianproject.browser;
 
-import info.guardianproject.browser.R;
 import android.app.Dialog;
 import android.content.Context;
 import android.preference.DialogPreference;
