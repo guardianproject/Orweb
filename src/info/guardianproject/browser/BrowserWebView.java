@@ -59,10 +59,11 @@ public class BrowserWebView extends WebView implements AnimationListener {
 		
 		getSettings().setAllowFileAccess(false);
 		getSettings().setBuiltInZoomControls(true);
-		getSettings().setJavaScriptCanOpenWindowsAutomatically(false);
 		getSettings().setPluginsEnabled(false);
+		getSettings().setJavaScriptCanOpenWindowsAutomatically(false);
 		getSettings().setSaveFormData(false);
 		getSettings().setSavePassword(false);
+		getSettings().setNavDump(false);
 		
 	}
 
