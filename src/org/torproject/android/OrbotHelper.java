@@ -28,16 +28,17 @@ public class OrbotHelper {
 	
 	private final static String TAG = "OrbotHelpher";
 
-	public static void setProxy (Context ctx)
+	/*
+	public static void setProxy (Context ctx) throws Exception
 	{
 		setProxy (ctx, DEFAULT_HOST, DEFAULT_PORT);
 	}
 	
-	public static void setProxy (Context ctx, String host, int port)
+	public static void setProxy (Context ctx, String host, int port) throws Exception
 	{
 		setSystemProperties (host, port);
 		setWebkitProxy(ctx, host, port);
-	}
+	}*/
 
 	private static void setSystemProperties (String host, int port)
 	{
@@ -45,11 +46,16 @@ public class OrbotHelper {
 		System.setProperty("http.proxyHost", host);
 		System.setProperty("http.proxyPort", port + "");
 		
+		/*
 		System.setProperty("https.proxyHost", host);
 		System.setProperty("https.proxyPort", port + "");
 		
 		System.setProperty("socks.proxyHost", host);
 		System.setProperty("socks.proxyPort", port + "");
+		*/
+		
+		System.getProperty("networkaddress.cache.ttl","-1");
+		
 		
 	}
 	  /**
@@ -60,22 +66,21 @@ public class OrbotHelper {
      * @param port
      * @return  true if Proxy was successfully set
      */
-    private static boolean setWebkitProxy(Context ctx, String host, int port) {
+    private static boolean setWebkitProxy(Context ctx, String host, int port) throws Exception
+    {
         boolean ret = false;
-        try {
-            Object requestQueueObject = getRequestQueue(ctx);
-            if (requestQueueObject != null) {
-                //Create Proxy config object and set it into request Q
-                HttpHost httpHost = new HttpHost(host, port, "http");
-               // HttpHost httpsHost = new HttpHost(host, port, "https");
-
-                setDeclaredField(requestQueueObject, "mProxyHost", httpHost);
-                ret = true;
-            }
-        } catch (Exception e) {
-            Log.e(TAG, "error setting up webkit proxying", e);
-        }
-        return ret;
+	     
+	    Object requestQueueObject = getRequestQueue(ctx);
+	    if (requestQueueObject != null) {
+	        //Create Proxy config object and set it into request Q
+	        HttpHost httpHost = new HttpHost(host, port, "http");
+	       // HttpHost httpsHost = new HttpHost(host, port, "https");
+	
+	        setDeclaredField(requestQueueObject, "mProxyHost", httpHost);
+	        return true;
+	    }
+	    return false;
+        
     }
 
     public static void resetProxy(Context ctx) throws Exception {

@@ -41,6 +41,7 @@ import java.util.regex.Pattern;
 
 import org.apache.http.client.ClientProtocolException;
 import org.torproject.android.OrbotHelper;
+import org.torproject.android.ProxySettings;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -83,6 +84,7 @@ import android.webkit.CacheManager.CacheResult;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * The main browser activity
@@ -139,54 +141,60 @@ public class Browser extends Activity implements UrlInterceptHandler,
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(this);
 
-		
-		OrbotHelper.setProxy(this, prefs.getString("pref_proxy_host", DEFAULT_PROXY_HOST),Integer.parseInt(prefs.getString("pref_proxy_port", DEFAULT_PROXY_PORT)));
+		try
+		{
+				
 			
-		
-		mCookieManager = CookieManager.getInstance(this);
-		mAnonProxy = new AnonProxy();
-
-		// Grab UI elements
-		mWebView = (BrowserWebView) findViewById(R.id.WebView);
-		mNoTorLayout = (LinearLayout) findViewById(R.id.NoTorLayout);
-		mWebLayout = (LinearLayout) findViewById(R.id.WebLayout);
-		mStartTor = (Button) findViewById(R.id.StartTor);
-		mCookieIcon = (LinearLayout) findViewById(R.id.CookieIcon);
-		mTorStatus = (TextView) findViewById(R.id.torStatus);
-
-		// Set up UI elements
-		mStartTor.setOnClickListener(this);
-		mWebView.setWebViewClient(mWebViewClient);
-		mWebView.setWebChromeClient(mWebViewChrome);
-		
-		mWebView.getSettings().setLoadsImagesAutomatically(true);
-		mWebView.setBlockedCookiesView(mCookieIcon);
-		
-		mCookieIcon.setOnClickListener(this);
-		
-		resetUserAgent(prefs);
-		
-		// Misc
-		mGenericFavicon = getResources().getDrawable(
-				R.drawable.app_web_browser_sm);
-
-		String starturl = prefs.getString(getString(R.string.pref_homepage),
-				getString(R.string.default_homepage));
-		mCookieManager.setBehaviour(prefs.getString("pref_cookiebehaviour",
-				"whitelist"));
-
-		Intent i = getIntent();
-		if (i != null) {
-			if (Intent.ACTION_VIEW.equals(i.getAction())) {
-				onNewIntent(i);
-				return;
+			mCookieManager = CookieManager.getInstance(this);
+			mAnonProxy = new AnonProxy();
+	
+			// Grab UI elements
+			mWebView = (BrowserWebView) findViewById(R.id.WebView);
+			mNoTorLayout = (LinearLayout) findViewById(R.id.NoTorLayout);
+			mWebLayout = (LinearLayout) findViewById(R.id.WebLayout);
+			mStartTor = (Button) findViewById(R.id.StartTor);
+			mCookieIcon = (LinearLayout) findViewById(R.id.CookieIcon);
+			mTorStatus = (TextView) findViewById(R.id.torStatus);
+	
+			// Set up UI elements
+			mStartTor.setOnClickListener(this);
+			mWebView.setWebViewClient(mWebViewClient);
+			mWebView.setWebChromeClient(mWebViewChrome);
+			
+			mWebView.getSettings().setLoadsImagesAutomatically(true);
+			mWebView.setBlockedCookiesView(mCookieIcon);
+			
+			mCookieIcon.setOnClickListener(this);
+			
+			resetUserAgent(prefs);
+			
+			// Misc
+			mGenericFavicon = getResources().getDrawable(
+					R.drawable.app_web_browser_sm);
+	
+			String starturl = prefs.getString(getString(R.string.pref_homepage),
+					getString(R.string.default_homepage));
+			mCookieManager.setBehaviour(prefs.getString("pref_cookiebehaviour",
+					"whitelist"));
+	
+			Intent i = getIntent();
+			if (i != null) {
+				if (Intent.ACTION_VIEW.equals(i.getAction())) {
+					onNewIntent(i);
+					return;
+				}
 			}
+	
+			if (savedInstanceState != null)
+			      mWebView.restoreState(savedInstanceState);
+			else
+				loadUrl(starturl);
 		}
-
-		if (savedInstanceState != null)
-		      mWebView.restoreState(savedInstanceState);
-		else
-			loadUrl(starturl);
+		catch (Exception e)
+		{
+			Toast.makeText(this, "Error configuring Tor proxy settings... exiting", Toast.LENGTH_LONG).show();
+			finish();
+		}
 	}
 	
 	private void resetUserAgent (SharedPreferences prefs)
@@ -489,6 +497,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 		
 		mAnonProxy.stop();
 		mWebView.loadUrl(url);
+		
 	}
 
 	@Override
@@ -505,11 +514,16 @@ public class Browser extends Activity implements UrlInterceptHandler,
 	protected void onResume() {
 		super.onResume();
 
-		updateTorStatus();
-
-		// Update preferences
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(this);
+
+		//OrbotHelper.setProxy(this, prefs.getString("pref_proxy_host", DEFAULT_PROXY_HOST),Integer.parseInt(prefs.getString("pref_proxy_port", DEFAULT_PROXY_PORT)));
+		
+		ProxySettings.setProxy(this, prefs.getString("pref_proxy_host", DEFAULT_PROXY_HOST),Integer.parseInt(prefs.getString("pref_proxy_port", DEFAULT_PROXY_PORT)));
+		
+		
+		updateTorStatus();
+
 		// mWebView.getSettings().setLoadsImagesAutomatically(prefs.getBoolean(
 		// getString(R.string.pref_images), false));
 		mWebView.getSettings().setJavaScriptEnabled(
@@ -669,7 +683,9 @@ public class Browser extends Activity implements UrlInterceptHandler,
 		public void onLoadResource(WebView view, String url) {
 			//Log.i("Shadow", "OnLoad");
 			mInLoad = true;
-			super.onLoadResource(view, url);
+			
+			 super.onLoadResource(view, url);
+			
 		}
 
 		@Override
@@ -681,8 +697,16 @@ public class Browser extends Activity implements UrlInterceptHandler,
 		@Override
 		public void onTooManyRedirects(WebView view, Message cancelMsg,
 				Message continueMsg) {
-			// TODO Auto-generated method stub
 			super.onTooManyRedirects(view, cancelMsg, continueMsg);
+		}
+
+		@Override
+		public boolean shouldOverrideUrlLoading(WebView view, String url) {
+			
+			return false;
+			
+			
+			
 		}
 		
 		
