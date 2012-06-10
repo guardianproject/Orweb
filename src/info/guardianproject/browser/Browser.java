@@ -24,36 +24,20 @@
 
 package info.guardianproject.browser;
 
-import info.guardianproject.browser.R;
-
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InterruptedIOException;
-import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.UnknownHostException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.http.client.ClientProtocolException;
 import org.torproject.android.OrbotHelper;
-import org.torproject.android.ProxySettings;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.ActivityNotFoundException;
-import android.content.BroadcastReceiver;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -61,10 +45,10 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.PaintDrawable;
+import android.net.http.SslError;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.os.Message;
-import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -72,15 +56,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
-import android.webkit.PluginData;
-import android.webkit.UrlInterceptHandler;
-import android.webkit.UrlInterceptRegistry;
+import android.view.Window;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.webkit.CacheManager.CacheResult;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -91,8 +73,11 @@ import android.widget.Toast;
  * @author Connell Gauld
  *
  */
-public class Browser extends Activity implements UrlInterceptHandler,
-		OnClickListener {
+
+//public class Browser extends Activity implements UrlInterceptHandler,
+	//	OnClickListener {
+public class Browser extends Activity implements
+	OnClickListener {
 
 	// TorProxy service
 	//private ITorProxyControl mControlService = null;
@@ -103,11 +88,11 @@ public class Browser extends Activity implements UrlInterceptHandler,
 
 	// UI elements
 	private BrowserWebView mWebView = null;
-	private LinearLayout mNoTorLayout = null;
+//	private LinearLayout mNoTorLayout = null;
 	private LinearLayout mWebLayout = null;
-	private Button mStartTor = null;
+//	private Button mStartTor = null;
 	private LinearLayout mCookieIcon = null;
-	private TextView mTorStatus = null;
+//	private TextView mTorStatus = null;
 
 	// Misc
 	private Drawable mGenericFavicon = null;
@@ -127,11 +112,17 @@ public class Browser extends Activity implements UrlInterceptHandler,
 		super.onCreate(savedInstanceState);
 
 		// Set up title bar of window
+		
+
+		/*
 		this.requestWindowFeature(Window.FEATURE_LEFT_ICON);
 		this.requestWindowFeature(Window.FEATURE_RIGHT_ICON);
 		this.requestWindowFeature(Window.FEATURE_PROGRESS);
 		this.requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-
+		this.requestWindowFeature(Window.FEATURE_ACTION_BAR);
+		this.requestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+		*/
+		
 		// Allow search to start by just typing
 		setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
 
@@ -140,6 +131,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 		// TODO - properly handle initial Intents
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(this);
+		
 
 		try
 		{
@@ -150,14 +142,16 @@ public class Browser extends Activity implements UrlInterceptHandler,
 	
 			// Grab UI elements
 			mWebView = (BrowserWebView) findViewById(R.id.WebView);
-			mNoTorLayout = (LinearLayout) findViewById(R.id.NoTorLayout);
+			
+			//mNoTorLayout = (LinearLayout) findViewById(R.id.NoTorLayout);
 			mWebLayout = (LinearLayout) findViewById(R.id.WebLayout);
-			mStartTor = (Button) findViewById(R.id.StartTor);
+			//mStartTor = (Button) findViewById(R.id.StartTor);
+			
 			mCookieIcon = (LinearLayout) findViewById(R.id.CookieIcon);
-			mTorStatus = (TextView) findViewById(R.id.torStatus);
+			//mTorStatus = (TextView) findViewById(R.id.torStatus);
 	
 			// Set up UI elements
-			mStartTor.setOnClickListener(this);
+			//mStartTor.setOnClickListener(this);
 			mWebView.setWebViewClient(mWebViewClient);
 			mWebView.setWebChromeClient(mWebViewChrome);
 			
@@ -176,14 +170,28 @@ public class Browser extends Activity implements UrlInterceptHandler,
 					getString(R.string.default_homepage));
 			mCookieManager.setBehaviour(prefs.getString("pref_cookiebehaviour",
 					"whitelist"));
-	
-			Intent i = getIntent();
-			if (i != null) {
-				if (Intent.ACTION_VIEW.equals(i.getAction())) {
-					onNewIntent(i);
+
+			setProxy();
+
+			Intent intent = getIntent();
+			if (intent != null) {
+				String action = intent.getAction();
+				if (Intent.ACTION_SEARCH.equals(action)) {
+					// Navigate to the URL
+					String url = intent.getStringExtra(SearchManager.QUERY);
+					url = smartUrlFilter(url);
+					loadUrl(url);
+					return;
+				} else if (Intent.ACTION_VIEW.equals(action)) {
+					// Navigate to the URL
+					String url = intent.getDataString();
+					url = smartUrlFilter(url);
+					loadUrl(url);
 					return;
 				}
+				
 			}
+
 	
 			if (savedInstanceState != null)
 			      mWebView.restoreState(savedInstanceState);
@@ -225,7 +233,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 		}
 		LayerDrawable d = new LayerDrawable(array);
 		d.setLayerInset(1, 2, 2, 2, 2);
-		getWindow().setFeatureDrawable(Window.FEATURE_LEFT_ICON, d);
+		//getWindow().setFeatureDrawable(Window.FEATURE_LEFT_ICON, d);
 	}
 
 	/**
@@ -336,6 +344,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 	 * @see android.webkit.UrlInterceptHandler#getPluginData(java.lang.String,
 	 * java.util.Map)
 	 */
+	/*
 	public PluginData getPluginData(String url, Map<String, String> headers) {
 
 		//Log.i("Shadow", "Getting: " + url);
@@ -368,7 +377,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 			return getErrorPage();
 		}
 	}
-
+*/
 	/**
 	 * Fetches an asset as if it were an HTTP request.
 	 *
@@ -376,6 +385,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 	 *            the path of the asset to get
 	 * @return the PluginData structure containing the asset
 	 */
+	/*
 	private PluginData getFromAsset(String path) {
 		InputStream in;
 		try {
@@ -388,7 +398,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 
 		return new PluginData(in, 0L, new HashMap<String, String[]>(), 200);
 	}
-
+*/
 	/**
 	 * Returns a PluginData object filled with HTML from a string
 	 *
@@ -398,6 +408,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 	 *            the HTTP status code for the object
 	 * @return an appropriate PluginData object
 	 */
+	/*
 	private PluginData stringToPluginData(String s, int statuscode) {
 
 		// Default error if can't convert provided string
@@ -416,9 +427,6 @@ public class Browser extends Activity implements UrlInterceptHandler,
 		return p;
 	}
 
-	/*
-	 * Return an error page TODO make error page customised to error
-	 */
 	public PluginData getErrorPage() {
 		return getFromAsset("error.htm");
 	}
@@ -429,7 +437,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 		Log.i("Browser","cache result service called");
 		return null;
 	}
-
+*/
 	@Override
 	public boolean onOptionsItemSelected(MenuItem arg0) {
 
@@ -438,11 +446,11 @@ public class Browser extends Activity implements UrlInterceptHandler,
 		case R.id.menu_go:
 			onSearchRequested();
 			return true;
-
+/*
 		case R.id.menu_forward:
 			mWebView.goForward();
 			return true;
-
+*/
 		case R.id.menu_stop_reload:
 			if (mInLoad) {
 				stopLoading();
@@ -514,26 +522,67 @@ public class Browser extends Activity implements UrlInterceptHandler,
 	protected void onResume() {
 		super.onResume();
 
+	}
+	
+	private void setProxy ()
+	{
+		boolean proxyWorked = false;
+		
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(this);
 
-		//OrbotHelper.setProxy(this, prefs.getString("pref_proxy_host", DEFAULT_PROXY_HOST),Integer.parseInt(prefs.getString("pref_proxy_port", DEFAULT_PROXY_PORT)));
+		try { 
+			proxyWorked = OrbotHelper.setProxy(this, prefs.getString("pref_proxy_host", DEFAULT_PROXY_HOST),Integer.parseInt(prefs.getString("pref_proxy_port", DEFAULT_PROXY_PORT)));
+		}
+		catch (Exception e)
+		{
+			proxyWorked = false;
+		}
 		
-		ProxySettings.setProxy(this, prefs.getString("pref_proxy_host", DEFAULT_PROXY_HOST),Integer.parseInt(prefs.getString("pref_proxy_port", DEFAULT_PROXY_PORT)));
 		
+		//boolean proxyWorked = ProxySettings.setProxy(this, prefs.getString("pref_proxy_host", DEFAULT_PROXY_HOST),Integer.parseInt(prefs.getString("pref_proxy_port", DEFAULT_PROXY_PORT)));
 		
-		updateTorStatus();
+		if (!proxyWorked)
+		{
+			Toast.makeText(this, "Orweb is unable to configure proxy settings on your device.", Toast.LENGTH_LONG).show();
+			
+		}
+		else
+		{
+			
+			boolean orbotInstalled = isAppInstalled("org.torproject.android");
 
-		// mWebView.getSettings().setLoadsImagesAutomatically(prefs.getBoolean(
-		// getString(R.string.pref_images), false));
-		mWebView.getSettings().setJavaScriptEnabled(
-				prefs.getBoolean(getString(R.string.pref_javascript), true));
-		mCookieManager.setBehaviour(prefs.getString("pref_cookiebehaviour",
-				"whitelist"));
-		mAnonProxy
-				.setSendReferrer(prefs.getBoolean("pref_sendreferrer", false));
-
+			if (!orbotInstalled)
+			{
+				Toast.makeText(this, getString(R.string.torProxyNotInstalled), Toast.LENGTH_LONG).show();
+						
+			}
+			
+			updateTorStatus();
+	
+			// mWebView.getSettings().setLoadsImagesAutomatically(prefs.getBoolean(
+			// getString(R.string.pref_images), false));
+			mWebView.getSettings().setJavaScriptEnabled(
+					prefs.getBoolean(getString(R.string.pref_javascript), true));
+			mCookieManager.setBehaviour(prefs.getString("pref_cookiebehaviour",
+					"whitelist"));
+			mAnonProxy
+					.setSendReferrer(prefs.getBoolean("pref_sendreferrer", false));
+		}
 	}
+	
+
+	 private boolean isAppInstalled(String uri) {
+	 PackageManager pm = getPackageManager();
+	 boolean installed = false;
+	 try {
+	 pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
+	 installed = true;
+	 } catch (PackageManager.NameNotFoundException e) {
+	 installed = false;
+	 }
+	 return installed;
+	 }
 
 	private void updateTorStatus() {
 		int status = 1;
@@ -554,7 +603,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 		if (true)
 		{
 			
-			mNoTorLayout.setVisibility(View.GONE);
+			//mNoTorLayout.setVisibility(View.GONE);
 			mWebLayout.setVisibility(View.VISIBLE);
 			if (mLastIsTorActive == false)
 				mWebView.reload();
@@ -563,7 +612,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 		}
 
 		mWebLayout.setVisibility(View.GONE);
-		mNoTorLayout.setVisibility(View.VISIBLE);
+		//mNoTorLayout.setVisibility(View.VISIBLE);
 		mLastIsTorActive = false;
 /*
 		if (status == TorProxyLib.STATUS_CONNECTING) {
@@ -579,26 +628,13 @@ public class Browser extends Activity implements UrlInterceptHandler,
 			}
 		}*/
 		
-		mTorStatus.setText(getString(R.string.torInactive));
+		//mTorStatus.setText(getString(R.string.torInactive));
 	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.StartTor:
-			// The "Open preferences" button clicked so start TorProxySettings
-			try {
-			//	Intent i = new Intent().setComponent(new ComponentName(
-				//		TorProxyLib.SETTINGS_ACTIVITY_PACKAGE,
-					//	TorProxyLib.SETTINGS_ACTIVITY_CLASS));
-				//startActivity(i);
-			} catch (ActivityNotFoundException a) {
-				AlertDialog.Builder b = new AlertDialog.Builder(this);
-				b.setMessage(getString(R.string.torProxyNotInstalled));
-				b.setPositiveButton("OK", null);
-				b.show();
-			}
-			break;
+		
 		case R.id.CookieIcon:
 			CookiesBlockedDialog d = new CookiesBlockedDialog(this);
 			d.show();
@@ -613,7 +649,9 @@ public class Browser extends Activity implements UrlInterceptHandler,
 	 *            the string to set the title to
 	 */
 	private void updateTitle(String url, String title) {
-		getWindow().setTitle(buildUrlTitle(url, title));
+		
+		setTitle(buildUrlTitle(url, title));
+		
 	}
 
 	/**
@@ -648,12 +686,34 @@ public class Browser extends Activity implements UrlInterceptHandler,
 
 		// Enable/disable the "Forward" menu item as appropriate
 		boolean canGoForward = mWebView.canGoForward();
-		menu.findItem(R.id.menu_forward).setEnabled(canGoForward);
+		//menu.findItem(R.id.menu_forward).setEnabled(canGoForward);
 		updateInLoadMenuItems();
 		return super.onPrepareOptionsMenu(menu);
 	}
 
 	private final WebViewClient mWebViewClient = new WebViewClient() {
+
+		@Override
+		public void doUpdateVisitedHistory(WebView view, String url,
+				boolean isReload) {
+			super.doUpdateVisitedHistory(view, url, isReload);
+			
+		}
+
+		@Override
+		public void onReceivedSslError(WebView view, SslErrorHandler handler,
+				SslError error) {
+			super.onReceivedSslError(view, handler, error);
+			
+			
+		}
+
+		@Override
+		public WebResourceResponse shouldInterceptRequest(WebView view,
+				String url) {
+			//Log.d("Orweb", "loading resource: " + url);
+			return super.shouldInterceptRequest(view, url);
+		}
 
 		@Override
 		public void onPageStarted(WebView view, String url, Bitmap favicon) {
@@ -662,7 +722,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 			// Update image loading settings
 			updateSettingsPerUrl(url);
 			// Turn on the progress bar and set it to 10%
-			getWindow().setFeatureInt(Window.FEATURE_PROGRESS, 1000);
+			//getWindow().setFeatureInt(Window.FEATURE_PROGRESS, 1000);
 			setFavicon(favicon);
 
 			updateInLoadMenuItems();
@@ -673,7 +733,7 @@ public class Browser extends Activity implements UrlInterceptHandler,
 		@Override
 		public void onPageFinished(WebView view, String url) {
 			// Set the progress bar to 100%
-			getWindow().setFeatureInt(Window.FEATURE_PROGRESS, 10000);
+			//getWindow().setFeatureInt(Window.FEATURE_PROGRESS, 10000);
 			updateInLoadMenuItems();
 			super.onPageFinished(view, url);
 		}
@@ -780,8 +840,10 @@ public class Browser extends Activity implements UrlInterceptHandler,
 		public void onProgressChanged(WebView view, int newProgress) {
 
 			// Update the progress bar of the activity
-			getWindow().setFeatureInt(Window.FEATURE_PROGRESS,
-					newProgress * 100);
+			
+			//getWindow().setFeatureInt(Window.FEATURE_PROGRESS,
+				//	newProgress * 100);
+					
 			if (newProgress == 100) {
 				if (mInLoad) {
 					mInLoad = false;

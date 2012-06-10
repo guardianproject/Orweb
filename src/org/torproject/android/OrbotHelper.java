@@ -1,6 +1,7 @@
 package org.torproject.android;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.InetSocketAddress;
@@ -16,6 +17,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
 
 public class OrbotHelper {
@@ -28,17 +30,29 @@ public class OrbotHelper {
 	
 	private final static String TAG = "OrbotHelpher";
 
-	/*
+	
 	public static void setProxy (Context ctx) throws Exception
 	{
 		setProxy (ctx, DEFAULT_HOST, DEFAULT_PORT);
 	}
 	
-	public static void setProxy (Context ctx, String host, int port) throws Exception
+	public static boolean setProxy (Context ctx, String host, int port) throws Exception
 	{
 		setSystemProperties (host, port);
-		setWebkitProxy(ctx, host, port);
-	}*/
+		
+		boolean worked = false;
+
+		if (Build.VERSION.SDK_INT < 11) 
+		{
+			worked = setWebkitProxyGingerbread(ctx, host, port);
+		}
+		else
+		{
+			worked = setWebkitProxyICS(ctx, host, port);
+		}
+		
+		return worked;
+	}
 
 	private static void setSystemProperties (String host, int port)
 	{
@@ -66,22 +80,63 @@ public class OrbotHelper {
      * @param port
      * @return  true if Proxy was successfully set
      */
-    private static boolean setWebkitProxy(Context ctx, String host, int port) throws Exception
+    private static boolean setWebkitProxyGingerbread(Context ctx, String host, int port) throws Exception
     {
         boolean ret = false;
 	     
 	    Object requestQueueObject = getRequestQueue(ctx);
 	    if (requestQueueObject != null) {
 	        //Create Proxy config object and set it into request Q
-	        HttpHost httpHost = new HttpHost(host, port, "http");
-	       // HttpHost httpsHost = new HttpHost(host, port, "https");
-	
+	        HttpHost httpHost = new HttpHost(host, port, "http");	
 	        setDeclaredField(requestQueueObject, "mProxyHost", httpHost);
 	        return true;
 	    }
 	    return false;
         
     }
+    
+    private static boolean setWebkitProxyICS(Context ctx, String host, int port) throws Exception
+    {
+    	 
+        // PSIPHON: added support for Android 4.x WebView proxy
+        try 
+        {
+           Class webViewCoreClass = Class.forName("android.webkit.WebViewCore");
+           
+            Class proxyPropertiesClass = Class.forName("android.net.ProxyProperties");
+            if (webViewCoreClass != null && proxyPropertiesClass != null) 
+            {
+                Method m = webViewCoreClass.getDeclaredMethod("sendStaticMessage", Integer.TYPE, Object.class);
+                Constructor c = proxyPropertiesClass.getConstructor(String.class, Integer.TYPE, String.class);
+                
+                if (m != null && c != null)
+                {
+                	m.setAccessible(true);
+                	c.setAccessible(true);
+                	Object properties = c.newInstance(host, port, null);
+                
+                	// android.webkit.WebViewCore.EventHub.PROXY_CHANGED = 193;
+                	m.invoke(null, 193, properties);
+                	return true;
+                }
+                else
+                	return false;
+            }
+        }
+        catch (Exception e) 
+        {
+            Log.e("ProxySettings","Exception setting WebKit proxy through android.net.ProxyProperties: " + e.toString());
+        }
+        catch (Error e) 
+        {
+            Log.e("ProxySettings","Exception setting WebKit proxy through android.webkit.Network: " + e.toString());
+        }
+        
+        return false;
+        
+    }
+    
+    
 
     public static void resetProxy(Context ctx) throws Exception {
         Object requestQueueObject = getRequestQueue(ctx);

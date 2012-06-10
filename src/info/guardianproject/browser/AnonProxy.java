@@ -71,7 +71,6 @@ import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.protocol.HttpContext;
 
 import android.util.Log;
-import android.webkit.PluginData;
 
 /**
  * Provides HTTP request functionality for the Shadow browser.
@@ -261,6 +260,7 @@ public class AnonProxy {
 	 * @throws ClientProtocolException
 	 * @throws IOException
 	 */
+	/*
 	public PluginData get(String url, Map<String, String> headers) throws Exception {
 		
 		//if (true) throw new Exception("Aaaaahh");
@@ -458,7 +458,7 @@ public class AnonProxy {
 		}
 		
 		return new PluginData(content, contentLength, rpHeadersMap, stat.getStatusCode());
-	}
+	}*/
 	
 	public void stop() {
 		synchronized(mLatestRequests) {
