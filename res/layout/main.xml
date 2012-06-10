@@ -4,16 +4,18 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:id="@+id/top">
-    <LinearLayout android:layout_height="fill_parent" android:layout_width="fill_parent" android:orientation="vertical" android:id="@+id/NoTorLayout" android:visibility="visible">
+    
+    <!-- 
+    <LinearLayout android:layout_height="fill_parent" android:layout_width="fill_parent" android:orientation="vertical" android:id="@+id/NoTorLayout" android:visibility="gone">
 		<LinearLayout android:id="@+id/LinearLayout01" android:layout_height="wrap_content" android:layout_width="fill_parent" android:layout_weight="1"><LinearLayout android:id="@+id/LinearLayout03" android:layout_height="wrap_content" android:orientation="vertical" android:layout_width="fill_parent" android:layout_gravity="center">
 			<TextView android:layout_height="wrap_content" android:text="@string/torInactive" android:textSize="20sp" android:layout_marginRight="30sp" android:layout_marginLeft="30sp" android:gravity="center" android:layout_width="fill_parent" android:layout_marginBottom="10sp" android:id="@+id/torStatus"></TextView>
 			<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:text="@string/starttor" android:id="@+id/StartTor"></Button>
 		</LinearLayout></LinearLayout>
 	
 
-	</LinearLayout>
-
-	<LinearLayout android:layout_height="fill_parent" android:layout_width="fill_parent" android:orientation="vertical" android:id="@+id/WebLayout" android:visibility="gone">
+	</LinearLayout> 
+ -->
+	<LinearLayout android:layout_height="fill_parent" android:layout_width="fill_parent" android:orientation="vertical" android:id="@+id/WebLayout" android:visibility="visible">
 		
 		<RelativeLayout android:layout_width="wrap_content" android:layout_y="359dip" android:layout_height="wrap_content" android:layout_x="189dip" android:id="@+id/RelativeLayout01">
 		
