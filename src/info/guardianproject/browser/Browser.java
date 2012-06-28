@@ -32,9 +32,7 @@ import java.util.regex.Pattern;
 import org.torproject.android.OrbotHelper;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.SearchManager;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -46,26 +44,21 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.PaintDrawable;
 import android.net.http.SslError;
-import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -84,7 +77,7 @@ public class Browser extends Activity implements
 	
 	//private final IntentFilter torStatusFilter = new IntentFilter(
 		//	TorProxyLib.STATUS_CHANGE_INTENT);
-	private AnonProxy mAnonProxy = null;
+	//private AnonProxy mAnonProxy = null;
 
 	// UI elements
 	private BrowserWebView mWebView = null;
@@ -107,13 +100,26 @@ public class Browser extends Activity implements
 	
 	private static String ABOUT_URL = "https://guardianproject.info/apps/orweb";
 	
+	private Handler mLoadHandler = new Handler ()
+	{
+
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+			
+			String url = msg.getData().getString("url");
+			url = smartUrlFilter(url);
+			
+			mWebView.loadUrl(url);
+		}
+		
+	};
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		// Set up title bar of window
-		
-
 		/*
 		this.requestWindowFeature(Window.FEATURE_LEFT_ICON);
 		this.requestWindowFeature(Window.FEATURE_RIGHT_ICON);
@@ -131,14 +137,15 @@ public class Browser extends Activity implements
 		// TODO - properly handle initial Intents
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(this);
-		
+
+		setProxy();		
 
 		try
 		{
 				
 			
 			mCookieManager = CookieManager.getInstance(this);
-			mAnonProxy = new AnonProxy();
+			
 	
 			// Grab UI elements
 			mWebView = (BrowserWebView) findViewById(R.id.WebView);
@@ -158,6 +165,10 @@ public class Browser extends Activity implements
 			mWebView.getSettings().setLoadsImagesAutomatically(true);
 			mWebView.setBlockedCookiesView(mCookieIcon);
 			
+			mWebView.clearFormData();
+			mWebView.clearCache(true);
+			mWebView.clearHistory();
+			
 			mCookieIcon.setOnClickListener(this);
 			
 			resetUserAgent(prefs);
@@ -170,23 +181,34 @@ public class Browser extends Activity implements
 					getString(R.string.default_homepage));
 			mCookieManager.setBehaviour(prefs.getString("pref_cookiebehaviour",
 					"whitelist"));
+			
 
-			setProxy();
+			// mWebView.getSettings().setLoadsImagesAutomatically(prefs.getBoolean(
+			// getString(R.string.pref_images), false));
+			mWebView.getSettings().setJavaScriptEnabled(
+					prefs.getBoolean(getString(R.string.pref_javascript), true));
+			mCookieManager.setBehaviour(prefs.getString("pref_cookiebehaviour",
+					"whitelist"));
+//			mAnonProxy
+	//				.setSendReferrer(prefs.getBoolean("pref_sendreferrer", false));
 
+			
 			Intent intent = getIntent();
 			if (intent != null) {
 				String action = intent.getAction();
 				if (Intent.ACTION_SEARCH.equals(action)) {
 					// Navigate to the URL
 					String url = intent.getStringExtra(SearchManager.QUERY);
-					url = smartUrlFilter(url);
-					loadUrl(url);
+					Message msg = new Message();
+					msg.getData().putString("url", url);
+					mLoadHandler.sendMessage(msg);
 					return;
 				} else if (Intent.ACTION_VIEW.equals(action)) {
 					// Navigate to the URL
 					String url = intent.getDataString();
-					url = smartUrlFilter(url);
-					loadUrl(url);
+					Message msg = new Message();
+					msg.getData().putString("url", url);
+					mLoadHandler.sendMessage(msg);
 					return;
 				}
 				
@@ -196,7 +218,11 @@ public class Browser extends Activity implements
 			if (savedInstanceState != null)
 			      mWebView.restoreState(savedInstanceState);
 			else
-				loadUrl(starturl);
+			{
+				Message msg = new Message();
+				msg.getData().putString("url", starturl);
+				mLoadHandler.sendMessage(msg);
+			}
 		}
 		catch (Exception e)
 		{
@@ -464,9 +490,14 @@ public class Browser extends Activity implements
 			return true;
 
 		case R.id.menu_about:
-			loadUrl(ABOUT_URL);
+		
+			Message msg = new Message();
+			msg.getData().putString("url", ABOUT_URL);
+			mLoadHandler.sendMessage(msg);
+		
 			return true;
 		}
+		
 		return super.onOptionsItemSelected(arg0);
 	}
 
@@ -476,7 +507,8 @@ public class Browser extends Activity implements
 	private void stopLoading() {
 		mInLoad = false;
 		mWebView.stopLoading();
-		mAnonProxy.stop();
+		//mAnonProxy.stop();
+		
 		mWebViewClient.onPageFinished(mWebView, mWebView.getUrl());
 	}
 
@@ -494,19 +526,7 @@ public class Browser extends Activity implements
 		return true;
 	}
 
-	/**
-	 * Navigate to a web address
-	 *
-	 * @param url
-	 *            the address to navigate to
-	 */
-	private void loadUrl(String url) {
-		
-		
-		mAnonProxy.stop();
-		mWebView.loadUrl(url);
-		
-	}
+	
 
 	@Override
 	protected void onPause() {
@@ -557,17 +577,7 @@ public class Browser extends Activity implements
 				Toast.makeText(this, getString(R.string.torProxyNotInstalled), Toast.LENGTH_LONG).show();
 						
 			}
-			
-			updateTorStatus();
 	
-			// mWebView.getSettings().setLoadsImagesAutomatically(prefs.getBoolean(
-			// getString(R.string.pref_images), false));
-			mWebView.getSettings().setJavaScriptEnabled(
-					prefs.getBoolean(getString(R.string.pref_javascript), true));
-			mCookieManager.setBehaviour(prefs.getString("pref_cookiebehaviour",
-					"whitelist"));
-			mAnonProxy
-					.setSendReferrer(prefs.getBoolean("pref_sendreferrer", false));
 		}
 	}
 	
@@ -708,12 +718,13 @@ public class Browser extends Activity implements
 			
 		}
 
+		/*
 		@Override
 		public WebResourceResponse shouldInterceptRequest(WebView view,
 				String url) {
 			//Log.d("Orweb", "loading resource: " + url);
 			return super.shouldInterceptRequest(view, url);
-		}
+		}*/
 
 		@Override
 		public void onPageStarted(WebView view, String url, Bitmap favicon) {
@@ -735,6 +746,7 @@ public class Browser extends Activity implements
 			// Set the progress bar to 100%
 			//getWindow().setFeatureInt(Window.FEATURE_PROGRESS, 10000);
 			updateInLoadMenuItems();
+			view.clearFormData();
 			super.onPageFinished(view, url);
 		}
 	
@@ -782,13 +794,19 @@ public class Browser extends Activity implements
 		if (Intent.ACTION_SEARCH.equals(action)) {
 			// Navigate to the URL
 			String url = intent.getStringExtra(SearchManager.QUERY);
-			url = smartUrlFilter(url);
-			loadUrl(url);
+			Message msg = new Message();
+			msg.getData().putString("url", url);
+			mLoadHandler.sendMessage(msg);
+			
+			
 		} else if (Intent.ACTION_VIEW.equals(action)) {
 			// Navigate to the URL
 			String url = intent.getDataString();
 			url = smartUrlFilter(url);
-			loadUrl(url);
+			
+			Message msg = new Message();
+			msg.getData().putString("url", url);
+			mLoadHandler.sendMessage(msg);
 		}
 	}
 

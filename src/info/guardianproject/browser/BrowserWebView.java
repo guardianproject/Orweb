@@ -30,6 +30,7 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import android.webkit.WebSettings.PluginState;
 import android.webkit.WebView;
 
 /**
@@ -60,9 +61,15 @@ public class BrowserWebView extends WebView implements AnimationListener {
 		getSettings().setAllowFileAccess(false);
 		getSettings().setBuiltInZoomControls(true);
 		getSettings().setJavaScriptCanOpenWindowsAutomatically(false);
-		getSettings().setPluginsEnabled(false);
+		
 		getSettings().setSaveFormData(false);
 		getSettings().setSavePassword(false);
+		getSettings().setGeolocationEnabled(false);
+		
+		getSettings().setAppCacheEnabled(false);
+		getSettings().setDatabaseEnabled(false);
+		
+		getSettings().setPluginState(PluginState.ON_DEMAND);
 		
 	}
 
