@@ -496,6 +496,15 @@ public class Browser extends Activity implements
 			mLoadHandler.sendMessage(msg);
 		
 			return true;
+			
+		case R.id.menu_homepage:
+
+			String starturl = prefs.getString(
+					getString(R.string.pref_homepage),
+					getString(R.string.default_homepage));
+			msg.getData().putString("url", starturl);
+			mLoadHandler.sendMessage(msg);
+			return true;
 		}
 		
 		return super.onOptionsItemSelected(arg0);
