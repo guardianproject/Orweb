@@ -641,7 +641,6 @@ public class Browser extends Activity implements
 		//mTorStatus.setText(getString(R.string.torInactive));
 	}
 
-	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		

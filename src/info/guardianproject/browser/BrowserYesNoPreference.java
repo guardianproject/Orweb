@@ -64,7 +64,6 @@ public abstract class BrowserYesNoPreference extends DialogPreference implements
 		return v;
 	}
 
-	@Override
 	public void onClick(View v) {
 		Dialog d = this.getDialog();
 		if (d == null) return;
