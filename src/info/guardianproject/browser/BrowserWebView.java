@@ -140,19 +140,16 @@ public class BrowserWebView extends WebView implements AnimationListener {
 		updateBlockedCookiesView();
 	}
 
-	@Override
 	public void onAnimationEnd(Animation arg0) {
 		// The view has finished fading out
 		// so hide it
 		mBlockedCookiesView.setVisibility(View.GONE);
 	}
 
-	@Override
 	public void onAnimationRepeat(Animation animation) {
 		// Nothing to do
 	}
 
-	@Override
 	public void onAnimationStart(Animation animation) {
 		// Nothing to do
 	}

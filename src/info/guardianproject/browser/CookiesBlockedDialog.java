@@ -69,7 +69,6 @@ public class CookiesBlockedDialog extends AlertDialog implements OnClickListener
 		
 	}
 
-	@Override
 	public void onClick(DialogInterface arg0, int arg1) {
 		// Nothing to be done
 	}

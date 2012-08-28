@@ -466,7 +466,7 @@ public class Browser extends Activity implements
 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem arg0) {
-
+		Message msg = new Message();
 		switch (arg0.getItemId()) {
 
 		case R.id.menu_go:
@@ -491,10 +491,22 @@ public class Browser extends Activity implements
 
 		case R.id.menu_about:
 		
-			Message msg = new Message();
+	
 			msg.getData().putString("url", ABOUT_URL);
 			mLoadHandler.sendMessage(msg);
 		
+			return true;
+			
+		case R.id.menu_homepage:
+			
+			SharedPreferences prefs = PreferenceManager
+			.getDefaultSharedPreferences(this);
+
+			String starturl = prefs.getString(
+					getString(R.string.pref_homepage),
+					getString(R.string.default_homepage));
+			msg.getData().putString("url", starturl);
+			mLoadHandler.sendMessage(msg);
 			return true;
 		}
 		
@@ -641,7 +653,6 @@ public class Browser extends Activity implements
 		//mTorStatus.setText(getString(R.string.torInactive));
 	}
 
-	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		
