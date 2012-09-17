@@ -39,4 +39,29 @@
 <string name="menu_settings">Settings</string>
 <string name="menu_reload">Reload</string>
 
+
+<string name="set_locale_title">Set Locale</string>
+<string name="set_locale_summary">Choose the locale and language for Orbot</string>
+<string name="load_images">Load images</string>
+<string name="display_images_on_web_pages">Display images on Web pages</string>
+<string name="enable_javascript">Enable JavaScript</string>
+
+<string name="set_homepage">Set homepage</string>
+<string name="clear_cache">Clear cache</string>
+<string name="clear_cache_summary">Clear all cached page content</string>
+<string name="clear_cache_message">The cache will be cleared.</string>
+
+<string name="ref_title">Send referrer information</string>
+<string name="ref_summary">Referrer information may reveal your browsing history</string>
+
+<string name="clear_cookies_title">Clear cookie data</string>
+<string name="clear_cookies_summary">Clear all the browser cookies</string>
+<string name="clear_cookies_message">The cookies will be cleared.</string>
+
+<string name="cookie_behave_title">Cookie behaviour</string>
+<string name="cookie_behave_summary">Accept or block cookies</string>
+
+<string name="cookie_whitelist_title">Cookie whitelist</string>
+<string name="cookie_whitelist_summary">Set which website can store cookies</string>
+<string name="add_site_whitelist">Add site to whitelist</string>
 </resources>

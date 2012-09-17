@@ -567,6 +567,14 @@ public class Browser extends SherlockActivity implements
 	protected void onResume() {
 		super.onResume();
 
+		boolean updated = ((OrwebApp)getApplication()).checkLocale();
+		
+		if (updated)
+		{
+			finish();
+			startActivity(getIntent());
+			
+		}
 	}
 	
 	private void setProxy ()

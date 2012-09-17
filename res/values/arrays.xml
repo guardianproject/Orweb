@@ -20,4 +20,42 @@
 <item>Mozilla/5.0 (Macintosh; PPC MacOS X; rv:5.0) Gecko/20110615 Firefox/5.0</item>
 <item>Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0)</item>
 </string-array>
+  <string-array name="languages">
+		<item>Default</item>
+		<item>English</item>
+		<item>العربية</item>
+		<item>پارسی</item>
+		<item>中文(简体)</item>
+		<item>Deutsche</item>
+		<item>Español</item>
+		<item>Français</item>
+		<item>Italian</item>
+		<item>Nederlands</item>
+		<item>Magyar</item>
+		<item>Português</item>
+		<item>Português Brasileiro</item>
+		<item>русский язык</item>
+		
+	</string-array>
+	<string-array name="languages_values">
+		<item>xx</item>
+		<item>en</item>
+		<item>ar</item>
+		<item>fa</item>
+		<item>zh</item>
+		<item>de</item>
+		<item>es</item>
+		<item>fr</item>
+		<item>it</item>
+		<item>nl</item>
+		<item>hu</item>
+		<item>pt</item>
+		<item>pt_BR</item>
+		<item>ru</item>
+		
+		
+		
+		
+		
+	</string-array>
 </resources>

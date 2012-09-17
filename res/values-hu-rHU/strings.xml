@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+  <string name="app_name">Orweb V2</string>
+  <string name="errorHtml">&lt;b&gt;Bocs, valami nem jó...&lt;/b&gt;</string>
+  <string name="torConnecting">Kapcsolódás</string>
+  <string name="starttor">Beállítások megnyitása</string>
+  <string name="search_label">Böngésző</string>
+  <string name="search_hint">Webcím kereső</string>
+  <string name="search_button_text">Mehet</string>
+  <string name="default_homepage">https://check.torproject.org</string>
+  <string name="pref_homepage">pref_homepage</string>
+  <string name="pref_clearcache">pref_clearcache</string>
+  <string name="internal_web_url">http://orweb/</string>
+  <string name="cookiesBlockedFirstLine">Sütik</string>
+  <string name="cookiesBlockedSecondLine">Zárolva</string>
+  <string name="pref_proxy_group">Proxy szerver beállítások</string>
+  <string name="pref_proxy_host">Proxy Host</string>
+  <string name="pref_proxy_port">Proxy Port</string>
+  <string name="pref_proxy_port_summary">A socket port HTTP proxy szerverhez</string>
+  <string name="menu_go">Mehet</string>
+  <string name="menu_stop">Stop</string>
+  <string name="menu_forward">Előre</string>
+  <string name="menu_settings">Beállítások</string>
+  <string name="menu_reload">Újra tölt</string>
+</resources>

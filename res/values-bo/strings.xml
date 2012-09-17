@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+  <string name="pref_images">pref_images</string>
+  <string name="pref_javascript">pref_javascript</string>
+  <string name="app_name">Orweb v2</string>
+  <string name="errorHtml">&lt;b&gt;དགོངས་དག ཡིན་ནའང་ནོར་འཁྲུལ་གཅིག་ཤོར་འདུག...&lt;/b&gt;</string>
+  <string name="torInactive">སྐུང་མིང་གི་རེའུ་མིག་དེའི་འབྲེལ་ལམ་འཁོར་བསྐྱོད་བྱེད་ཀྱི་མི་འདུག </string>
+  <string name="torConnecting">མཐུད་ཀྱི་ཡོད།</string>
+  <string name="starttor">གདམ་བསེས་ཁ་ཕྱེས། </string>
+  <string name="search_label">བཤེར་ཆས།</string>
+  <string name="search_hint">དྲ་བྱང་ངམ་འཚོལ་བ། </string>
+  <string name="search_button_text">སོང་། </string>
+  <string name="default_homepage">https://check.torproject.org</string>
+  <string name="pref_homepage">pref_homepage</string>
+  <string name="pref_clearcache">pref_clearcache</string>
+  <string name="internal_web_url">http://orweb/</string>
+  <string name="torProxyNotInstalled">Orweb  ལ་ Orbot ཡི་བཀོལ་སྤྱོད་མ་ལག་དེ་ནང་འཇུག་གྲུབ་དགོས་ཀྱི་ཡོད་། </string>
+  <string name="cookiesBlockedFirstLine">རེའུ་མིག་འབྲེལ་སྒམ། </string>
+  <string name="cookiesBlockedSecondLine">བཀག་འདུག </string>
+  <string name="allCookiesAreBlocked">རེའུ་མིག་སྒམ་ཆུང་ཚང་མ་བཀག་འདུག ཁྱེད་ཀྱིས་དེ་ཡི་འགྲོ་སྟངས་སྒྲིག་བཟོའི་ནང་ནས་བརྗེ་ཐུབ།</string>
+  <string name="acceptCookiesFrom">ནས་རེའུ་མིག་འབྲེལ་སྒམ་དེ་ངེས་ལེན་བྱས།</string>
+  <string name="willAddToWhitelist">Ticking these sites will add them to your cookie whitelist.</string>
+  <string name="pref_proxy_group">དྲ་ཐོག་ཞབས་ཞུའི་མིང་ཚབ་ཀྱི་སྒྲིག་བཟོ། </string>
+  <string name="pref_proxy_host">གནས་ཚང་གི་ཚབ།</string>
+  <string name="pref_proxy_host_summary">ཡི་མིང་ཚབ་དྲ་ཐོག་ཞབས་ཞུའི་དོ་བདག་གི་མིང་ངམ་ ཁ་བྱང་། </string>
+  <string name="pref_proxy_port">མིང་ཚབ་ཀྱི་འབབ་ཚུགས། </string>
+  <string name="pref_proxy_port_summary">The socket port for the HTTP proxy server</string>
+  <string name="pref_user_agent_summary">བཤེར་ཆས་ཀྱི་རང་ཉིད་ཇི་ལྟར་ངོས་འཛིན་ཚུལ་དེ་བརྗེས། </string>
+  <string name="pref_user_agent_title">བེད་སྤྱོད་མཁན་གྱི་ངོ་ཚབ། </string>
+  <string name="menu_go">སོང་། </string>
+  <string name="menu_stop">མཚམས་ཞོག </string>
+  <string name="menu_forward">བརྒྱུད་འགྲེམ་བྱེད།</string>
+  <string name="menu_about">སྐོར།</string>
+  <string name="menu_settings">སྒྲིག་བཟོ།</string>
+  <string name="menu_reload">བསྐྱར་ཕབ། </string>
+</resources>
