@@ -1,11 +1,27 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"><item android:title="@string/menu_go" android:id="@+id/menu_go" android:icon="@drawable/ic_menu_search"></item>
-<item android:visible="false" android:id="@+id/menu_reload" android:title="@string/menu_reload" android:icon="@drawable/ic_menu_refresh"></item>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/menu_go" android:id="@+id/menu_go" android:icon="@drawable/ic_action_browse"
+                  android:showAsAction="never"
+        
+        ></item>
+<item android:visible="false" android:id="@+id/menu_reload" android:title="@string/menu_reload" android:icon="@drawable/ic_menu_refresh"
+              android:showAsAction="never"
+        
+    ></item>
 
-<!-- 
-<item android:enabled="false" android:id="@+id/menu_forward" android:title="@string/menu_forward" android:icon="@drawable/ic_menu_forward"></item>
- -->
-<item android:title="@string/menu_settings" android:id="@+id/menu_settings" android:icon="@drawable/ic_menu_preferences"></item>
-<item android:id="@+id/menu_stop" android:title="@string/menu_stop" android:visible="false" android:icon="@drawable/ic_menu_stop"></item>
-<item android:id="@+id/menu_stop_reload"></item>
-<item android:id="@+id/menu_about" android:title="@string/menu_about" android:icon="@drawable/ic_menu_info_details"></item>
+<item android:title="@string/menu_settings" android:id="@+id/menu_settings" android:icon="@drawable/ic_action_settings"
+              android:showAsAction="never"
+        
+    ></item>
+<item android:id="@+id/menu_stop" android:title="@string/menu_stop" android:visible="false" android:icon="@drawable/ic_menu_stop"
+              android:showAsAction="never"
+        
+    ></item>
+<item android:id="@+id/menu_stop_reload"
+              android:showAsAction="never"
+        
+    ></item>
+<item android:id="@+id/menu_about" android:title="@string/menu_about" android:icon="@drawable/ic_menu_info_details"
+              android:showAsAction="never"
+        
+    ></item>
 </menu>

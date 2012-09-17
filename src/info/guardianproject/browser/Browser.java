@@ -31,7 +31,6 @@ import java.util.regex.Pattern;
 
 import org.torproject.android.OrbotHelper;
 
-import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -49,17 +48,22 @@ import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.view.Window;
 
 /**
  * The main browser activity
@@ -69,7 +73,7 @@ import android.widget.Toast;
 
 //public class Browser extends Activity implements UrlInterceptHandler,
 	//	OnClickListener {
-public class Browser extends Activity implements
+public class Browser extends SherlockActivity implements
 	OnClickListener {
 
 	// TorProxy service
@@ -119,15 +123,15 @@ public class Browser extends Activity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		
 		// Set up title bar of window
-		/*
-		this.requestWindowFeature(Window.FEATURE_LEFT_ICON);
-		this.requestWindowFeature(Window.FEATURE_RIGHT_ICON);
-		this.requestWindowFeature(Window.FEATURE_PROGRESS);
-		this.requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-		this.requestWindowFeature(Window.FEATURE_ACTION_BAR);
-		this.requestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
-		*/
+		//requestWindowFeature(Window.FEATURE_LEFT_ICON);
+		//requestWindowFeature(Window.FEATURE_RIGHT_ICON);
+		//this.requestWindowFeature(Window.FEATURE_PROGRESS);
+		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+		//this.requestWindowFeature(Window.FEATURE_ACTION_BAR);
+		//this.requestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+		
 		
 		// Allow search to start by just typing
 		setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
@@ -149,7 +153,20 @@ public class Browser extends Activity implements
 	
 			// Grab UI elements
 			mWebView = (BrowserWebView) findViewById(R.id.WebView);
+			mWebView.setOnTouchListener(new OnTouchListener () {
+
+				@Override
+				public boolean onTouch(View v, MotionEvent event) {
+					
+					if (mWebView.getScrollY() > 10)
+						Browser.this.getSherlock().getActionBar().hide();
+					else
+						Browser.this.getSherlock().getActionBar().show();
+					
+					return false;
+				}
 			
+			});
 			//mNoTorLayout = (LinearLayout) findViewById(R.id.NoTorLayout);
 			mWebLayout = (LinearLayout) findViewById(R.id.WebLayout);
 			//mStartTor = (Button) findViewById(R.id.StartTor);
@@ -260,6 +277,9 @@ public class Browser extends Activity implements
 		LayerDrawable d = new LayerDrawable(array);
 		d.setLayerInset(1, 2, 2, 2, 2);
 		//getWindow().setFeatureDrawable(Window.FEATURE_LEFT_ICON, d);
+		
+		this.getSherlock().getActionBar().setIcon(d);
+		
 	}
 
 	/**
@@ -469,6 +489,7 @@ public class Browser extends Activity implements
 
 		switch (arg0.getItemId()) {
 
+		case android.R.id.home:
 		case R.id.menu_go:
 			onSearchRequested();
 			return true;
@@ -508,7 +529,8 @@ public class Browser extends Activity implements
 		mInLoad = false;
 		mWebView.stopLoading();
 		//mAnonProxy.stop();
-		
+		setProgressBarIndeterminateVisibility (Boolean.FALSE);
+
 		mWebViewClient.onPageFinished(mWebView, mWebView.getUrl());
 	}
 
@@ -521,8 +543,11 @@ public class Browser extends Activity implements
 
 	public boolean onCreateOptionsMenu(Menu menu) {
 		mMenu = menu;
-		MenuInflater inflater = getMenuInflater();
+		MenuInflater inflater = getSupportMenuInflater();
 		inflater.inflate(R.menu.main, menu);
+
+		getSherlock().getActionBar().setHomeButtonEnabled(true);
+		
 		return true;
 	}
 
@@ -715,7 +740,6 @@ public class Browser extends Activity implements
 				SslError error) {
 			super.onReceivedSslError(view, handler, error);
 			
-			
 		}
 
 		/*
@@ -733,8 +757,9 @@ public class Browser extends Activity implements
 			// Update image loading settings
 			updateSettingsPerUrl(url);
 			// Turn on the progress bar and set it to 10%
-			//getWindow().setFeatureInt(Window.FEATURE_PROGRESS, 1000);
-			setFavicon(favicon);
+			
+			setProgressBarIndeterminateVisibility (Boolean.TRUE);
+//			setFavicon(favicon);
 
 			updateInLoadMenuItems();
 			updateTitle(url, null);
@@ -745,6 +770,10 @@ public class Browser extends Activity implements
 		public void onPageFinished(WebView view, String url) {
 			// Set the progress bar to 100%
 			//getWindow().setFeatureInt(Window.FEATURE_PROGRESS, 10000);
+			//setSupportProgress(10000);
+			
+			setProgressBarIndeterminateVisibility (Boolean.FALSE);
+			
 			updateInLoadMenuItems();
 			view.clearFormData();
 			super.onPageFinished(view, url);
@@ -854,13 +883,17 @@ public class Browser extends Activity implements
 	}
 
 	private WebChromeClient mWebViewChrome = new WebChromeClient() {
+		
+		
+		
 		@Override
 		public void onProgressChanged(WebView view, int newProgress) {
 
 			// Update the progress bar of the activity
-			
+			//setSupportProgress(newProgress * 100);
+			setProgressBarIndeterminateVisibility (Boolean.TRUE);
 			//getWindow().setFeatureInt(Window.FEATURE_PROGRESS,
-				//	newProgress * 100);
+				//newProgress * 100);
 					
 			if (newProgress == 100) {
 				if (mInLoad) {
