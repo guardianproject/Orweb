@@ -42,7 +42,7 @@ public class OrbotHelper {
 		
 		boolean worked = false;
 
-		if (Build.VERSION.SDK_INT < 11) 
+		if (Build.VERSION.SDK_INT < 14) 
 		{
 			worked = setWebkitProxyGingerbread(ctx, host, port);
 		}
