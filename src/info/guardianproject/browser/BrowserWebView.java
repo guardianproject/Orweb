@@ -21,7 +21,9 @@
 
 package info.guardianproject.browser;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Build;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -57,9 +59,17 @@ public class BrowserWebView extends WebView implements AnimationListener {
 
 	public BrowserWebView(Context context) {
 		super(context);
-		
+		initView ();
+	}
+	
+	@SuppressLint({ "NewApi", "NewApi", "NewApi" })
+	private void initView ()
+	{
 		getSettings().setAllowFileAccess(false);
+		
 		getSettings().setBuiltInZoomControls(true);
+		getSettings().setSupportZoom(true);
+		
 		getSettings().setJavaScriptCanOpenWindowsAutomatically(false);
 		
 		getSettings().setSaveFormData(false);
@@ -71,14 +81,27 @@ public class BrowserWebView extends WebView implements AnimationListener {
 		
 		getSettings().setPluginState(PluginState.ON_DEMAND);
 		
+		getSettings().setSupportMultipleWindows(false);
+		
+		
+		if (Build.VERSION.SDK_INT > 11)
+		{
+			getSettings().setDisplayZoomControls(true);
+			getSettings().setAllowContentAccess(false);
+			getSettings().setEnableSmoothTransition(true);
+			
+		}
+		
 	}
 
 	public BrowserWebView(Context context, AttributeSet attrs) {
 		super(context, attrs);
+		initView ();
 	}
 
 	public BrowserWebView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
+		initView ();
 	}
 
 	

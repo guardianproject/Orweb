@@ -127,8 +127,8 @@ public class Browser extends SherlockActivity implements
 		// Set up title bar of window
 		//requestWindowFeature(Window.FEATURE_LEFT_ICON);
 		//requestWindowFeature(Window.FEATURE_RIGHT_ICON);
-		//this.requestWindowFeature(Window.FEATURE_PROGRESS);
-		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+		this.requestWindowFeature(Window.FEATURE_PROGRESS);
+		//requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		//this.requestWindowFeature(Window.FEATURE_ACTION_BAR);
 		//this.requestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
 		
@@ -529,7 +529,7 @@ public class Browser extends SherlockActivity implements
 		mInLoad = false;
 		mWebView.stopLoading();
 		//mAnonProxy.stop();
-		setProgressBarIndeterminateVisibility (Boolean.FALSE);
+		setProgressBarVisibility (Boolean.FALSE);
 
 		mWebViewClient.onPageFinished(mWebView, mWebView.getUrl());
 	}
@@ -739,8 +739,9 @@ public class Browser extends SherlockActivity implements
 		@Override
 		public void doUpdateVisitedHistory(WebView view, String url,
 				boolean isReload) {
-			super.doUpdateVisitedHistory(view, url, isReload);
+		//	super.doUpdateVisitedHistory(view, url, isReload);
 			
+			//no history please
 		}
 
 		@Override
@@ -765,8 +766,9 @@ public class Browser extends SherlockActivity implements
 			// Update image loading settings
 			updateSettingsPerUrl(url);
 			// Turn on the progress bar and set it to 10%
-			
-			setProgressBarIndeterminateVisibility (Boolean.TRUE);
+		//	 getWindow().requestFeature(Window.FEATURE_PROGRESS);
+
+			setProgressBarVisibility (Boolean.TRUE);
 //			setFavicon(favicon);
 
 			updateInLoadMenuItems();
@@ -776,11 +778,8 @@ public class Browser extends SherlockActivity implements
 
 		@Override
 		public void onPageFinished(WebView view, String url) {
-			// Set the progress bar to 100%
-			//getWindow().setFeatureInt(Window.FEATURE_PROGRESS, 10000);
-			//setSupportProgress(10000);
 			
-			setProgressBarIndeterminateVisibility (Boolean.FALSE);
+			//setProgressBarVisibility (Boolean.FALSE);
 			
 			updateInLoadMenuItems();
 			view.clearFormData();
@@ -801,12 +800,16 @@ public class Browser extends SherlockActivity implements
 		public void onReceivedError(WebView view, int errorCode,
 				String description, String failingUrl) {
 			super.onReceivedError(view, errorCode, description, failingUrl);
+			
+		//	setProgressBarVisibility (Boolean.FALSE);
 		}
 
 		@Override
 		public void onTooManyRedirects(WebView view, Message cancelMsg,
 				Message continueMsg) {
 			super.onTooManyRedirects(view, cancelMsg, continueMsg);
+			
+			//setProgressBarVisibility (Boolean.FALSE);
 		}
 
 		@Override
@@ -899,7 +902,9 @@ public class Browser extends SherlockActivity implements
 
 			// Update the progress bar of the activity
 			//setSupportProgress(newProgress * 100);
-			setProgressBarIndeterminateVisibility (Boolean.TRUE);
+		     Browser.this.setProgress(newProgress * 100);
+
+			//setProgressBarIndeterminateVisibility (Boolean.TRUE);
 			//getWindow().setFeatureInt(Window.FEATURE_PROGRESS,
 				//newProgress * 100);
 					
