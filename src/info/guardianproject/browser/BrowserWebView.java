@@ -21,11 +21,14 @@
 
 package info.guardianproject.browser;
 
+import java.lang.reflect.Method;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.os.Handler;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,6 +86,9 @@ public class BrowserWebView extends WebView implements AnimationListener {
 		
 		getSettings().setSupportMultipleWindows(false);
 		
+		setHapticFeedbackEnabled(true);
+		setLongClickable(true);
+		
 		
 		if (Build.VERSION.SDK_INT > 11)
 		{
@@ -102,6 +108,19 @@ public class BrowserWebView extends WebView implements AnimationListener {
 	public BrowserWebView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		initView ();
+	}
+	
+	public void selectAndCopyText() {
+	    try {
+	        Method m = WebView.class.getMethod("emulateShiftHeld", null);
+	        m.invoke(this, null);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        // fallback
+	        KeyEvent shiftPressEvent = new KeyEvent(0,0,
+	             KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_SHIFT_LEFT,0,0);
+	        shiftPressEvent.dispatch(this);
+	    }
 	}
 
 	
