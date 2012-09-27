@@ -8,15 +8,16 @@
         
     ></item>
 
-<item android:title="@string/menu_settings" android:id="@+id/menu_settings" android:icon="@drawable/ic_action_settings"
-              android:showAsAction="never"
-        
-    ></item>
 <item android:id="@+id/menu_stop" android:title="@string/menu_stop" android:visible="false" android:icon="@drawable/ic_menu_stop"
               android:showAsAction="never"
         
     ></item>
 <item android:id="@+id/menu_stop_reload"
+              android:showAsAction="never"
+        
+    ></item>
+
+<item android:title="@string/menu_settings" android:id="@+id/menu_settings" android:icon="@drawable/ic_action_settings"
               android:showAsAction="never"
         
     ></item>
