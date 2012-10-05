@@ -1,34 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="torInactive">المجهول اتصال البيانات لا يعمل</string>
-    <string name="torConnecting">الاتصال...</string>
-    <string name="starttor">فتح تفضيلات</string>
-    <string name="search_label">متصفح</string>
-    <string name="search_hint">عنوان الويب أو البحث</string>
-    <string name="search_button_text">انتقل</string>
-    <string name="torProxyNotInstalled">Orweb يتطلب تثبيت التطبيق Orbot.</string>
-    <string name="cookiesBlockedFirstLine">الكوكيز</string>
-    <string name="cookiesBlockedSecondLine">حظر</string>
-    <string name="allCookiesAreBlocked">يتم حظر كافة ملفات تعريف الارتباط. يمكنك تغيير هذا السلوك في الإعدادات.</string>
-    <string name="acceptCookiesFrom">الكوكيز from:</string>
-    <string name="willAddToWhitelist">سوف تدق هذه المواقع إضافتها إلى القائمة البيضاء الكوكيز.</string>
-    <string name="pref_proxy_group">إعدادات الخادم الوكيل</string>
-    <string name="pref_proxy_host">الوكيل المضيف</string>
-    <string name="pref_proxy_host_summary">اسم المضيف أو عنوان IP لملقم وكيل HTTP</string>
-    <string name="pref_proxy_port">ميناء الوكيل</string>
-    <string name="pref_proxy_port_summary">منفذ مأخذ للخادم وكيل HTTP</string>
-    <string name="pref_user_agent_summary">تغيير الطريقة التي يحدد المتصفح نفسه</string>
-    <string name="pref_user_agent_title">وكيل المستخدم</string>
-    <string-array name="cookiePreferences">
-        <item>قبول كافة ملفات تعريف الارتباط</item>
-        <item>تقبل الكوكيز اللائحة البيضاء</item>
-        <item>حظر كافة ملفات تعريف الارتباط</item>
-    </string-array>
-<string name="errorHtml">&lt;b&gt;Sorry ذهب ، ولكن شيئا خاطئا...__ lessthan__/b&gt;</string>
-    <string name="menu_go">انتقل</string>
-    <string name="menu_stop">توقف</string>
-    <string name="menu_forward">إلى الأمام</string>
-    <string name="menu_about">حول</string>
-    <string name="menu_settings">إعدادات</string>
-    <string name="menu_reload">تحديث</string>
+  <string name="pref_images">خيارات الصور</string>
+  <string name="pref_javascript">خيارات جافاسكريبت</string>
+  <string name="app_name">Orweb v2</string>
+  <string name="errorHtml">عذراً، حصل خطأ ما.</string>
+  <string name="torInactive">الاتصال مجهول الهوية لا يعمل</string>
+  <string name="torConnecting">الاتصال...</string>
+  <string name="starttor">فتح الاعدادات</string>
+  <string name="search_label">متصفح</string>
+  <string name="search_hint">عنوان الويب أو البحث</string>
+  <string name="search_button_text">انطلق</string>
+  <string name="default_homepage">https://check.torproject.org</string>
+  <string name="pref_homepage">خيارات الصفحة الرئيسية</string>
+  <string name="pref_clearcache">خيارات البيانات المحفوظة مؤقتاً</string>
+  <string name="internal_web_url">http://orweb/</string>
+  <string name="torProxyNotInstalled">Orweb يتطلب تثبيت التطبيق Orbot.</string>
+  <string name="cookiesBlockedFirstLine">ملف تعريف الارتباط (الكوكيز)ـ</string>
+  <string name="cookiesBlockedSecondLine">محظور</string>
+  <string name="allCookiesAreBlocked">تم حظر كافة ملفات تعريف الارتباط (الكوكيز). يمكنك تغيير هذا السلوك في الإعدادات.</string>
+  <string name="acceptCookiesFrom">اقبل ملفات تعريف الارتباط (الكوكيز) من:</string>
+  <string name="willAddToWhitelist">اختيار هذه المواقع سيضعها في القائمة المسموحة لاستخدام ملفات تعريف الارتباط (الكوكيز)</string>
+  <string name="pref_proxy_group">إعدادات البروكسي</string>
+  <string name="pref_proxy_host">عنوان البروكسي</string>
+  <string name="pref_proxy_host_summary">اسم النطاق أو عنوان الانترنت لبروكسي الHTTP</string>
+  <string name="pref_proxy_port">منفذ البروكسي</string>
+  <string name="pref_proxy_port_summary">منفذ المقبس لبروكسي الHTTP</string>
+  <string name="pref_user_agent_summary">تغيير الطريقة التي يحدد المتصفح بها نفسه</string>
+  <string name="pref_user_agent_title">اسم المتصفح</string>
+  <string name="menu_go">انطلق</string>
+  <string name="menu_stop">توقف</string>
+  <string name="menu_forward">إلى الأمام</string>
+  <string name="menu_about">حول</string>
+  <string name="menu_settings">إعدادات</string>
+  <string name="menu_reload">تحديث</string>
 </resources>
