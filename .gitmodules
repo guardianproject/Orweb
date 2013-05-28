@@ -1,3 +1,6 @@
 [submodule "external/ActionBarSherlock"]
 	path = external/ActionBarSherlock
 	url = git://github.com/JakeWharton/ActionBarSherlock.git
+[submodule "external/netcipher"]
+	path = external/netcipher
+	url = git@github.com:guardianproject/OnionKit.git
