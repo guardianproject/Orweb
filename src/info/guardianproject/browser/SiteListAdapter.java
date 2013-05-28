@@ -73,7 +73,6 @@ public class SiteListAdapter extends ArrayAdapter<String> implements OnCheckedCh
 		return row;
 	}
 
-	@Override
 	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 		String site = (String)buttonView.getTag();
 		if (isChecked) {
