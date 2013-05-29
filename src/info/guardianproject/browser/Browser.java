@@ -25,10 +25,16 @@
 package info.guardianproject.browser;
 
 
+import fi.iki.elonen.NanoHTTPD;
+import fi.iki.elonen.NanoHTTPD.Response.Status;
 import info.guardianproject.onionkit.OrbotHelper;
+import info.guardianproject.onionkit.trust.StrongHttpsClient;
 import info.guardianproject.onionkit.web.WebkitProxy;
 
+import java.io.BufferedInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,17 +43,24 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import android.annotation.TargetApi;
+import android.app.DownloadManager;
+import android.app.DownloadManager.Query;
 import android.app.SearchManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.PaintDrawable;
+import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
@@ -61,6 +74,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.webkit.CookieSyncManager;
+import android.webkit.DownloadListener;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceResponse;
@@ -69,6 +83,9 @@ import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+import ch.boye.httpclientandroidlib.HttpEntity;
+import ch.boye.httpclientandroidlib.HttpResponse;
+import ch.boye.httpclientandroidlib.client.methods.HttpGet;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
@@ -100,7 +117,7 @@ public class Browser extends SherlockActivity implements
 	private LinearLayout mWebLayout = null;
 //	private Button mStartTor = null;
 	private LinearLayout mCookieIcon = null;
-//	private TextView mTorStatus = null;
+//	private TextView mTorStatus = null;"Error downloading"
 
 	// Misc
 	private Drawable mGenericFavicon = null;
@@ -113,8 +130,12 @@ public class Browser extends SherlockActivity implements
 	private boolean mClearHistory = false;
 	private boolean mDoJavascript = false;
 	
+	
 	public static String DEFAULT_PROXY_HOST = "localhost";
 	public static String DEFAULT_PROXY_PORT = "8118";
+	public static String DEFAULT_PROXY_TYPE = "http";
+	private String mProxyHost = DEFAULT_PROXY_HOST;
+	private int mProxyPort = Integer.parseInt(DEFAULT_PROXY_PORT);
 	
 	public static String DEFAULT_SEARCH_ENGINE = "http://3g2upl4pq6kufc4m.onion/?q=";
 	public static String DEFAULT_SEARCH_ENGINE_NOJS = "https://duckduckgo.com/html?q=";
@@ -223,6 +244,45 @@ public class Browser extends SherlockActivity implements
 		//mStartTor.setOnClickListener(this);
 		mWebView.setWebViewClient(mWebViewClient);
 		mWebView.setWebChromeClient(mWebViewChrome);
+		
+		mWebView.setDownloadListener(new DownloadListener() {
+	        @Override
+	        public void onDownloadStart(String url, String userAgent,
+	                String contentDisposition, String mimetype,
+	                long contentLength) {
+	        
+	        
+	        	if (mimetype != null && (mimetype.startsWith("text") || mimetype.startsWith("image")))
+	        	{
+	        		//if this is text or an image, just show in Orweb itself
+	        		Message msg = new Message();
+					msg.getData().putString("url", url);
+					mLoadHandler.sendMessage(msg);
+	        	}
+	        	else
+	        	{
+	        		Uri uri = Uri.parse(url);
+	        		String newUrl = "http://localhost:9999/" + uri.getLastPathSegment() + "?url=" + URLEncoder.encode(url);
+	        		 
+
+	        		uri = Uri.parse(newUrl);
+	        		 
+	 	            //Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+	 	            //startActivity(intent);
+	 	            
+	        		 try
+	        		 {
+	        			 doDownloadManager(uri);
+	        		 }
+	        		 catch (Exception e)
+	        		 {
+	        			 Log.e("Orweb","problem downloading: " + uri,e);
+	        		 }
+	        	}
+	        	
+	        	
+	        }
+	    });
 	}
 	public void initSettings ()
 	{
@@ -296,6 +356,7 @@ public class Browser extends SherlockActivity implements
 	protected void onDestroy() {
 		super.onDestroy();
 		
+		unloadDownloadManager ();
 
 		clearCachedData();
 		
@@ -684,10 +745,10 @@ public class Browser extends SherlockActivity implements
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(getApplicationContext());
 
-		String proxyHost = prefs.getString("pref_proxy_host", DEFAULT_PROXY_HOST);
-		int proxyPort = Integer.parseInt(prefs.getString("pref_proxy_port", DEFAULT_PROXY_PORT));
+		mProxyHost = prefs.getString("pref_proxy_host", DEFAULT_PROXY_HOST);
+		mProxyPort = Integer.parseInt(prefs.getString("pref_proxy_port", DEFAULT_PROXY_PORT));
 		
-		if (proxyHost != null && proxyHost.equalsIgnoreCase("localhost") && proxyPort == 8118)
+		if (mProxyHost != null && mProxyHost.equalsIgnoreCase("localhost") && mProxyPort == 8118)
 		{
 			//check if Orbot is installed running
 			OrbotHelper oh = new OrbotHelper(this.getApplicationContext());
@@ -705,7 +766,7 @@ public class Browser extends SherlockActivity implements
 		
 		try { 
 			
-			proxyWorked = WebkitProxy.setProxy(this, proxyHost,proxyPort);
+			proxyWorked = WebkitProxy.setProxy(this, mProxyHost,mProxyPort);
 		}
 		catch (Exception e)
 		{
@@ -1053,5 +1114,164 @@ public class Browser extends SherlockActivity implements
 	 protected void onSaveInstanceState(Bundle outState) {
 		 mWebView.saveState(outState);
 	  }
+	 
+	 private DownloadManager mgr;
+		private long lastDownload = -1L;
+		
+		private synchronized void initDownloadManager () throws IOException
+		{
+			if (mgr == null)
+			{
+			  
+			  Thread thread = new Thread ()
+			  {
+				
+				  public void run ()
+				  {
+					  try
+					  {  
+						  mFileServer.start();
+					  }
+					  catch (Exception e)
+					  {
+						  Log.e("Orweb","problem starting file server",e);
+					  }
+				  }
+			  };
+			  
+			  thread.start();
+			  
+			  mgr=(DownloadManager)getApplicationContext().getSystemService(DOWNLOAD_SERVICE);
+			  getApplicationContext().registerReceiver(onComplete,
+			                     new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+			  getApplicationContext().registerReceiver(onNotificationClick,
+			                     new IntentFilter(DownloadManager.ACTION_NOTIFICATION_CLICKED));
+			}
+		}
+		
+		private void unloadDownloadManager ()
+		{
+			if (mgr != null)
+			{
+				mFileServer.stop();
+				getApplicationContext().unregisterReceiver(onComplete);
+				getApplicationContext().unregisterReceiver(onNotificationClick);
+				mgr = null;
+			}
+		}
+		
+		private void doDownloadManager (Uri uri) throws IOException
+		{
+			initDownloadManager();
+			
+		    lastDownload=
+		      mgr.enqueue(new DownloadManager.Request(uri)
+		                  .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI |
+		                                          DownloadManager.Request.NETWORK_MOBILE)
+		                  .setAllowedOverRoaming(false)
+		                  .setVisibleInDownloadsUi(true)
+		                  .setDestinationInExternalFilesDir(getApplicationContext(), null, uri.getLastPathSegment()));
+		}
+		
+		 BroadcastReceiver onComplete=new BroadcastReceiver() {
+			    public void onReceive(Context ctxt, Intent intent) {
+			    	
+			    	 String action = intent.getAction();
+		                if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {
+		                    long downloadId = intent.getLongExtra(
+		                            DownloadManager.EXTRA_DOWNLOAD_ID, 0);
+		                    Query query = new Query();
+		                    query.setFilterById(downloadId);
+		                    Cursor c = mgr.query(query);
+		                    if (c.moveToFirst()) {
+		                        int columnIndex = c
+		                                .getColumnIndex(DownloadManager.COLUMN_STATUS);
+		                        if (DownloadManager.STATUS_SUCCESSFUL == c
+		                                .getInt(columnIndex)) {
+		 
+		                        	String uriString = c
+		                                    .getString(c
+		                                            .getColumnIndex(DownloadManager.COLUMN_LOCAL_URI));
+		                        	
+		                        
+		                        	
+		                        		
+		                        	Intent intentView = new Intent(Intent.ACTION_VIEW, Uri.parse(uriString));
+	            	 	            startActivity(intentView);
+										
+									
+		                        }
+		                    }
+		                }
+			    }
+		  };
+		  
+		  BroadcastReceiver onNotificationClick=new BroadcastReceiver() {
+		    public void onReceive(Context ctxt, Intent intent) {
+		     
+		    }
+		  };
+		  
+		  
+		NanoHTTPD mFileServer = new NanoHTTPD ("localhost",9999)
+		{
+			private StrongHttpsClient httpClient = null;
+			
+			@Override
+			public Response serve(String uri, Method method,
+					Map<String, String> header, Map<String, String> parms,
+					Map<String, String> files) {
+				
+				String url = parms.get("url");
+				
+				httpClient = getHttpClient ();
+				
+				HttpGet hget = new HttpGet(url);
+				
+				try
+				{
+					HttpResponse response = httpClient.execute(hget);
+					
+					HttpEntity respEntity = response.getEntity();
+				
+					String mimeType = respEntity.getContentType().getValue();
+					
+					BufferedInputStream bis = new BufferedInputStream(respEntity.getContent());			
+							
+					Response resp = new Response(Status.OK,mimeType,bis);
+					resp.addHeader("Content-Length", respEntity.getContentLength()+"");
+					//resp.addHeader("Content-Type", respEntity.getContentType().getValue());
+					
+					return resp;
+				}
+				catch (Exception e)
+				{
+					Log.e("Orweb","unable to proxy download",e);
+					
+					return new Response(Status.FORBIDDEN,"text/plain",e.getLocalizedMessage());
+				}
+			}
+			
+			private StrongHttpsClient getHttpClient ()
+			{
+				if (httpClient == null)
+				{
+					httpClient = new StrongHttpsClient(Browser.this);
+						
+					httpClient.useProxy(true,DEFAULT_PROXY_TYPE,mProxyHost, mProxyPort);
+				}
+				
+				return httpClient;
+			}
+
+			@Override
+			public void stop() {
+				super.stop();
+				
+				httpClient = null;
+			}
+			
+			
+		};
 
 }
