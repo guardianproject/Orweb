@@ -4,3 +4,6 @@
 [submodule "external/netcipher"]
 	path = external/netcipher
 	url = git@github.com:guardianproject/OnionKit.git
+[submodule "external/nanohttpd"]
+	path = external/nanohttpd
+	url = https://github.com/NanoHttpd/nanohttpd.git
