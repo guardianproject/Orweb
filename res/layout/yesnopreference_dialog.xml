@@ -8,6 +8,8 @@
 
 
 
-<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="OK" android:layout_weight="1" android:id="@+id/buttonOK"></Button>
-<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cancel" android:layout_weight="1" android:id="@+id/buttonCancel"></Button>
+<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="OK" android:layout_weight="1" android:id="@+id/buttonOK" android:filterTouchesWhenObscured="true"
+   ></Button>
+<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cancel" android:layout_weight="1" android:id="@+id/buttonCancel" android:filterTouchesWhenObscured="true"
+    ></Button>
 </LinearLayout>

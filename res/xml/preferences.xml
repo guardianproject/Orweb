@@ -47,6 +47,12 @@ android:enabled="true"/>
 
 <CheckBoxPreference android:defaultValue="false" android:summary="@string/ref_summary"
      android:title="@string/ref_title" android:key="pref_sendreferrer"></CheckBoxPreference>
+
+<CheckBoxPreference android:defaultValue="false" android:summary="@string/history_summary"
+     android:title="@string/history_title" android:key="pref_clearhistory"></CheckBoxPreference>
+
+
+
 </PreferenceCategory><PreferenceCategory android:title="Cookies">
 	<info.guardianproject.browser.ClearCookiesPreference
 		android:key="pref_clearcookies" android:title="@string/clear_cookies_title"

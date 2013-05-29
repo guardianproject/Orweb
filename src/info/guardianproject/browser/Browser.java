@@ -28,13 +28,13 @@ package info.guardianproject.browser;
 import info.guardianproject.onionkit.OrbotHelper;
 import info.guardianproject.onionkit.web.WebkitProxy;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.io.DataOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 
 import android.app.SearchManager;
 import android.content.Intent;
@@ -52,6 +52,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -103,6 +104,9 @@ public class Browser extends SherlockActivity implements
 	private boolean mLastIsTorActive = true;
 	private CookieManager mCookieManager = null;
 
+	private boolean mShowReferrer = false;
+	private boolean mClearHistory = false;
+	
 	public static String DEFAULT_PROXY_HOST = "localhost";
 	public static String DEFAULT_PROXY_PORT = "8118";
 	public static String DEFAULT_SEARCH_ENGINE = "http://3g2upl4pq6kufc4m.onion/?q=";
@@ -121,10 +125,11 @@ public class Browser extends SherlockActivity implements
 			String url = msg.getData().getString("url");
 			url = smartUrlFilter(url);
 			
-			//mWebView.loadUrl(url);
-			
 			Map<String,String> aHeaders = new HashMap<String,String>();
 			aHeaders.put("Accept", DEFAULT_HEADER_ACCEPT);
+			
+			if (!mShowReferrer)
+				aHeaders.put("Referer","");
 			
 			mWebView.loadUrl(url, aHeaders);
 		}
@@ -149,13 +154,16 @@ public class Browser extends SherlockActivity implements
 		setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
 
 		setContentView(R.layout.main);
-		
 
 		SharedPreferences prefs = PreferenceManager
-				.getDefaultSharedPreferences(this);
+				.getDefaultSharedPreferences(getApplicationContext());
 		String starturl = prefs.getString(getString(R.string.pref_homepage),
 				getString(R.string.default_homepage));
-	
+
+		initSettings();
+		
+		CacheManager.getCacheManager().setBrowser(this);
+		
 		if (savedInstanceState != null)
 		      mWebView.restoreState(savedInstanceState);
 		else
@@ -164,17 +172,21 @@ public class Browser extends SherlockActivity implements
 			msg.getData().putString("url", starturl);
 			mLoadHandler.sendMessage(msg);
 		}
+		
+		
 
 	}
 	
 	public void initSettings ()
 	{
 		// TODO - properly handle initial Intents
-		SharedPreferences prefs = PreferenceManager
-				.getDefaultSharedPreferences(this);
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
 		setProxy();		
 
+		mShowReferrer = prefs.getBoolean("pref_sendreferrer", false);
+		mClearHistory = prefs.getBoolean("pref_clearhistory", false);
+		
 		try
 		{
 				
@@ -280,9 +292,52 @@ public class Browser extends SherlockActivity implements
 	protected void onDestroy() {
 		super.onDestroy();
 		
+		clearCachedData();
+		
+	}
+	
+	public void clearCachedData ()
+	{
+
+		mWebView.clearHistory();
+		
 		deleteDatabase("webview.db");
 		deleteDatabase("webviewCache.db");
+		deleteDatabase("webviewCookies.db");
+		
+		deleteDatabase("webviewCookiesChromium.db");
+		
+		
+		try {
+		
+			ArrayList<String> cmds = new ArrayList<String>();
+			
+			cmds.add("rm -rf /data/data/info.guardianproject.browser/cache/webviewCacheChromium");
+			cmds.add("rm -rf /data/data/info.guardianproject.browser/cache/webviewCacheChromiumStaging");
+			cmds.add("rm -rf /data/data/info.guardianproject.browser/cache/webviewCache");
+			
+			doCmds(cmds);
+		} catch (Exception e) {
+			Log.e("Orweb","error clearing cache data",e);
+		}
+		
+
 	}
+	
+	public static void doCmds(List<String> cmds) throws Exception {
+	    Process process = Runtime.getRuntime().exec("sh");
+	    DataOutputStream os = new DataOutputStream(process.getOutputStream());
+
+	    for (String tmpCmd : cmds) {
+	            os.writeBytes(tmpCmd+"\n");
+	    }
+
+	    os.writeBytes("exit\n");
+	    os.flush();
+	    os.close();
+
+	    process.waitFor();
+	}    
 
 	/*
 	 * Set the title bar icon to the supplied bitmap. Yoinked from the Android
@@ -312,6 +367,7 @@ public class Browser extends SherlockActivity implements
 	 * @param url
 	 * @return
 	 */
+	/*
 	private static String buildTitleUrl(String url) {
 		String titleUrl = null;
 
@@ -340,14 +396,14 @@ public class Browser extends SherlockActivity implements
 		}
 
 		return titleUrl;
-	}
+	}*/
 
 	static final Pattern ACCEPTED_URI_SCHEMA = Pattern.compile("(?i)"
 			+ // switch on case insensitive matching
 			"("
 			+ // begin group for schema
-			"(?:http|https|file):\\/\\/"
-			+ "|(?:data|about|content|javascript):" + ")" + "(.*)");
+			"(?:http|https):\\/\\/"
+			+ "|(?:data|about|javascript):" + ")" + "(.*)");
 
 	private String smartUrlFilter(String url) {
 
@@ -387,24 +443,14 @@ public class Browser extends SherlockActivity implements
 	 * @return The page title.
 	 */
 	private String buildUrlTitle(String url, String title) {
-		String urlTitle = "";
+		
+		String urlTitle = url;// buildTitleUrl(url);
 
-		if (url != null) {
-			String titleUrl = buildTitleUrl(url);
-
-			if (title != null && 0 < title.length()) {
-				if (titleUrl != null && 0 < titleUrl.length()) {
-					urlTitle = titleUrl + ": " + title;
-				} else {
-					urlTitle = title;
-				}
-			} else {
-				if (titleUrl != null) {
-					urlTitle = titleUrl;
-				}
-			}
+		if (title != null && title.length() > 0) {
+			
+			urlTitle = title + " | " + url;
+			
 		}
-
 		return urlTitle;
 	}
 
@@ -545,7 +591,7 @@ public class Browser extends SherlockActivity implements
 		case R.id.menu_homepage:
 			
 			SharedPreferences prefs = PreferenceManager
-			.getDefaultSharedPreferences(this);
+			.getDefaultSharedPreferences(getApplicationContext());
 
 			String starturl = prefs.getString(
 					getString(R.string.pref_homepage),
@@ -620,7 +666,7 @@ public class Browser extends SherlockActivity implements
 		boolean proxyWorked = false;
 		
 		SharedPreferences prefs = PreferenceManager
-				.getDefaultSharedPreferences(this);
+				.getDefaultSharedPreferences(getApplicationContext());
 
 		String proxyHost = prefs.getString("pref_proxy_host", DEFAULT_PROXY_HOST);
 		int proxyPort = Integer.parseInt(prefs.getString("pref_proxy_port", DEFAULT_PROXY_PORT));
@@ -829,6 +875,10 @@ public class Browser extends SherlockActivity implements
 			updateInLoadMenuItems();
 			view.clearFormData();
 			view.clearCache(true);
+			
+			if (mClearHistory)
+				view.clearHistory();
+			
 			super.onPageFinished(view, url);
 		}
 	

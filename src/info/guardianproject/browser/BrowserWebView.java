@@ -90,6 +90,7 @@ public class BrowserWebView extends WebView implements AnimationListener {
 		
 		getSettings().setSupportMultipleWindows(false);
 		
+		
 		setHapticFeedbackEnabled(true);
 		setLongClickable(true);
 		
