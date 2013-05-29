@@ -67,6 +67,7 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
@@ -184,26 +185,8 @@ public class Browser extends SherlockActivity implements
 		else
 		{
 			
-			Intent intent = getIntent();
-			if (intent != null) {
-				String action = intent.getAction();
-				if (Intent.ACTION_SEARCH.equals(action)) {
-					// Navigate to the URL
-					String url = intent.getStringExtra(SearchManager.QUERY);
-					Message msg = new Message();
-					msg.getData().putString("url", url);
-					mLoadHandler.sendMessage(msg);
-					return;
-				} else if (Intent.ACTION_VIEW.equals(action)) {
-					// Navigate to the URL
-					String url = intent.getDataString();
-					Message msg = new Message();
-					msg.getData().putString("url", url);
-					mLoadHandler.sendMessage(msg);
-					return;
-				}
-				
-			}
+			handleIntent(getIntent());
+			
 	
 			Message msg = new Message();
 			msg.getData().putString("url", starturl);
@@ -313,8 +296,13 @@ public class Browser extends SherlockActivity implements
 	protected void onDestroy() {
 		super.onDestroy();
 		
+
 		clearCachedData();
 		
+		((RelativeLayout)findViewById(R.id.RelativeLayout01)).removeAllViews();
+		
+		 mWebView.destroy();
+		 
 	}
 	
 	public void clearCachedData ()
@@ -946,32 +934,38 @@ public class Browser extends SherlockActivity implements
 			
 		}
 		
-		
+	
 
 	};
 
 	@Override
 	protected void onNewIntent(Intent intent) {
-
-		// The user has probably entered a URL into "Go"
-
-		String action = intent.getAction();
-		if (Intent.ACTION_SEARCH.equals(action)) {
-			// Navigate to the URL
-			String url = intent.getStringExtra(SearchManager.QUERY);
-			Message msg = new Message();
-			msg.getData().putString("url", url);
-			mLoadHandler.sendMessage(msg);
-			
-			
-		} else if (Intent.ACTION_VIEW.equals(action)) {
-			// Navigate to the URL
-			String url = intent.getDataString();
-			url = smartUrlFilter(url);
-			
-			Message msg = new Message();
-			msg.getData().putString("url", url);
-			mLoadHandler.sendMessage(msg);
+		handleIntent(intent);
+	}
+	
+	private void handleIntent(Intent intent)
+	{
+		
+		if (intent != null)
+		{
+			String action = intent.getAction();
+			if (Intent.ACTION_SEARCH.equals(action)) {
+				// Navigate to the URL
+				String url = intent.getStringExtra(SearchManager.QUERY);
+				Message msg = new Message();
+				msg.getData().putString("url", url);
+				mLoadHandler.sendMessage(msg);
+				
+				
+			} else if (Intent.ACTION_VIEW.equals(action)) {
+				// Navigate to the URL
+				String url = intent.getDataString();
+				url = smartUrlFilter(url);
+				
+				Message msg = new Message();
+				msg.getData().putString("url", url);
+				mLoadHandler.sendMessage(msg);
+			}
 		}
 	}
 
@@ -1026,7 +1020,7 @@ public class Browser extends SherlockActivity implements
 		public void onProgressChanged(WebView view, int newProgress) {
 
 			// Update the progress bar of the activity
-			//setSupportProgress(newProgress * 100);
+			//setSupportProgandroid:launchMode="singleTop"ress(newProgress * 100);
 		     Browser.this.setProgress(newProgress * 100);
 
 			//setProgressBarIndeterminateVisibility (Boolean.TRUE);
