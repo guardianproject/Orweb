@@ -32,7 +32,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class CacheManager {
 
 	private static CacheManager mCacheManagerInstance = null;
-
+	private Browser mBrowser = null;
+	
 	public static CacheManager getCacheManager() {
 		if (mCacheManagerInstance == null) mCacheManagerInstance = new CacheManager();
 		return mCacheManagerInstance;
@@ -40,6 +41,11 @@ public class CacheManager {
 	
 	private CacheManager() {
 		// Nothing to be done
+	}
+	
+	public void setBrowser (Browser browser)
+	{
+		mBrowser = browser;
 	}
 	
 	private static final float CACHE_SIZE_PROP = 0.75f;
@@ -139,6 +145,10 @@ public class CacheManager {
 		mCacheObjects.clear();
 		mCacheSize = 0;
 		mLeastUsedIndex.clear();
+		
+		if (mBrowser != null)
+		mBrowser.clearCachedData();
+		
 		//Log.i("CacheManager", "Cache cleared");
 	}
 }
