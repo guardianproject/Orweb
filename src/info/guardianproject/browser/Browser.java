@@ -43,11 +43,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.app.DownloadManager;
 import android.app.DownloadManager.Query;
 import android.app.SearchManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -133,7 +135,7 @@ public class Browser extends SherlockActivity implements
 	
 	public static String DEFAULT_PROXY_HOST = "localhost";
 	public static String DEFAULT_PROXY_PORT = "8118";
-	public static String DEFAULT_PROXY_TYPE = "http";
+	public static String DEFAULT_PROXY_TYPE = "HTTP";
 	private String mProxyHost = DEFAULT_PROXY_HOST;
 	private int mProxyPort = Integer.parseInt(DEFAULT_PROXY_PORT);
 	
@@ -247,43 +249,98 @@ public class Browser extends SherlockActivity implements
 		
 		mWebView.setDownloadListener(new DownloadListener() {
 	        @Override
-	        public void onDownloadStart(String url, String userAgent,
-	                String contentDisposition, String mimetype,
+	        public void onDownloadStart(final String url, String userAgent,
+	                String contentDisposition, final String mimetype,
 	                long contentLength) {
 	        
-	        
-	        	if (mimetype != null && (mimetype.startsWith("text") || mimetype.startsWith("image")))
-	        	{
-	        		//if this is text or an image, just show in Orweb itself
-	        		Message msg = new Message();
-					msg.getData().putString("url", url);
-					mLoadHandler.sendMessage(msg);
-	        	}
-	        	else
-	        	{
-	        		Uri uri = Uri.parse(url);
-	        		String newUrl = "http://localhost:9999/" + uri.getLastPathSegment() + "?url=" + URLEncoder.encode(url);
-	        		 
-
-	        		uri = Uri.parse(newUrl);
-	        		 
-	 	            //Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-	 	            //startActivity(intent);
-	 	            
-	        		 try
-	        		 {
-	        			 doDownloadManager(uri);
-	        		 }
-	        		 catch (Exception e)
-	        		 {
-	        			 Log.e("Orweb","problem downloading: " + uri,e);
-	        		 }
-	        	}
-	        	
-	        	
+	        	final AlertDialog.Builder downloadDialog = new AlertDialog.Builder(Browser.this);
+		        downloadDialog.setTitle(info.guardianproject.browser.R.string.title_download_manager);
+		        downloadDialog.setMessage(info.guardianproject.browser.R.string.prompt_would_you_like_to_download_this_file_ + ' ' + mimetype + ":" + url);
+		        downloadDialog.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+		            public void onClick(DialogInterface dialogInterface, int i) {
+		            	 
+		            	doProxiedDownload (url, mimetype);
+		            	
+		        		 dialogInterface.dismiss();
+		            }
+		        });
+		        downloadDialog.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+		            public void onClick(DialogInterface dialogInterface, int i) {
+		            }
+		        });
+		        
+		        downloadDialog.show();
+		         
+		      
 	        }
-	    });
+	      }
+		);
+		
 	}
+	
+		private void doProxiedDownload (String url, String mimetype)
+		{
+			   
+        	if (mimetype != null && (mimetype.startsWith("text") || mimetype.startsWith("image")))
+        	{
+        		//if this is text or an image, just show in Orweb itself
+        		Message msg = new Message();
+				msg.getData().putString("url", url);
+				mLoadHandler.sendMessage(msg);
+        	}
+        	else 
+        	{
+        		Uri uri = Uri.parse(url);
+        		
+        		String filename = java.util.UUID.randomUUID().toString(); //generate random name
+        		
+        		String[] fileparts = uri.getLastPathSegment().split(".");
+        		if (fileparts.length > 0)
+        		{
+        			filename += "." + fileparts[fileparts.length-1];
+        		}
+        		
+        		String newUrl = "http://localhost:9999/" + filename + "?url=" + URLEncoder.encode(url);
+        		uri = Uri.parse(newUrl);
+        		
+        		boolean doStream = false;//(mimetype.startsWith("video") || mimetype.startsWith("audio"));
+        		
+        		 try
+        		 {
+
+        			initDownloadManager();
+        				
+        			 if (doStream)
+        			 {
+        				 Intent intent = new Intent(Intent.ACTION_VIEW);
+        			    	//String metaMime = mimeType.substring(0,mimeType.indexOf("/")) + "/*";
+        			    	intent.setDataAndType(uri, mimetype);
+        			   // 	intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        			   	 	startActivity(intent);
+        			 }
+        			 else
+        			 {
+        				 doDownloadManager(uri);
+        			 }
+        		 }
+        		 catch (Exception e)
+        		 {
+        			 Log.e("Orweb","problem downloading: " + uri,e);
+        		 }
+        	}
+        
+	}
+	
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		
+		if (mWebView != null)
+			mWebView.reload();
+		
+	}
+
 	public void initSettings ()
 	{
 		// TODO - properly handle initial Intents
@@ -1162,7 +1219,6 @@ public class Browser extends SherlockActivity implements
 		
 		private void doDownloadManager (Uri uri) throws IOException
 		{
-			initDownloadManager();
 			
 		    lastDownload=
 		      mgr.enqueue(new DownloadManager.Request(uri)
@@ -1177,6 +1233,7 @@ public class Browser extends SherlockActivity implements
 			    public void onReceive(Context ctxt, Intent intent) {
 			    	
 			    	 String action = intent.getAction();
+			    	 
 		                if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {
 		                    long downloadId = intent.getLongExtra(
 		                            DownloadManager.EXTRA_DOWNLOAD_ID, 0);
@@ -1192,13 +1249,12 @@ public class Browser extends SherlockActivity implements
 		                        	String uriString = c
 		                                    .getString(c
 		                                            .getColumnIndex(DownloadManager.COLUMN_LOCAL_URI));
-		                        	
 		                        
-		                        	
-		                        		
-		                        	Intent intentView = new Intent(Intent.ACTION_VIEW, Uri.parse(uriString));
-	            	 	            startActivity(intentView);
-										
+		                        	if (uriString != null)
+		                        	{
+		                        		Intent intentView = new Intent(Intent.ACTION_VIEW, Uri.parse(uriString));
+		                        		Browser.this.startActivity(intentView);
+		                        	}
 									
 		                        }
 		                    }
@@ -1230,10 +1286,11 @@ public class Browser extends SherlockActivity implements
 				
 				try
 				{
+					httpClient.useProxy(true,DEFAULT_PROXY_TYPE,mProxyHost, mProxyPort);
+					
 					HttpResponse response = httpClient.execute(hget);
 					
 					HttpEntity respEntity = response.getEntity();
-				
 					String mimeType = respEntity.getContentType().getValue();
 					
 					BufferedInputStream bis = new BufferedInputStream(respEntity.getContent());			
@@ -1258,7 +1315,8 @@ public class Browser extends SherlockActivity implements
 				{
 					httpClient = new StrongHttpsClient(Browser.this);
 						
-					httpClient.useProxy(true,DEFAULT_PROXY_TYPE,mProxyHost, mProxyPort);
+				
+				
 				}
 				
 				return httpClient;

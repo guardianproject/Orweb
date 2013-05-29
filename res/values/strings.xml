@@ -68,4 +68,6 @@
 <string name="cookie_whitelist_title">Cookie whitelist</string>
 <string name="cookie_whitelist_summary">Set which website can store cookies</string>
 <string name="add_site_whitelist">Add site to whitelist</string>
+<string name="title_download_manager">Download Manager</string>
+<string name="prompt_would_you_like_to_download_this_file_">Would you like to download this file?</string>
 </resources>
