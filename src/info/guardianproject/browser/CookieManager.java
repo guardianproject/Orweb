@@ -58,8 +58,13 @@ public class CookieManager {
 	
 	private CookieManagerDataStore mDataStore = null;
 	
+	private android.webkit.CookieManager mAndroidCookieManager = null;
+	 
 	private CookieManager() {
 		// Do nothing
+		
+		mAndroidCookieManager = android.webkit.CookieManager.getInstance();
+
 	}
 	
 	private void openDataStore(Context c) {
@@ -216,13 +221,11 @@ public class CookieManager {
 		
 		//Log.d("CookieManager", "Accepting blocked cookies for: " + domain);
 		
-		android.webkit.CookieManager c = android.webkit.CookieManager.getInstance();
-		
 		int size = mBlockedCookies.size();
 		for (int i=0; i<size; i++) {
 			BlockedCookie thisCookie = mBlockedCookies.get(i);
 			if (thisCookie.domain.equals(domain))
-				c.setCookie(thisCookie.url, thisCookie.header);
+				mAndroidCookieManager.setCookie(thisCookie.url, thisCookie.header);
 		}
 	}
 	
@@ -256,7 +259,15 @@ public class CookieManager {
 	 * Clear all cookies
 	 */
 	public synchronized void clearAllCookies() {
-		android.webkit.CookieManager c = android.webkit.CookieManager.getInstance();
-		c.removeAllCookie();
+		mAndroidCookieManager.removeAllCookie();
+		
+	}
+	
+	/**
+	 * Clear all cookies
+	 */
+	public synchronized void setAcceptsCookies(boolean accepts) {
+		mAndroidCookieManager.setAcceptCookie(accepts);
+		
 	}
 }

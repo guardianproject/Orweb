@@ -36,6 +36,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import android.annotation.TargetApi;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -48,6 +49,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.PaintDrawable;
 import android.net.http.SslError;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -58,8 +60,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.webkit.CookieSyncManager;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
@@ -106,10 +110,13 @@ public class Browser extends SherlockActivity implements
 
 	private boolean mShowReferrer = false;
 	private boolean mClearHistory = false;
+	private boolean mDoJavascript = false;
 	
 	public static String DEFAULT_PROXY_HOST = "localhost";
 	public static String DEFAULT_PROXY_PORT = "8118";
+	
 	public static String DEFAULT_SEARCH_ENGINE = "http://3g2upl4pq6kufc4m.onion/?q=";
+	public static String DEFAULT_SEARCH_ENGINE_NOJS = "https://duckduckgo.com/html?q=";
 	
 	public static String DEFAULT_HEADER_ACCEPT = "text/html, */* ISO-8859-1,utf-8;q=0.7,*;q=0.7 gzip,deflate en-us,en;q=0.5";
 		
@@ -129,7 +136,13 @@ public class Browser extends SherlockActivity implements
 			aHeaders.put("Accept", DEFAULT_HEADER_ACCEPT);
 			
 			if (!mShowReferrer)
-				aHeaders.put("Referer","");
+				aHeaders.put("Referer","https://check.torproject.org");
+			
+			boolean sendCookies = mCookieManager.sendCookiesFor(url);
+			
+			mCookieManager.setAcceptsCookies(sendCookies);
+			
+			mWebView.setBlockedCookies(mCookieManager.hasBlockedCookies());
 			
 			mWebView.loadUrl(url, aHeaders);
 		}
@@ -160,6 +173,8 @@ public class Browser extends SherlockActivity implements
 		String starturl = prefs.getString(getString(R.string.pref_homepage),
 				getString(R.string.default_homepage));
 
+		initUI();
+		
 		initSettings();
 		
 		CacheManager.getCacheManager().setBrowser(this);
@@ -168,59 +183,83 @@ public class Browser extends SherlockActivity implements
 		      mWebView.restoreState(savedInstanceState);
 		else
 		{
+			
+			Intent intent = getIntent();
+			if (intent != null) {
+				String action = intent.getAction();
+				if (Intent.ACTION_SEARCH.equals(action)) {
+					// Navigate to the URL
+					String url = intent.getStringExtra(SearchManager.QUERY);
+					Message msg = new Message();
+					msg.getData().putString("url", url);
+					mLoadHandler.sendMessage(msg);
+					return;
+				} else if (Intent.ACTION_VIEW.equals(action)) {
+					// Navigate to the URL
+					String url = intent.getDataString();
+					Message msg = new Message();
+					msg.getData().putString("url", url);
+					mLoadHandler.sendMessage(msg);
+					return;
+				}
+				
+			}
+	
 			Message msg = new Message();
 			msg.getData().putString("url", starturl);
 			mLoadHandler.sendMessage(msg);
 		}
-		
-		
-
 	}
 	
+	private void initUI ()
+	{
+		// Grab UI elements
+		mWebView = (BrowserWebView) findViewById(R.id.WebView);
+		mWebView.setOnTouchListener(new OnTouchListener () {
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				
+				if (mWebView.getScrollY() > 10)
+					Browser.this.getSherlock().getActionBar().hide();
+				else
+					Browser.this.getSherlock().getActionBar().show();
+				
+				return false;
+			}
+		
+		});
+		//mNoTorLayout = (LinearLayout) findViewById(R.id.NoTorLayout);
+		mWebLayout = (LinearLayout) findViewById(R.id.WebLayout);
+		//mStartTor = (Button) findViewById(R.id.StartTor);
+		
+		mCookieIcon = (LinearLayout) findViewById(R.id.CookieIcon);
+		//mTorStatus = (TextView) findViewById(R.id.torStatus);
+
+		// Set up UI elements
+		//mStartTor.setOnClickListener(this);
+		mWebView.setWebViewClient(mWebViewClient);
+		mWebView.setWebChromeClient(mWebViewChrome);
+	}
 	public void initSettings ()
 	{
 		// TODO - properly handle initial Intents
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
 		setProxy();		
-
+		
+		if (mCookieManager == null)
+		{
+			CookieSyncManager.createInstance(this);
+			mCookieManager = CookieManager.getInstance(this);
+		}
+		
 		mShowReferrer = prefs.getBoolean("pref_sendreferrer", false);
 		mClearHistory = prefs.getBoolean("pref_clearhistory", false);
 		
 		try
 		{
-				
 			
-			mCookieManager = CookieManager.getInstance(this);
-			
-	
-			// Grab UI elements
-			mWebView = (BrowserWebView) findViewById(R.id.WebView);
-			mWebView.setOnTouchListener(new OnTouchListener () {
-
-				@Override
-				public boolean onTouch(View v, MotionEvent event) {
-					
-					if (mWebView.getScrollY() > 10)
-						Browser.this.getSherlock().getActionBar().hide();
-					else
-						Browser.this.getSherlock().getActionBar().show();
-					
-					return false;
-				}
-			
-			});
-			//mNoTorLayout = (LinearLayout) findViewById(R.id.NoTorLayout);
-			mWebLayout = (LinearLayout) findViewById(R.id.WebLayout);
-			//mStartTor = (Button) findViewById(R.id.StartTor);
-			
-			mCookieIcon = (LinearLayout) findViewById(R.id.CookieIcon);
-			//mTorStatus = (TextView) findViewById(R.id.torStatus);
-	
-			// Set up UI elements
-			//mStartTor.setOnClickListener(this);
-			mWebView.setWebViewClient(mWebViewClient);
-			mWebView.setWebChromeClient(mWebViewChrome);
 			
 			mWebView.getSettings().setLoadsImagesAutomatically(true);
 			mWebView.setBlockedCookiesView(mCookieIcon);
@@ -244,35 +283,17 @@ public class Browser extends SherlockActivity implements
 
 			// mWebView.getSettings().setLoadsImagesAutomatically(prefs.getBoolean(
 			// getString(R.string.pref_images), false));
-			mWebView.getSettings().setJavaScriptEnabled(
-					prefs.getBoolean(getString(R.string.pref_javascript), true));
+			
+			mDoJavascript = 
+					prefs.getBoolean(getString(R.string.pref_javascript), false);
+			mWebView.getSettings().setJavaScriptEnabled(mDoJavascript);
 			mCookieManager.setBehaviour(prefs.getString("pref_cookiebehaviour",
 					"whitelist"));
 //			mAnonProxy
 	//				.setSendReferrer(prefs.getBoolean("pref_sendreferrer", false));
 
 			
-			Intent intent = getIntent();
-			if (intent != null) {
-				String action = intent.getAction();
-				if (Intent.ACTION_SEARCH.equals(action)) {
-					// Navigate to the URL
-					String url = intent.getStringExtra(SearchManager.QUERY);
-					Message msg = new Message();
-					msg.getData().putString("url", url);
-					mLoadHandler.sendMessage(msg);
-					return;
-				} else if (Intent.ACTION_VIEW.equals(action)) {
-					// Navigate to the URL
-					String url = intent.getDataString();
-					Message msg = new Message();
-					msg.getData().putString("url", url);
-					mLoadHandler.sendMessage(msg);
-					return;
-				}
-				
-			}
-
+			
 	
 			
 		}
@@ -300,6 +321,9 @@ public class Browser extends SherlockActivity implements
 	{
 
 		mWebView.clearHistory();
+		
+		
+		mCookieManager.clearAllCookies();
 		
 		deleteDatabase("webview.db");
 		deleteDatabase("webviewCache.db");
@@ -425,7 +449,11 @@ public class Browser extends SherlockActivity implements
 		}
 		else if (url.indexOf(' ') != -1 || url.indexOf('.') == -1)
 		{
-			url = DEFAULT_SEARCH_ENGINE + url;
+			if (mDoJavascript)
+				url = DEFAULT_SEARCH_ENGINE + url;
+			else
+				url = DEFAULT_SEARCH_ENGINE_NOJS + url;
+			
 			return url;
 		}
 		else
@@ -842,20 +870,23 @@ public class Browser extends SherlockActivity implements
 			
 		}
 
-		/*
-		@Override
+		@TargetApi(Build.VERSION_CODES.HONEYCOMB) @Override
 		public WebResourceResponse shouldInterceptRequest(WebView view,
 				String url) {
-			//Log.d("Orweb", "loading resource: " + url);
+			
 			return super.shouldInterceptRequest(view, url);
-		}*/
+		}
 
 		@Override
 		public void onPageStarted(WebView view, String url, Bitmap favicon) {
 			//Log.i("Shadow", "Page started");
 			mCookieManager.clearBlockedCookies();
 			// Update image loading settings
-		//	updateSettingsPerUrl(url);
+
+			boolean sendCookies = mCookieManager.sendCookiesFor(url);
+			mCookieManager.setAcceptsCookies(sendCookies);
+			mWebView.setBlockedCookies(mCookieManager.hasBlockedCookies());
+			
 			// Turn on the progress bar and set it to 10%
 		//	 getWindow().requestFeature(Window.FEATURE_PROGRESS);
 
@@ -885,10 +916,10 @@ public class Browser extends SherlockActivity implements
 
 		@Override
 		public void onLoadResource(WebView view, String url) {
-			//Log.i("Shadow", "OnLoad");
+			
 			mInLoad = true;
 			
-			 super.onLoadResource(view, url);
+			super.onLoadResource(view, url);
 			
 		}
 
@@ -912,8 +943,6 @@ public class Browser extends SherlockActivity implements
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
 			
 			return false;
-			
-			
 			
 		}
 		
@@ -1009,12 +1038,6 @@ public class Browser extends SherlockActivity implements
 					mInLoad = false;
 					updateInLoadMenuItems();
 				}
-			}
-
-			if (mCookieManager.hasBlockedCookies()) {
-				mWebView.setBlockedCookies(true);
-			} else {
-				mWebView.setBlockedCookies(false);
 			}
 			super.onProgressChanged(view, newProgress);
 		}
