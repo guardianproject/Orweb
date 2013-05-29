@@ -24,12 +24,17 @@
 
 package info.guardianproject.browser;
 
+
+import info.guardianproject.onionkit.OrbotHelper;
+import info.guardianproject.onionkit.web.WebkitProxy;
+
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.torproject.android.OrbotHelper;
 
 import android.app.SearchManager;
 import android.content.Intent;
@@ -102,6 +107,8 @@ public class Browser extends SherlockActivity implements
 	public static String DEFAULT_PROXY_PORT = "8118";
 	public static String DEFAULT_SEARCH_ENGINE = "http://3g2upl4pq6kufc4m.onion/?q=";
 	
+	public static String DEFAULT_HEADER_ACCEPT = "text/html, */* ISO-8859-1,utf-8;q=0.7,*;q=0.7 gzip,deflate en-us,en;q=0.5";
+		
 	private static String ABOUT_URL = "https://guardianproject.info/apps/orweb";
 	
 	private Handler mLoadHandler = new Handler ()
@@ -114,9 +121,14 @@ public class Browser extends SherlockActivity implements
 			String url = msg.getData().getString("url");
 			url = smartUrlFilter(url);
 			
-			mWebView.loadUrl(url);
+			//mWebView.loadUrl(url);
+			
+			Map<String,String> aHeaders = new HashMap<String,String>();
+			aHeaders.put("Accept", DEFAULT_HEADER_ACCEPT);
+			
+			mWebView.loadUrl(url, aHeaders);
 		}
-		
+
 	};
 	
 	@Override
@@ -137,7 +149,26 @@ public class Browser extends SherlockActivity implements
 		setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
 
 		setContentView(R.layout.main);
+		
 
+		SharedPreferences prefs = PreferenceManager
+				.getDefaultSharedPreferences(this);
+		String starturl = prefs.getString(getString(R.string.pref_homepage),
+				getString(R.string.default_homepage));
+	
+		if (savedInstanceState != null)
+		      mWebView.restoreState(savedInstanceState);
+		else
+		{
+			Message msg = new Message();
+			msg.getData().putString("url", starturl);
+			mLoadHandler.sendMessage(msg);
+		}
+
+	}
+	
+	public void initSettings ()
+	{
 		// TODO - properly handle initial Intents
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(this);
@@ -188,14 +219,13 @@ public class Browser extends SherlockActivity implements
 			
 			mCookieIcon.setOnClickListener(this);
 			
-			resetUserAgent(prefs);
+			String ua = prefs.getString("pref_user_agent", mWebView.getSettings().getUserAgentString());
+			mWebView.getSettings().setUserAgentString(ua);
 			
 			// Misc
 			mGenericFavicon = getResources().getDrawable(
 					R.drawable.app_web_browser_sm);
 	
-			String starturl = prefs.getString(getString(R.string.pref_homepage),
-					getString(R.string.default_homepage));
 			mCookieManager.setBehaviour(prefs.getString("pref_cookiebehaviour",
 					"whitelist"));
 			
@@ -232,14 +262,7 @@ public class Browser extends SherlockActivity implements
 			}
 
 	
-			if (savedInstanceState != null)
-			      mWebView.restoreState(savedInstanceState);
-			else
-			{
-				Message msg = new Message();
-				msg.getData().putString("url", starturl);
-				mLoadHandler.sendMessage(msg);
-			}
+			
 		}
 		catch (Exception e)
 		{
@@ -248,17 +271,18 @@ public class Browser extends SherlockActivity implements
 		}
 	}
 	
-	private void resetUserAgent (SharedPreferences prefs)
-	{
 
-		String ua = prefs.getString("pref_user_agent", mWebView.getSettings().getUserAgentString());
-		if (!ua.equals("-1")) // -1 means use the default Android
-			mWebView.getSettings().setUserAgentString(ua);
+
+	
+	
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
 		
+		deleteDatabase("webview.db");
+		deleteDatabase("webviewCache.db");
 	}
-
-	
-	
 
 	/*
 	 * Set the title bar icon to the supplied bitmap. Yoinked from the Android
@@ -542,7 +566,7 @@ public class Browser extends SherlockActivity implements
 		mWebView.stopLoading();
 		//mAnonProxy.stop();
 		setProgressBarVisibility (Boolean.FALSE);
-
+		
 		mWebViewClient.onPageFinished(mWebView, mWebView.getUrl());
 	}
 
@@ -587,6 +611,8 @@ public class Browser extends SherlockActivity implements
 			startActivity(getIntent());
 			
 		}
+		
+		initSettings();
 	}
 	
 	private void setProxy ()
@@ -596,33 +622,38 @@ public class Browser extends SherlockActivity implements
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(this);
 
+		String proxyHost = prefs.getString("pref_proxy_host", DEFAULT_PROXY_HOST);
+		int proxyPort = Integer.parseInt(prefs.getString("pref_proxy_port", DEFAULT_PROXY_PORT));
+		
+		if (proxyHost != null && proxyHost.equalsIgnoreCase("localhost") && proxyPort == 8118)
+		{
+			//check if Orbot is installed running
+			OrbotHelper oh = new OrbotHelper(this.getApplicationContext());
+			
+			if (!oh.isOrbotInstalled())
+			{
+				oh.promptToInstall(this);
+			}
+			else if (!oh.isOrbotRunning())
+			{
+				oh.requestOrbotStart(this);
+			}
+			
+		}
+		
 		try { 
-			proxyWorked = OrbotHelper.setProxy(this, prefs.getString("pref_proxy_host", DEFAULT_PROXY_HOST),Integer.parseInt(prefs.getString("pref_proxy_port", DEFAULT_PROXY_PORT)));
+			
+			proxyWorked = WebkitProxy.setProxy(this, proxyHost,proxyPort);
 		}
 		catch (Exception e)
 		{
 			proxyWorked = false;
 		}
 		
-		
-		//boolean proxyWorked = ProxySettings.setProxy(this, prefs.getString("pref_proxy_host", DEFAULT_PROXY_HOST),Integer.parseInt(prefs.getString("pref_proxy_port", DEFAULT_PROXY_PORT)));
-		
 		if (!proxyWorked)
 		{
 			Toast.makeText(this, "Orweb is unable to configure proxy settings on your device.", Toast.LENGTH_LONG).show();
 			
-		}
-		else
-		{
-			
-			boolean orbotInstalled = isAppInstalled("org.torproject.android");
-
-			if (!orbotInstalled)
-			{
-				Toast.makeText(this, getString(R.string.torProxyNotInstalled), Toast.LENGTH_LONG).show();
-						
-			}
-	
 		}
 	}
 	
@@ -715,6 +746,7 @@ public class Browser extends SherlockActivity implements
 	 * @param url
 	 *            the URL of the current page
 	 */
+	/*
 	private void updateSettingsPerUrl(String url) {
 		if (url.startsWith(getString(R.string.internal_web_url))) {
 			// This built-in home page should always show images
@@ -731,9 +763,11 @@ public class Browser extends SherlockActivity implements
 							prefs.getBoolean(
 									getString(R.string.pref_javascript), true));
 			
-			resetUserAgent(prefs);
+			String ua = prefs.getString("pref_user_agent", mWebView.getSettings().getUserAgentString());
+			mWebView.getSettings().setUserAgentString(ua);
+			
 		}
-	}
+	}*/
 
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
@@ -775,7 +809,7 @@ public class Browser extends SherlockActivity implements
 			//Log.i("Shadow", "Page started");
 			mCookieManager.clearBlockedCookies();
 			// Update image loading settings
-			updateSettingsPerUrl(url);
+		//	updateSettingsPerUrl(url);
 			// Turn on the progress bar and set it to 10%
 		//	 getWindow().requestFeature(Window.FEATURE_PROGRESS);
 
@@ -794,6 +828,7 @@ public class Browser extends SherlockActivity implements
 			
 			updateInLoadMenuItems();
 			view.clearFormData();
+			view.clearCache(true);
 			super.onPageFinished(view, url);
 		}
 	

@@ -69,6 +69,9 @@ public class BrowserWebView extends WebView implements AnimationListener {
 	private void initView ()
 	{
 		getSettings().setAllowFileAccess(false);
+		getSettings().setAllowFileAccessFromFileURLs(false);
+		getSettings().setAllowUniversalAccessFromFileURLs(false);
+		
 		
 		getSettings().setBuiltInZoomControls(true);
 		getSettings().setSupportZoom(true);
@@ -81,6 +84,7 @@ public class BrowserWebView extends WebView implements AnimationListener {
 		
 		getSettings().setAppCacheEnabled(false);
 		getSettings().setDatabaseEnabled(false);
+		getSettings().setCacheMode(android.webkit.WebSettings.LOAD_NO_CACHE);
 		
 		getSettings().setPluginState(PluginState.ON_DEMAND);
 		
@@ -90,11 +94,13 @@ public class BrowserWebView extends WebView implements AnimationListener {
 		setLongClickable(true);
 		
 		
-		if (Build.VERSION.SDK_INT > 11)
+		if (Build.VERSION.SDK_INT >= 11)
 		{
 			getSettings().setDisplayZoomControls(true);
 			getSettings().setAllowContentAccess(false);
 			getSettings().setEnableSmoothTransition(true);
+			getSettings().setAllowContentAccess(false);
+			
 			
 		}
 		
