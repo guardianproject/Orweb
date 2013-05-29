@@ -212,6 +212,7 @@ public class Browser extends SherlockActivity implements
 			
 	
 			Message msg = new Message();
+        	
 			msg.getData().putString("url", starturl);
 			mLoadHandler.sendMessage(msg);
 		}
@@ -255,7 +256,7 @@ public class Browser extends SherlockActivity implements
 	        
 	        	final AlertDialog.Builder downloadDialog = new AlertDialog.Builder(Browser.this);
 		        downloadDialog.setTitle(info.guardianproject.browser.R.string.title_download_manager);
-		        downloadDialog.setMessage(info.guardianproject.browser.R.string.prompt_would_you_like_to_download_this_file_ + ' ' + mimetype + ":" + url);
+		        downloadDialog.setMessage(getString(info.guardianproject.browser.R.string.prompt_would_you_like_to_download_this_file_) + '\n' + mimetype + '\n' + url);
 		        downloadDialog.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 		            public void onClick(DialogInterface dialogInterface, int i) {
 		            	 
@@ -281,53 +282,45 @@ public class Browser extends SherlockActivity implements
 		private void doProxiedDownload (String url, String mimetype)
 		{
 			   
-        	if (mimetype != null && (mimetype.startsWith("text") || mimetype.startsWith("image")))
-        	{
-        		//if this is text or an image, just show in Orweb itself
-        		Message msg = new Message();
-				msg.getData().putString("url", url);
-				mLoadHandler.sendMessage(msg);
-        	}
-        	else 
-        	{
-        		Uri uri = Uri.parse(url);
-        		
-        		String filename = java.util.UUID.randomUUID().toString(); //generate random name
-        		
-        		String[] fileparts = uri.getLastPathSegment().split(".");
-        		if (fileparts.length > 0)
-        		{
-        			filename += "." + fileparts[fileparts.length-1];
-        		}
-        		
-        		String newUrl = "http://localhost:9999/" + filename + "?url=" + URLEncoder.encode(url);
-        		uri = Uri.parse(newUrl);
-        		
-        		boolean doStream = false;//(mimetype.startsWith("video") || mimetype.startsWith("audio"));
-        		
-        		 try
-        		 {
+        
+    		Uri uri = Uri.parse(url);
+    		
+    		String filename = java.util.UUID.randomUUID().toString(); //generate random name
+    		
+    		String[] fileparts = uri.getLastPathSegment().split(".");
+    		if (fileparts.length > 0)
+    		{
+    			filename += "." + fileparts[fileparts.length-1];
+    		}
+    		
+    		String newUrl = "http://localhost:9999/" + filename + "?url=" + URLEncoder.encode(url);
+    		uri = Uri.parse(newUrl);
+    		
+    		boolean doStream = false;
+    		
+    		 try
+    		 {
 
-        			initDownloadManager();
-        				
-        			 if (doStream)
-        			 {
-        				 Intent intent = new Intent(Intent.ACTION_VIEW);
-        			    	//String metaMime = mimeType.substring(0,mimeType.indexOf("/")) + "/*";
-        			    	intent.setDataAndType(uri, mimetype);
-        			   // 	intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        			   	 	startActivity(intent);
-        			 }
-        			 else
-        			 {
-        				 doDownloadManager(uri);
-        			 }
-        		 }
-        		 catch (Exception e)
-        		 {
-        			 Log.e("Orweb","problem downloading: " + uri,e);
-        		 }
-        	}
+    			initDownloadManager();
+    				
+    			 if (doStream)
+    			 {
+    				 Intent intent = new Intent(Intent.ACTION_VIEW);
+    			    	//String metaMime = mimeType.substring(0,mimeType.indexOf("/")) + "/*";
+    			    	intent.setDataAndType(uri, mimetype);
+    			   // 	intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+    			   	 	startActivity(intent);
+    			 }
+    			 else
+    			 {
+    				 doDownloadManager(uri);
+    			 }
+    		 }
+    		 catch (Exception e)
+    		 {
+    			 Log.e("Orweb","problem downloading: " + uri,e);
+    		 }
+        	
         
 	}
 	
@@ -1246,14 +1239,40 @@ public class Browser extends SherlockActivity implements
 		                        if (DownloadManager.STATUS_SUCCESSFUL == c
 		                                .getInt(columnIndex)) {
 		 
-		                        	String uriString = c
+		                        	final String uriString = c
 		                                    .getString(c
 		                                            .getColumnIndex(DownloadManager.COLUMN_LOCAL_URI));
 		                        
+		                        	final String mimetype = c
+		                                    .getString(c
+		                                            .getColumnIndex(DownloadManager.COLUMN_MEDIA_TYPE));
+		                        
+		                        	
 		                        	if (uriString != null)
 		                        	{
-		                        		Intent intentView = new Intent(Intent.ACTION_VIEW, Uri.parse(uriString));
-		                        		Browser.this.startActivity(intentView);
+		                        		
+		                        		final AlertDialog.Builder downloadDialog = new AlertDialog.Builder(Browser.this);
+		                		        downloadDialog.setTitle(info.guardianproject.browser.R.string.title_download_manager);
+		                		        downloadDialog.setMessage(getString(R.string.prompt_do_you_want_to_open_this_file_for_viewing_) + '\n' + mimetype + '\n' + uriString);
+		                		        downloadDialog.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+		                		            public void onClick(DialogInterface dialogInterface, int i) {
+		                		            	 
+
+				                        		Intent intentView = new Intent(Intent.ACTION_VIEW);
+				                        		intentView.setDataAndType(Uri.parse(uriString), mimetype);
+				                        		
+				                        		Browser.this.startActivity(intentView);
+				                        		
+		                		        		 dialogInterface.dismiss();
+		                		            }
+		                		        });
+		                		        downloadDialog.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+		                		            public void onClick(DialogInterface dialogInterface, int i) {
+		                		            }
+		                		        });
+		                		        
+		                		        downloadDialog.show();
+		                        		
 		                        	}
 									
 		                        }
@@ -1265,6 +1284,9 @@ public class Browser extends SherlockActivity implements
 		  BroadcastReceiver onNotificationClick=new BroadcastReceiver() {
 		    public void onReceive(Context ctxt, Intent intent) {
 		     
+		    	Intent i = new Intent();
+		        i.setAction(DownloadManager.ACTION_VIEW_DOWNLOADS);
+		        Browser.this.startActivity(i);
 		    }
 		  };
 		  
@@ -1304,7 +1326,6 @@ public class Browser extends SherlockActivity implements
 				catch (Exception e)
 				{
 					Log.e("Orweb","unable to proxy download",e);
-					
 					return new Response(Status.FORBIDDEN,"text/plain",e.getLocalizedMessage());
 				}
 			}
