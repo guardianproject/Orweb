@@ -69,8 +69,6 @@ public class BrowserWebView extends WebView implements AnimationListener {
 	private void initView ()
 	{
 		getSettings().setAllowFileAccess(false);
-		getSettings().setAllowFileAccessFromFileURLs(false);
-		getSettings().setAllowUniversalAccessFromFileURLs(false);
 		
 		
 		getSettings().setBuiltInZoomControls(true);
@@ -99,10 +97,16 @@ public class BrowserWebView extends WebView implements AnimationListener {
 		{
 			getSettings().setDisplayZoomControls(true);
 			getSettings().setAllowContentAccess(false);
-			getSettings().setEnableSmoothTransition(true);
 			getSettings().setAllowContentAccess(false);
 			
 			
+		}
+		
+		if (Build.VERSION.SDK_INT >= 16)
+		{
+
+			getSettings().setAllowFileAccessFromFileURLs(false);
+			getSettings().setAllowUniversalAccessFromFileURLs(false);
 		}
 		
 	}

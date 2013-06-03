@@ -78,6 +78,7 @@ import android.view.View.OnTouchListener;
 import android.webkit.CookieSyncManager;
 import android.webkit.DownloadListener;
 import android.webkit.SslErrorHandler;
+import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
@@ -167,6 +168,8 @@ public class Browser extends SherlockActivity implements
 			mCookieManager.setAcceptsCookies(sendCookies);
 			
 			mWebView.setBlockedCookies(mCookieManager.hasBlockedCookies());
+			
+			getSherlock().getActionBar().show();
 			
 			mWebView.loadUrl(url, aHeaders);
 		}
@@ -325,13 +328,26 @@ public class Browser extends SherlockActivity implements
 	}
 	
 	
+	private ValueCallback<Uri> mUploadMessage;
+	private final static int FILECHOOSER_RESULTCODE = 1;
+
 	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
+	protected void onActivityResult(int requestCode, int resultCode,
+	        Intent intent) {
 		
 		if (mWebView != null)
 			mWebView.reload();
 		
+		
+	    if (requestCode == FILECHOOSER_RESULTCODE) {
+	        if (null == mUploadMessage)
+	            return;
+	        Uri result = intent == null || resultCode != RESULT_OK ? null
+	                : intent.getData();
+	        mUploadMessage.onReceiveValue(result);
+	        mUploadMessage = null;
+
+	    }
 	}
 
 	public void initSettings ()
@@ -908,6 +924,8 @@ public class Browser extends SherlockActivity implements
 	 */
 	private void updateTitle(String url, String title) {
 		
+		getSherlock().getActionBar().show();
+
 		setTitle(buildUrlTitle(url, title));
 		
 	}
@@ -1127,6 +1145,7 @@ public class Browser extends SherlockActivity implements
 		
 		
 		
+		
 		@Override
 		public void onProgressChanged(WebView view, int newProgress) {
 
@@ -1153,6 +1172,18 @@ public class Browser extends SherlockActivity implements
 			super.onReceivedTitle(view, title);
 		}
 
+		 // The undocumented magic method override
+	    // Eclipse will swear at you if you try to put @Override here
+	    public void openFileChooser(ValueCallback<Uri> uploadMsg) {
+
+	        mUploadMessage = uploadMsg;
+	        Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+	        i.addCategory(Intent.CATEGORY_OPENABLE);
+	        i.setType("*/*");
+	        Browser.this.startActivityForResult(
+	                Intent.createChooser(i, "File Browser"),
+	                FILECHOOSER_RESULTCODE);
+	    }
 	};
 
 	@Override
