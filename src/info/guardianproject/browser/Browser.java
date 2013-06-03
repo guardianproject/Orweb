@@ -34,6 +34,7 @@ import info.guardianproject.onionkit.web.WebkitProxy;
 import java.io.BufferedInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -64,6 +65,7 @@ import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.PaintDrawable;
 import android.net.Uri;
 import android.net.http.SslError;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -133,6 +135,8 @@ public class Browser extends SherlockActivity implements
 	private boolean mClearHistory = false;
 	private boolean mDoJavascript = false;
 	
+	private OrbotHelper mOrbotHelper = null;
+	
 	
 	public static String DEFAULT_PROXY_HOST = "localhost";
 	public static String DEFAULT_PROXY_PORT = "8118";
@@ -155,23 +159,35 @@ public class Browser extends SherlockActivity implements
 			super.handleMessage(msg);
 			
 			String url = msg.getData().getString("url");
-			url = smartUrlFilter(url);
-			
-			Map<String,String> aHeaders = new HashMap<String,String>();
-			aHeaders.put("Accept", DEFAULT_HEADER_ACCEPT);
-			
-			if (!mShowReferrer)
-				aHeaders.put("Referer","https://check.torproject.org");
-			
-			boolean sendCookies = mCookieManager.sendCookiesFor(url);
-			
-			mCookieManager.setAcceptsCookies(sendCookies);
-			
-			mWebView.setBlockedCookies(mCookieManager.hasBlockedCookies());
-			
-			getSherlock().getActionBar().show();
-			
-			mWebView.loadUrl(url, aHeaders);
+	
+			if (url != null)
+			{
+				url = smartUrlFilter(url);
+				
+				Map<String,String> aHeaders = new HashMap<String,String>();
+				aHeaders.put("Accept", DEFAULT_HEADER_ACCEPT);
+				
+				if (!mShowReferrer)
+					aHeaders.put("Referer","https://check.torproject.org");
+				
+				boolean sendCookies = mCookieManager.sendCookiesFor(url);
+				
+				mCookieManager.setAcceptsCookies(sendCookies);
+				
+				mWebView.setBlockedCookies(mCookieManager.hasBlockedCookies());
+				
+				getSherlock().getActionBar().show();
+				
+				mWebView.loadUrl(url, aHeaders);
+			}
+			else if (msg.what == 1) //install Orbot
+			{
+				mOrbotHelper.promptToInstall(Browser.this);
+			}
+			else if (msg.what == 2) //start Orbot
+			{
+				mOrbotHelper.requestOrbotStart(Browser.this);
+			}
 		}
 
 	};
@@ -201,19 +217,19 @@ public class Browser extends SherlockActivity implements
 				getString(R.string.default_homepage));
 
 		initUI();
+
+		//check if Orbot is installed running
+		mOrbotHelper = new OrbotHelper(this.getApplicationContext());
+		
 		
 		initSettings();
-		
+
 		CacheManager.getCacheManager().setBrowser(this);
 		
-		if (savedInstanceState != null)
-		      mWebView.restoreState(savedInstanceState);
-		else
+		boolean handled = handleIntent(getIntent());
+		
+		if (!handled)
 		{
-			
-			handleIntent(getIntent());
-			
-	
 			Message msg = new Message();
         	
 			msg.getData().putString("url", starturl);
@@ -245,6 +261,14 @@ public class Browser extends SherlockActivity implements
 		
 		mCookieIcon = (LinearLayout) findViewById(R.id.CookieIcon);
 		//mTorStatus = (TextView) findViewById(R.id.torStatus);
+		mCookieIcon.setOnClickListener(this);
+
+		
+		// Misc
+		mGenericFavicon = getResources().getDrawable(
+				R.drawable.app_web_browser_sm);
+
+		
 
 		// Set up UI elements
 		//mStartTor.setOnClickListener(this);
@@ -368,30 +392,21 @@ public class Browser extends SherlockActivity implements
 		
 		try
 		{
-			
-			
-			mWebView.getSettings().setLoadsImagesAutomatically(true);
+
+			mWebView.getSettings().setLoadsImagesAutomatically(prefs.getBoolean("pref_images", true));
+			 
 			mWebView.setBlockedCookiesView(mCookieIcon);
-			
+
 			mWebView.clearFormData();
 			mWebView.clearCache(true);
 			mWebView.clearHistory();
 			
-			mCookieIcon.setOnClickListener(this);
-			
 			String ua = prefs.getString("pref_user_agent", mWebView.getSettings().getUserAgentString());
 			mWebView.getSettings().setUserAgentString(ua);
-			
-			// Misc
-			mGenericFavicon = getResources().getDrawable(
-					R.drawable.app_web_browser_sm);
-	
 			mCookieManager.setBehaviour(prefs.getString("pref_cookiebehaviour",
 					"whitelist"));
 			
 
-			// mWebView.getSettings().setLoadsImagesAutomatically(prefs.getBoolean(
-			// getString(R.string.pref_images), false));
 			
 			mDoJavascript = 
 					prefs.getBoolean(getString(R.string.pref_javascript), false);
@@ -806,30 +821,17 @@ public class Browser extends SherlockActivity implements
 	
 	private void setProxy ()
 	{
-		boolean proxyWorked = false;
-		
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(getApplicationContext());
 
 		mProxyHost = prefs.getString("pref_proxy_host", DEFAULT_PROXY_HOST);
 		mProxyPort = Integer.parseInt(prefs.getString("pref_proxy_port", DEFAULT_PROXY_PORT));
+	
+		new checkTorTask().execute("foo");
 		
-		if (mProxyHost != null && mProxyHost.equalsIgnoreCase("localhost") && mProxyPort == 8118)
-		{
-			//check if Orbot is installed running
-			OrbotHelper oh = new OrbotHelper(this.getApplicationContext());
-			
-			if (!oh.isOrbotInstalled())
-			{
-				oh.promptToInstall(this);
-			}
-			else if (!oh.isOrbotRunning())
-			{
-				oh.requestOrbotStart(this);
-			}
-			
-		}
+		boolean proxyWorked = false;
 		
+		//enable the proxy whether Tor is running or not
 		try { 
 			
 			proxyWorked = WebkitProxy.setProxy(this, mProxyHost,mProxyPort);
@@ -844,7 +846,36 @@ public class Browser extends SherlockActivity implements
 			Toast.makeText(this, "Orweb is unable to configure proxy settings on your device.", Toast.LENGTH_LONG).show();
 			
 		}
+		
 	}
+	
+	 private class checkTorTask extends AsyncTask<String, Integer, Long> {
+	     protected Long doInBackground(String... urls) {
+	         
+	    		
+	 		
+	 		if (mProxyHost.equalsIgnoreCase("localhost") && mProxyPort == 8118)
+	 		{
+	 			
+	 			if (!mOrbotHelper.isOrbotInstalled())
+	 			{
+	 			//	oh.promptToInstall(this);
+	 				mLoadHandler.sendEmptyMessage(1);
+	 				
+	 			}
+	 			else if (!mOrbotHelper.isOrbotRunning())
+	 			{
+	 			//	oh.requestOrbotStart(this);
+	 				mLoadHandler.sendEmptyMessage(2);
+	 				
+	 			}
+	 			
+	 		}
+	    	 
+	         return 1l;
+	     }
+
+	 }
 	
 
 	 private boolean isAppInstalled(String uri) {
@@ -1072,7 +1103,7 @@ public class Browser extends SherlockActivity implements
 		handleIntent(intent);
 	}
 	
-	private void handleIntent(Intent intent)
+	private boolean handleIntent(Intent intent)
 	{
 		
 		if (intent != null)
@@ -1085,6 +1116,7 @@ public class Browser extends SherlockActivity implements
 				msg.getData().putString("url", url);
 				mLoadHandler.sendMessage(msg);
 				
+				return true;
 				
 			} else if (Intent.ACTION_VIEW.equals(action)) {
 				// Navigate to the URL
@@ -1094,8 +1126,12 @@ public class Browser extends SherlockActivity implements
 				Message msg = new Message();
 				msg.getData().putString("url", url);
 				mLoadHandler.sendMessage(msg);
+				
+				return true;
 			}
 		}
+		
+		return false;
 	}
 
 	/**
