@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <string name="pref_images">pref_bilder</string>
-  <string name="app_name">Orweb V2</string>
+  <string name="pref_javascript">pref_javascript</string>
+  <string name="app_name">Orweb</string>
   <string name="errorHtml">&lt;b&gt;Sorry, aber etwas ging schief ...__ lessthan__/b&gt;</string>
   <string name="torInactive">Anonymous Datenverbindung läuft nicht</string>
   <string name="torConnecting">Anschließen ...</string>
@@ -10,6 +11,8 @@
   <string name="search_hint">Web-Adresse oder suchen</string>
   <string name="search_button_text">Gehen</string>
   <string name="default_homepage">https://check.torproject.org</string>
+  <string name="pref_homepage">pref_homepage</string>
+  <string name="pref_clearcache">pref_clearcache</string>
   <string name="internal_web_url">http://orweb/</string>
   <string name="torProxyNotInstalled">Orweb erfordert die Orbot Anwendung installiert werden soll.</string>
   <string name="cookiesBlockedFirstLine">Kekse</string>
@@ -30,4 +33,30 @@
   <string name="menu_about">Über</string>
   <string name="menu_settings">Einstellungen</string>
   <string name="menu_reload">Nachladen</string>
+  <string name="menu_homepage">Homepage</string>
+  <string name="set_locale_title">Lokal</string>
+  <string name="set_locale_summary">Lokal auswählen und Sprache für Orbot</string>
+  <string name="load_images">Bilder laden</string>
+  <string name="display_images_on_web_pages">Bilder in Webseiten anzeigen</string>
+  <string name="enable_javascript">JavaScript aktivieren</string>
+  <string name="set_homepage">Homepage</string>
+  <string name="clear_cache">Cache reinigen</string>
+  <string name="clear_cache_summary">Inhalt der seiten im Cache reinigen</string>
+  <string name="clear_cache_message">Cache wird gereinigt.</string>
+  <string name="ref_title"></string>
+  <string name="prompt_do_you_want_to_open_this_file_for_viewing_">Möchten Sie diese Datei für die Anzeige öffnen?</string>
+  <string name="ref_summary">Die Referrer Information beinhaltet den Browser Verlauf</string>
+  <string name="history_title">History leeren</string>
+  <string name="history_summary">Löschen Sie den Verlauf aller browser, als ihr Browser (kein zurück nav!)</string>
+  <string name="clear_cookies_title">Cookie Daten löschen</string>
+  <string name="clear_cookies_summary">Alle Browser Cookies löschen</string>
+  <string name="clear_cookies_message">Die Cookies werden gelöscht.</string>
+  <string name="cookie_behave_title">Cookie Verhalten </string>
+  <string name="cookie_behave_summary">Cookies akzeptieren oder blocken</string>
+  <string name="cookie_whitelist_title">Cookie Whitelist</string>
+  <string name="cookie_whitelist_summary">Stellen Sie die Website ein die Cookies speichern kann</string>
+  <string name="add_site_whitelist">Seite in die Whitelist hinzufügen</string>
+  <string name="title_download_manager">Download Manager</string>
+  <string name="prompt_would_you_like_to_download_this_file_">Möchten Sie diese Datei herunterladen?</string>
+  <string name="prompt_do_you_want_to_open_this_file_for_viewing_">Möchten Sie diese Datei für die Anzeige öffnen?</string>
 </resources>

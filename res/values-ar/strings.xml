@@ -2,7 +2,7 @@
 <resources>
   <string name="pref_images">خيارات الصور</string>
   <string name="pref_javascript">خيارات جافاسكريبت</string>
-  <string name="app_name">Orweb v2</string>
+  <string name="app_name">أور ويب</string>
   <string name="errorHtml">عذراً، حصل خطأ ما.</string>
   <string name="torInactive">الاتصال مجهول الهوية لا يعمل</string>
   <string name="torConnecting">الاتصال...</string>
@@ -33,4 +33,30 @@
   <string name="menu_about">حول</string>
   <string name="menu_settings">إعدادات</string>
   <string name="menu_reload">تحديث</string>
+  <string name="menu_homepage">صفحة البداية</string>
+  <string name="set_locale_title">اختر مكانك </string>
+  <string name="set_locale_summary">اختر مكانك ولغتك لأوربوت</string>
+  <string name="load_images">حمل الصور</string>
+  <string name="display_images_on_web_pages">اعرض الصور بصفحات الويب</string>
+  <string name="enable_javascript">شغل الجافاسكريبت</string>
+  <string name="set_homepage">اختر صفحة البداية</string>
+  <string name="clear_cache">امسح البيانات المؤقتة</string>
+  <string name="clear_cache_summary">امسح كل البيانات المؤقتة</string>
+  <string name="clear_cache_message">البيانات المؤقتة ستمسح</string>
+  <string name="ref_title"></string>
+  <string name="prompt_do_you_want_to_open_this_file_for_viewing_">هل تريد أن تفتح هذا الملف لعرضه؟</string>
+  <string name="ref_summary">بيانات صفحة المصدر قد تظهر بعض من نشاطات تصفحك</string>
+  <string name="history_title">مسح سجل التصفح لزر الرجوع</string>
+  <string name="history_summary">امسح سجل التصفح أثناء تصفحك (لا يمكنك ضغط زر الرجوع)</string>
+  <string name="clear_cookies_title">امسح بيانات الكوكيز</string>
+  <string name="clear_cookies_summary">امسح كل الكوكيز</string>
+  <string name="clear_cookies_message">سيتم مسح الكوكيز</string>
+  <string name="cookie_behave_title">سلوك الكوكيز</string>
+  <string name="cookie_behave_summary">اقبل او ارفض الكوكيز</string>
+  <string name="cookie_whitelist_title">المواقع المسموحة للكوكيز</string>
+  <string name="cookie_whitelist_summary">اختر اي صفحة تستطيع حفظ الكوكيز</string>
+  <string name="add_site_whitelist">ادخل الموقع بقائمة المواقع المسموحة</string>
+  <string name="title_download_manager">مدير التحميل</string>
+  <string name="prompt_would_you_like_to_download_this_file_">هل تود تحميل هذا الملف؟</string>
+  <string name="prompt_do_you_want_to_open_this_file_for_viewing_">هل تريد أن تفتح هذا الملف لعرضه؟</string>
 </resources>

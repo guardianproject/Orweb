@@ -74,4 +74,6 @@
 
 		<string name="prompt_do_you_want_to_open_this_file_for_viewing_">Do you want to open this file for viewing?</string>
 
+		<string name="orweb_proxy_error">Orweb is unable to configure proxy settings on your device.</string>
+
 </resources>

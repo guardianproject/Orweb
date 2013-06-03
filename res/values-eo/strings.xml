@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+  <string name="pref_images">pref_images</string>
+  <string name="pref_javascript">pref_javascript</string>
+  <string name="errorHtml">&lt;b&gt;Pardonu, sed io misis...&lt;/b&gt;</string>
+  <string name="torInactive">Sennoma datumkonekto ne funkcias</string>
+  <string name="torConnecting">Ni konektas...</string>
+  <string name="starttor">Agordi</string>
+  <string name="search_label">Retesplorilo</string>
+  <string name="search_hint">Retadreso aŭ serĉoĉeno</string>
+  <string name="search_button_text">Ek</string>
+  <string name="default_homepage">https://check.torproject.org/?lang=eo</string>
+  <string name="pref_homepage">pref_homepage</string>
+  <string name="pref_clearcache">pref_clearcache</string>
+  <string name="internal_web_url">http://orweb/</string>
+  <string name="torProxyNotInstalled">Por uzi Orveb vi devas unue instali la Orbot aplikaĵon.</string>
+  <string name="cookiesBlockedFirstLine">Kuketoj</string>
+  <string name="cookiesBlockedSecondLine">Blokitaj</string>
+  <string name="allCookiesAreBlocked">Ĉiuj kuketoj estas blokitaj. Vi rajtas ŝanĝi ĉi tiun konduton per la agordoj.</string>
+  <string name="acceptCookiesFrom">Akcepti kuketojn el:</string>
+  <string name="willAddToWhitelist">Ŝalti ĉi tiujn retejojn aldonos ilin al via listo de retejoj permesitaj defini kuketojn.</string>
+  <string name="pref_proxy_group">Agordoj de retprokurilo</string>
+  <string name="pref_proxy_host">Gastiga servo de retprokurilo</string>
+  <string name="pref_proxy_host_summary">Retnomo aŭ IP-adreso de HTTP retprokurila servo</string>
+  <string name="pref_proxy_port">Pordo de retprokurilo</string>
+  <string name="pref_proxy_port_summary">La konektilpordo de la HTTP retprokurilo</string>
+  <string name="pref_user_agent_summary">Ŝanĝi kiel la retesplorilo identigas sin</string>
+  <string name="pref_user_agent_title">Klienta aplikaĵo</string>
+  <string name="menu_go">Ek</string>
+  <string name="menu_stop">Ĉesi</string>
+  <string name="menu_forward">Antaŭen</string>
+  <string name="menu_about">Pri</string>
+  <string name="menu_settings">Agordoj</string>
+  <string name="menu_reload">Reŝarĝi</string>
+  <string name="set_locale_title">Agordi lokaĵaron</string>
+  <string name="set_locale_summary">Elekti la lokaĵaron kaj lingvon de Orbot</string>
+  <string name="load_images">Ŝarĝi bildojn</string>
+  <string name="display_images_on_web_pages">Montri bildojn de retejoj</string>
+  <string name="enable_javascript">Ebligi JavaScript</string>
+  <string name="set_homepage">Agordi ekan paĝon</string>
+  <string name="clear_cache">Viŝi kaŝmemoron</string>
+  <string name="clear_cache_summary">Viŝi ĉian retejan enhavon de kaŝmemoro.</string>
+  <string name="clear_cache_message">Ni viŝos la kaŝmemoron.</string>
+  <string name="ref_summary">Informo de referencanto povas malkaŝi vian retesploran historion</string>
+  <string name="clear_cookies_title">Viŝi kuketojn</string>
+  <string name="clear_cookies_summary">Viŝi ĉiujn kuketojn de la retesplorilo</string>
+  <string name="clear_cookies_message">Ni viŝoŝ la kuketojn.</string>
+  <string name="cookie_behave_title">Konduto de kuketoj</string>
+  <string name="cookie_behave_summary">Akcepti aŭ bari kuketojn</string>
+  <string name="cookie_whitelist_title">Listo de retejoj permsitaj difini kuketojn</string>
+  <string name="cookie_whitelist_summary">Agordi retejojn permesitajn difini kuketojn</string>
+  <string name="add_site_whitelist">Permesi retejon difini kuketojn</string>
+</resources>

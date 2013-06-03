@@ -2,7 +2,6 @@
 <resources>
   <string name="pref_images">pref_images</string>
   <string name="pref_javascript">pref_javascript</string>
-  <string name="app_name">مرورگر پیازی نسخه 2</string>
   <string name="errorHtml">&lt;b&gt;Sorry ،  یک جای کار خراب است...__ lessthan__/b&gt;</string>
   <string name="torInactive">اتصال ارتباطات امن در حال اجرا نیست</string>
   <string name="torConnecting">در حال اتصال...</string>
@@ -42,7 +41,6 @@
   <string name="clear_cache">کش را خالی کن</string>
   <string name="clear_cache_summary">تمام صفحات کش شده را پاک کن</string>
   <string name="clear_cache_message">کش پاک خواهد شد</string>
-  <string name="ref_title">اطلاعات معرفی کننده را بفرست</string>
   <string name="ref_summary">اطلاعات معرفی کننده، شاید تاریخچه جستجوی شما را فاش کند</string>
   <string name="clear_cookies_title">اطلاعات کلوچه را پاک کن</string>
   <string name="clear_cookies_summary">تمام کلوچه های جستجو را پاک کن</string>
