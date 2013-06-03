@@ -27,16 +27,26 @@
 		<item>العربية</item>
 		<item>پارسی</item>
 		<item>中文(简体)</item>
+		<item>Dansk</item>
 		<item>Deutsche</item>
 		<item>Español</item>
+		<item>Esperanto</item>
 		<item>Français</item>
 		<item>Italian</item>
 		<item>Nederlands</item>
 		<item>Magyar</item>
+		<item>Norwegian Bokmål</item>
+		<item>Polski</item>
 		<item>Português</item>
 		<item>Português Brasileiro</item>
-		<item>русский язык</item>
-		
+		<item>русский</item>
+		<item>Slovenčina</item>
+		<item>Swedish</item>
+		<item>Tibetan བོད་སྐད།</item>
+		<item>Tiếng Việt</item>
+		<item>Tϋrkçe</item>
+		<item>Čeština</item>
+		<item>ελληνικά</item>
 	</string-array>
 	<string-array name="languages_values">
 		<item>xx</item>
@@ -44,19 +54,25 @@
 		<item>ar</item>
 		<item>fa</item>
 		<item>zh</item>
+		<item>da</item>
 		<item>de</item>
 		<item>es</item>
+		<item>eo</item>
 		<item>fr</item>
 		<item>it</item>
 		<item>nl</item>
 		<item>hu</item>
+		<item>nb_NO</item>
+		<item>pl</item>
 		<item>pt</item>
 		<item>pt_BR</item>
 		<item>ru</item>
-		
-		
-		
-		
-		
+		<item>sk</item>
+		<item>sv</item>
+		<item>bo</item>	
+		<item>vi</item>
+		<item>tr</item>
+		<item>cs</item>
+		<item>el</item>	
 	</string-array>
 </resources>
