@@ -41,8 +41,8 @@
 <string name="menu_homepage">Homepage</string>
 
 
-<string name="set_locale_title">Set Locale</string>
-<string name="set_locale_summary">Choose the locale and language for Orbot</string>
+<string name="set_locale_title">Set Language</string>
+<string name="set_locale_summary">Choose the default language for Orweb</string>
 <string name="load_images">Load images</string>
 <string name="display_images_on_web_pages">Display images on Web pages</string>
 <string name="enable_javascript">Enable JavaScript</string>
@@ -57,7 +57,7 @@
 <string name="ref_summary">Referrer information may reveal your browsing history</string>
 
 <string name="history_title">Clear Back History</string>
-<string name="history_summary">Clear all browser history as you browser (no back nav!)</string>
+<string name="history_summary">Clear all browser history as you browser. Warning: this cannot be undone.</string>
 
 <string name="clear_cookies_title">Clear cookie data</string>
 <string name="clear_cookies_summary">Clear all the browser cookies</string>
