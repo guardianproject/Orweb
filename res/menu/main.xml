@@ -9,6 +9,8 @@
 <item android:title="@string/menu_settings" android:id="@+id/menu_settings" android:icon="@drawable/ic_menu_preferences"></item>
 <item android:id="@+id/menu_stop" android:title="@string/menu_stop" android:visible="false" android:icon="@drawable/ic_menu_stop"></item>
 <item android:id="@+id/menu_stop_reload"></item>
+<item android:title="@string/menu_clear" android:id="@+id/menu_clear" android:icon="@drawable/ic_menu_close_clear_cancel"></item>
+
 <item android:id="@+id/menu_about" android:title="@string/menu_about" android:icon="@drawable/ic_menu_info_details"></item>
 <item android:id="@+id/menu_homepage" android:icon="@drawable/ic_menu_home" android:title="@string/menu_homepage"></item>
 </menu>

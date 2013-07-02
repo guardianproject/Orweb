@@ -40,9 +40,9 @@
 <string name="menu_reload">Reload</string>
 <string name="menu_homepage">Homepage</string>
 
-
-<string name="set_locale_title">Set Language</string>
-<string name="set_locale_summary">Choose the default language for Orweb</string>
+<string name="menu_clear">Clear History/Cache</string>
+<string name="set_locale_title">Set Locale</string>
+<string name="set_locale_summary">Choose the locale and language for Orbot</string>
 <string name="load_images">Load images</string>
 <string name="display_images_on_web_pages">Display images on Web pages</string>
 <string name="enable_javascript">Enable JavaScript</string>

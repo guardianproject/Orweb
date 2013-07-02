@@ -34,7 +34,7 @@ import info.guardianproject.onionkit.web.WebkitProxy;
 import java.io.BufferedInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.URL;
+import java.io.InputStream;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -404,20 +404,11 @@ public class Browser extends SherlockActivity implements
 			String ua = prefs.getString("pref_user_agent", mWebView.getSettings().getUserAgentString());
 			mWebView.getSettings().setUserAgentString(ua);
 			mCookieManager.setBehaviour(prefs.getString("pref_cookiebehaviour",
-					"whitelist"));
-			
-
+					"accept"));
 			
 			mDoJavascript = 
 					prefs.getBoolean(getString(R.string.pref_javascript), false);
 			mWebView.getSettings().setJavaScriptEnabled(mDoJavascript);
-			mCookieManager.setBehaviour(prefs.getString("pref_cookiebehaviour",
-					"whitelist"));
-//			mAnonProxy
-	//				.setSendReferrer(prefs.getBoolean("pref_sendreferrer", false));
-
-			
-			
 	
 			
 		}
@@ -738,6 +729,10 @@ public class Browser extends SherlockActivity implements
 			startActivity(new Intent(this, EditPreferences.class));
 			return true;
 
+		case R.id.menu_clear:
+			clearCachedData();
+			return true;
+			
 		case R.id.menu_about:
 		
 	
@@ -1022,6 +1017,40 @@ public class Browser extends SherlockActivity implements
 		public WebResourceResponse shouldInterceptRequest(WebView view,
 				String url) {
 			
+			try
+			{
+				String mimeType = null;
+				String encoding = null;
+				
+				InputStream isData = null;
+				
+				mHttpClient = getHttpClient ();
+				
+				HttpGet hget = new HttpGet(url);
+				
+
+				mHttpClient.useProxy(true,DEFAULT_PROXY_TYPE,mProxyHost, mProxyPort);
+					
+					HttpResponse response = mHttpClient.execute(hget);
+					
+					HttpEntity respEntity = response.getEntity();
+					 mimeType = respEntity.getContentType().getValue();
+					 encoding = respEntity.getContentEncoding().getValue();
+					 
+					 isData = respEntity.getContent();
+			
+				WebResourceResponse resp = new WebResourceResponse(mimeType, encoding, isData);
+				
+				
+				return resp;
+				
+			}
+			catch (Exception e)
+			{
+				//failed loading ourselves, so let's pass it back to the framework
+			}
+			
+			
 			return super.shouldInterceptRequest(view, url);
 		}
 
@@ -1090,7 +1119,9 @@ public class Browser extends SherlockActivity implements
 		@Override
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
 			
-			return false;
+			//leave the current webview intact
+			
+			return true;
 			
 		}
 		
@@ -1357,10 +1388,25 @@ public class Browser extends SherlockActivity implements
 		    }
 		  };
 		  
-		  
+
+			private StrongHttpsClient mHttpClient = null;
+			
+			private synchronized StrongHttpsClient getHttpClient ()
+			{
+				if (mHttpClient == null)
+				{
+					mHttpClient = new StrongHttpsClient(Browser.this);
+						
+				
+				
+				}
+				
+				return mHttpClient;
+			}
+
+			
 		NanoHTTPD mFileServer = new NanoHTTPD ("localhost",9999)
 		{
-			private StrongHttpsClient httpClient = null;
 			
 			@Override
 			public Response serve(String uri, Method method,
@@ -1369,15 +1415,15 @@ public class Browser extends SherlockActivity implements
 				
 				String url = parms.get("url");
 				
-				httpClient = getHttpClient ();
+				mHttpClient = getHttpClient ();
 				
 				HttpGet hget = new HttpGet(url);
 				
 				try
 				{
-					httpClient.useProxy(true,DEFAULT_PROXY_TYPE,mProxyHost, mProxyPort);
+					mHttpClient.useProxy(true,DEFAULT_PROXY_TYPE,mProxyHost, mProxyPort);
 					
-					HttpResponse response = httpClient.execute(hget);
+					HttpResponse response = mHttpClient.execute(hget);
 					
 					HttpEntity respEntity = response.getEntity();
 					String mimeType = respEntity.getContentType().getValue();
@@ -1397,24 +1443,11 @@ public class Browser extends SherlockActivity implements
 				}
 			}
 			
-			private StrongHttpsClient getHttpClient ()
-			{
-				if (httpClient == null)
-				{
-					httpClient = new StrongHttpsClient(Browser.this);
-						
-				
-				
-				}
-				
-				return httpClient;
-			}
-
+			
 			@Override
 			public void stop() {
 				super.stop();
 				
-				httpClient = null;
 			}
 			
 			

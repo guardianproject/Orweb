@@ -63,7 +63,7 @@ android:enabled="true"/>
 <ListPreference android:key="pref_cookiebehaviour" 
     android:summary="@string/cookie_behave_summary" 
     android:title="@string/cookie_behave_title" 
-    android:entries="@array/cookiePreferences" android:entryValues="@array/cookiePreferencesValues" android:defaultValue="whitelist"></ListPreference>
+    android:entries="@array/cookiePreferences" android:entryValues="@array/cookiePreferencesValues" android:defaultValue="accept"></ListPreference>
 <PreferenceScreen android:summary="@string/cookie_whitelist_summary" 
     android:title="@string/cookie_whitelist_title" android:key="pref_cookiewhitelist" android:persistent="false">
     <Preference android:key="pref_addsite" android:title="@string/add_site_whitelist" android:persistent="false"></Preference>

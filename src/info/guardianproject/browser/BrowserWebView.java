@@ -107,6 +107,7 @@ public class BrowserWebView extends WebView implements AnimationListener {
 
 			getSettings().setAllowFileAccessFromFileURLs(false);
 			getSettings().setAllowUniversalAccessFromFileURLs(false);
+			
 		}
 		
 	}
