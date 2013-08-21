@@ -15,26 +15,18 @@
 
 	</LinearLayout> 
  -->
-	<LinearLayout android:layout_height="fill_parent" android:layout_width="fill_parent" android:orientation="vertical" android:id="@+id/WebLayout" android:visibility="visible">
 		
-		<RelativeLayout android:layout_width="wrap_content" android:layout_y="359dip" android:layout_height="wrap_content" android:layout_x="189dip" android:id="@+id/RelativeLayout01">
+		<info.guardianproject.browser.BrowserWebView android:layout_width="fill_parent" android:layout_height="0px" android:id="@+id/WebView" android:layout_weight="1"/>
 		
-		<info.guardianproject.browser.BrowserWebView android:layout_width="fill_parent" android:layout_height="fill_parent" android:id="@+id/WebView" android:layout_weight="1"/>
-		<LinearLayout android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_alignRight="@id/WebView" android:gravity="center" android:id="@+id/CookieIcon" android:clickable="true" android:background="@drawable/menu_submenu_background" android:padding="20dip" android:orientation="vertical" android:layout_margin="10dip" android:visibility="gone"><ImageView android:layout_height="wrap_content" android:id="@+id/ImageView01" android:layout_width="wrap_content" android:src="@drawable/cookie"></ImageView>
+		<LinearLayout android:layout_height="wrap_content" android:layout_width="wrap_content" android:gravity="center" android:id="@+id/CookieIcon" android:clickable="true" android:background="@drawable/menu_submenu_background" android:padding="20dip" android:orientation="vertical" android:layout_margin="10dip" android:visibility="gone"><ImageView android:layout_height="wrap_content" android:id="@+id/ImageView01" android:layout_width="wrap_content" android:src="@drawable/cookie"></ImageView>
 			<LinearLayout android:id="@+id/LinearLayout02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical"><TextView android:id="@+id/TextView03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cookiesBlockedFirstLine"></TextView><TextView android:id="@+id/TextView04" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cookiesBlockedSecondLine"></TextView>
 			</LinearLayout>
 
+</LinearLayout>
 
-
-			</LinearLayout>
 
 <!--
 <TextView android:layout_height="wrap_content" android:id="@+id/TextView01" android:layout_alignBottom="@+id/WebView" android:layout_width="fill_parent" android:gravity="center" android:text="@string/anondisplay" android:textColor="#444444" android:background="#cccccc"></TextView>
  -->
-
-</RelativeLayout>
-		
-	</LinearLayout>
-
 
 </LinearLayout>

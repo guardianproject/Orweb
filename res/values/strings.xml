@@ -23,6 +23,9 @@
 
 <string name="pref_proxy_group">Proxy Server Settings</string>
 
+<string name="pref_proxy_type">Proxy Type</string>
+<string name="pref_proxy_type_summary">The proxy type (http or socks)</string>
+
 <string name="pref_proxy_host">Proxy Host</string>
 <string name="pref_proxy_host_summary">The hostname or IP address of the HTTP proxy server</string>
 
