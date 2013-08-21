@@ -86,7 +86,7 @@ public class AnonProxy {
 	private PostProcessor mPostProcessor = new PostProcessor();
 	private CacheManager mCacheManager = CacheManager.getCacheManager();
 	private BrowserCompatSpec mCookieSpec = new BrowserCompatSpec();
-	private CookieManager mCookieManager = CookieManager.getInstance();
+	private CookieDomainManager mCookieManager = CookieDomainManager.getInstance();
 	
 	// Settings
 	private boolean mSendReferrer = true;

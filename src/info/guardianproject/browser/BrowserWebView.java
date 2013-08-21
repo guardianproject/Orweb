@@ -84,7 +84,7 @@ public class BrowserWebView extends WebView implements AnimationListener {
 		getSettings().setDatabaseEnabled(false);
 		getSettings().setCacheMode(android.webkit.WebSettings.LOAD_NO_CACHE);
 		
-		getSettings().setPluginState(PluginState.ON_DEMAND);
+		getSettings().setPluginState(PluginState.OFF);
 		
 		getSettings().setSupportMultipleWindows(false);
 		
@@ -96,7 +96,6 @@ public class BrowserWebView extends WebView implements AnimationListener {
 		if (Build.VERSION.SDK_INT >= 11)
 		{
 			getSettings().setDisplayZoomControls(true);
-			getSettings().setAllowContentAccess(false);
 			getSettings().setAllowContentAccess(false);
 			
 			
@@ -110,6 +109,12 @@ public class BrowserWebView extends WebView implements AnimationListener {
 			
 		}
 		
+		if (Build.VERSION.SDK_INT >= 17)
+		{
+			getSettings().setMediaPlaybackRequiresUserGesture(true);
+			
+			
+		}
 	}
 
 	public BrowserWebView(Context context, AttributeSet attrs) {

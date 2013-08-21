@@ -32,7 +32,7 @@ import org.apache.http.cookie.Cookie;
 import android.content.Context;
 import android.widget.Toast;
 
-public class CookieManager {
+public class CookieDomainManager {
 	
 	public static final int ACCEPT_ALL = 1;
 	public static final int WHITELIST = 2;
@@ -47,7 +47,7 @@ public class CookieManager {
 	}
 
 	// Singleton
-	private static CookieManager mCookieManager = null;
+	private static CookieDomainManager mCookieManager = null;
 	
 	// Member variables
 	private ArrayList<String> mDomainWhitelist = new ArrayList<String>();
@@ -60,7 +60,7 @@ public class CookieManager {
 	
 	private android.webkit.CookieManager mAndroidCookieManager = null;
 	 
-	private CookieManager() {
+	private CookieDomainManager() {
 		// Do nothing
 		
 		mAndroidCookieManager = android.webkit.CookieManager.getInstance();
@@ -77,8 +77,8 @@ public class CookieManager {
 	 * @param c application context
 	 * @return the cookie manager
 	 */
-	public static CookieManager getInstance(Context c) {
-		CookieManager m = CookieManager.getInstance();
+	public static CookieDomainManager getInstance(Context c) {
+		CookieDomainManager m = CookieDomainManager.getInstance();
 		if (m.mDataStore == null) {
 			m.openDataStore(c);
 		}
@@ -91,8 +91,8 @@ public class CookieManager {
 	 * context before using this version.
 	 * @return the cookie manager
 	 */
-	public static CookieManager getInstance() {
-		if (mCookieManager == null) mCookieManager = new CookieManager();
+	public static CookieDomainManager getInstance() {
+		if (mCookieManager == null) mCookieManager = new CookieDomainManager();
 		return mCookieManager;
 	}
 	

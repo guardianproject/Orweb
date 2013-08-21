@@ -63,7 +63,7 @@ public class CookiesBlockedDialog extends AlertDialog implements OnClickListener
 			super.onCreate(savedInstanceState);
 			
 			mSiteList = (ListView)findViewById(R.id.cookieSiteList);
-			SiteListAdapter adapter = new SiteListAdapter(getContext(), CookieManager.getInstance().getBlockedCookiesDomains());
+			SiteListAdapter adapter = new SiteListAdapter(getContext(), CookieDomainManager.getInstance().getBlockedCookiesDomains());
 			mSiteList.setAdapter(adapter);
 		}
 		

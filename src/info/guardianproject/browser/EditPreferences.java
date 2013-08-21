@@ -58,7 +58,7 @@ public class EditPreferences extends PreferenceActivity implements OnDismissList
 	}
 	
 	private void populateWhitelist() {
-		CookieManager c = CookieManager.getInstance();
+		CookieDomainManager c = CookieDomainManager.getInstance();
 		
 		mWhitelist.removeAll();
 		ArrayList<String> v = c.getWhitelist();
@@ -105,7 +105,7 @@ public class EditPreferences extends PreferenceActivity implements OnDismissList
 	public void onClick(DialogInterface dialog, int which) {
 		if (which == DialogInterface.BUTTON_POSITIVE) {
 			if (mLastSelected != null) {
-				CookieManager.getInstance().removeFromWhitelist(mLastSelected.getSite());
+				CookieDomainManager.getInstance().removeFromWhitelist(mLastSelected.getSite());
 				populateWhitelist();
 			}
 		}

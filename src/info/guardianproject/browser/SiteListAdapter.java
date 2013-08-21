@@ -42,7 +42,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 public class SiteListAdapter extends ArrayAdapter<String> implements OnCheckedChangeListener {
 
 	private Context mContext = null;
-	private CookieManager mCookieManager = CookieManager.getInstance();
+	private CookieDomainManager mCookieManager = CookieDomainManager.getInstance();
 	
 	public SiteListAdapter(Context context, List<String> objects) {
 		super(context, R.id.siteCheckbox, objects);

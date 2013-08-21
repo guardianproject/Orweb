@@ -65,7 +65,7 @@ public class AddSiteDialog extends AlertDialog implements OnClickListener {
 	public void onClick(DialogInterface dialog, int which) {
 		if (which == SAVE_BUTTON) {
 			try {
-				CookieManager.getInstance().addToWhitelist(mUrl.getText().toString(), getContext());
+				CookieDomainManager.getInstance().addToWhitelist(mUrl.getText().toString(), getContext());
 			} catch (URISyntaxException e) {
 				AlertDialog.Builder b = new Builder(getContext());
 				b.setTitle("Invalid site");

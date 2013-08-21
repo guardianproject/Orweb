@@ -38,7 +38,7 @@ public class ClearCookiesPreference extends BrowserYesNoPreference {
 
 	@Override
 	public void onOk() {
-		CookieManager.getInstance().clearAllCookies();
+		CookieDomainManager.getInstance().clearAllCookies();
 	}
 
 }
