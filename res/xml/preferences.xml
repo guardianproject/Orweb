@@ -33,6 +33,13 @@ android:title="@string/pref_proxy_port"
 android:summary="@string/pref_proxy_port_summary"
 android:dialogTitle="@string/pref_proxy_port"
 android:enabled="true"/>
+<EditTextPreference
+android:defaultValue="http"
+android:key="pref_proxy_type"
+android:title="@string/pref_proxy_type"
+android:summary="@string/pref_proxy_type_summary"
+android:dialogTitle="@string/pref_proxy_type"
+android:enabled="true"/>
 </PreferenceCategory>
 <PreferenceCategory android:title="Privacy">
 
