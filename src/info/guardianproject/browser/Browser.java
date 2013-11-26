@@ -205,23 +205,8 @@ public class Browser extends SherlockActivity implements
 				mWebView.setBlockedCookies(mCookieManager.hasBlockedCookies());
 				
 				getSherlock().getActionBar().show();
+				mWebView.loadUrl(url, aHeaders);
 				
-				if (Build.VERSION.SDK_INT >= 11)
-				{
-					mWebView.loadUrl(url, aHeaders);
-				}
-				else
-				{
-					try
-					{
-						doLoadDataOldStyle (url);
-					}
-					catch (IOException ioe)
-					{
-						Log.e("Browser","error loading page",ioe);
-					}
-					
-				}
 			}
 			else if (msg.what == 1) //install Orbot
 			{
@@ -235,6 +220,7 @@ public class Browser extends SherlockActivity implements
 
 	};
 	
+	/**
 	private void doLoadDataOldStyle (String url) throws IOException
 	{
 
@@ -290,7 +276,7 @@ public class Browser extends SherlockActivity implements
 		}
 	
 		
-	}
+	}*/
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -507,7 +493,7 @@ public class Browser extends SherlockActivity implements
 		mClearHistory = mPrefs.getBoolean("pref_clearhistory", false);
 
 		mWebView.getSettings().setPluginState(PluginState.OFF);
-
+		
 		try
 		{
 
@@ -1136,8 +1122,11 @@ public class Browser extends SherlockActivity implements
 			
 			Log.w("SSLError","SSL error: " + error.getPrimaryError());
 
+			Toast.makeText(Browser.this, "SSL error: " + error.getPrimaryError(),Toast.LENGTH_LONG).show();
+			
 		}
 
+			/**
 		@TargetApi(Build.VERSION_CODES.HONEYCOMB) @Override
 		public WebResourceResponse shouldInterceptRequest(WebView view,
 				String url) {
@@ -1254,7 +1243,8 @@ public class Browser extends SherlockActivity implements
 			
 			return null;
 		}
-
+		**/
+		
 		@Override
 		public void onPageStarted(WebView view, String url, Bitmap favicon) {
 			//Log.i("Shadow", "Page started");
@@ -1308,7 +1298,8 @@ public class Browser extends SherlockActivity implements
 				String description, String failingUrl) {
 			super.onReceivedError(view, errorCode, description, failingUrl);
 			
-		//	setProgressBarVisibility (Boolean.FALSE);
+			Toast.makeText(Browser.this, "Error " + errorCode + ": " + description + "; " + failingUrl,Toast.LENGTH_LONG).show();
+			
 		}
 
 		@Override
@@ -1316,9 +1307,10 @@ public class Browser extends SherlockActivity implements
 				Message continueMsg) {
 			super.onTooManyRedirects(view, cancelMsg, continueMsg);
 			
-			//setProgressBarVisibility (Boolean.FALSE);
+			
 		}
-
+		
+		/**
 		@Override
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
 			
@@ -1326,12 +1318,12 @@ public class Browser extends SherlockActivity implements
 			msg.getData().putString("url", url);
 			mLoadHandler.sendMessage(msg);
 			
-			return true;
+			return false;
 			
 		}
-		
+		*/
 	
-
+	
 	};
 
 	@Override
@@ -1432,6 +1424,18 @@ public class Browser extends SherlockActivity implements
 		
 		
 		
+		@Override
+		public Bitmap getDefaultVideoPoster() {
+			// TODO Auto-generated method stub
+			return super.getDefaultVideoPoster();
+		}
+
+		@Override
+		public View getVideoLoadingProgressView() {
+			// TODO Auto-generated method stub
+			return super.getVideoLoadingProgressView();
+		}
+
 		@Override
 		public void onProgressChanged(WebView view, int newProgress) {
 

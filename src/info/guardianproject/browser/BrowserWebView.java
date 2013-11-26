@@ -99,6 +99,7 @@ public class BrowserWebView extends WebView implements AnimationListener {
 			getSettings().setAllowContentAccess(false);
 			
 			
+			
 		}
 		
 		if (Build.VERSION.SDK_INT >= 16)
