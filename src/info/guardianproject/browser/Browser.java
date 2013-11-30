@@ -43,10 +43,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
 import android.app.DownloadManager.Query;
@@ -70,6 +70,7 @@ import android.graphics.drawable.PaintDrawable;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -86,6 +87,7 @@ import android.webkit.DownloadListener;
 import android.webkit.SslErrorHandler;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings.PluginState;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -155,8 +157,6 @@ public class Browser extends SherlockActivity implements
 	private int mProxyPort = Integer.parseInt(DEFAULT_PROXY_PORT);
 	private String mProxyType = DEFAULT_PROXY_TYPE;
 	
-	private Stack<String> mHistory;
-	
 	public static String DEFAULT_USER_AGENT = "Mozilla/5.0 (Windows NT 6.1; rv:10.0) Gecko/20100101 Firefox/10.0";
 	public static String DEFAULT_SEARCH_ENGINE = "http://3g2upl4pq6kufc4m.onion/?q=";
 	public static String DEFAULT_SEARCH_ENGINE_NOJS = "https://duckduckgo.com/html?q=";
@@ -176,16 +176,6 @@ public class Browser extends SherlockActivity implements
 	
 			if (url != null)
 			{
-				
-				if (mHistory == null)
-				{
-					mHistory = new Stack<String>();
-					mHistory.push(url);
-				}
-				else if (!mHistory.peek().equals(url))
-				{
-					mHistory.push(url);
-				}
 				
 				url = smartUrlFilter(url);
 				
@@ -276,15 +266,9 @@ public class Browser extends SherlockActivity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		setProxy();		
 		
-		// Set up title bar of window
-		//requestWindowFeature(Window.FEATURE_LEFT_ICON);
-		//requestWindowFeature(Window.FEATURE_RIGHT_ICON);
-		this.requestWindowFeature(Window.FEATURE_PROGRESS);
-		//requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-		//this.requestWindowFeature(Window.FEATURE_ACTION_BAR);
-		//this.requestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
-		
+		requestWindowFeature(Window.FEATURE_PROGRESS);
 		
 		// Allow search to start by just typing
 		setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
@@ -475,8 +459,6 @@ public class Browser extends SherlockActivity implements
 	public void initSettings ()
 	{
 
-		setProxy();		
-		
 		if (mCookieManager == null)
 		{
 			CookieSyncManager.createInstance(this).stopSync();
@@ -1120,124 +1102,7 @@ public class Browser extends SherlockActivity implements
 			
 		}
 
-			/**
-		@TargetApi(Build.VERSION_CODES.HONEYCOMB) @Override
-		public WebResourceResponse shouldInterceptRequest(WebView view,
-				String url) {
-			
-			try
-			{
-				String mimeType = null;
-				String encoding = null;
-				
-				InputStream isData = null;
-				
-				mHttpClient = getHttpClient ();
-				
-				boolean sendCookies = mCookieManager.sendCookiesFor(url);
-				
-				if (!sendCookies)
-				{
-					mHttpClient.getCookieStore().clear();
-					CookieManager.getInstance().removeAllCookie();
-				}
-				
-				if (!mDoJavascript && url.endsWith(".js"))
-				{
-					 WebResourceResponse resp = new WebResourceResponse("text/plain", "utf-8", new java.io.StringBufferInputStream(""));
-					 return resp;
-				}
-				else if (!mShowImages && (url.endsWith(".png")||url.endsWith(".jpg")))
-				{
-					 WebResourceResponse resp = new WebResourceResponse("image/jpeg", null, null);
-					 return resp;
-				}
-				else
-				{
-					HttpGet hget = new HttpGet(url);
-					
-					initHeaders(hget);
-					
-					
-					mHttpClient.useProxy(true,mProxyType,mProxyHost, mProxyPort);
-						
-						HttpResponse response = mHttpClient.execute(hget);
-						
-						HttpEntity respEntity = response.getEntity();
-						
-						if (response.getStatusLine().getStatusCode() == 200)
-						{
-							if (respEntity.getContentType() != null)
-							{
-							 mimeType = respEntity.getContentType().getValue();
-							 
-							    if (!mDoJavascript && mimeType.contains("javascript"))
-								{
-									 WebResourceResponse resp = new WebResourceResponse("text/plain", "utf-8", new java.io.StringBufferInputStream(""));
-									 return resp;
-								}
-							    else if (!mShowImages && mimeType.contains("image"))
-								{
-									 WebResourceResponse resp = new WebResourceResponse("image/jpeg", null, null);
-									 return resp;
-								}
-							}
-							
-							if (sendCookies)
-							{
-								CookieStore cStore = mHttpClient.getCookieStore();							
-								CookieManager cookieManager = CookieManager.getInstance();
-								cookieManager.setAcceptCookie(sendCookies);
-								
-								List<Cookie> listCookies = cStore.getCookies();
-								for (Cookie cookie : listCookies)
-								{
-									cookieManager.setCookie(url, cookie.getValue());
-								}
-								
-							}
-
-							
-							 if (respEntity.getContentEncoding() != null)
-								 encoding = respEntity.getContentEncoding().getValue();
-						
-							 
-							 isData = respEntity.getContent();
-							 
-							 String mimeParts[] = mimeType.split(";");
-								
-							 if (mimeParts.length>1)
-							 {
-
-								 mimeType = mimeParts[0].trim();
-								 mCharSet = mimeParts[1].trim().split("=")[1];								 
-							 }
-					
-							 if (encoding == null)
-								 encoding = mCharSet;
-							 
-							 if (mimeType.contains("text"))
-							 {
-								 isData = new StringBufferInputStream(removeUnproxyeableElements(isData, mCharSet));
-							 }
-					
-							 WebResourceResponse resp = new WebResourceResponse(mimeType, encoding, isData);
-							 
-						
-							return resp;
-						}
-				}
-			}
-			catch (Exception e)
-			{
-				//failed loading ourselves, so let's pass it back to the framework
-				Log.e("Browser","exception loading content: " + url,e);
-			}
-			
-			
-			return null;
-		}
-		**/
+		
 		
 		@Override
 		public void onPageStarted(WebView view, String url, Bitmap favicon) {
@@ -1366,8 +1231,9 @@ public class Browser extends SherlockActivity implements
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_BACK:
-			if (handleBrowserBack())
+			if (mWebView.canGoBack())
 			{
+				mWebView.goBack();
 				return true;
 			}
 			
@@ -1376,27 +1242,7 @@ public class Browser extends SherlockActivity implements
 		}
 		return super.onKeyDown(keyCode, event);
 	}
-	
-	private boolean handleBrowserBack ()
-	{
-		if (!mHistory.empty())
-		{
-			mHistory.pop();
-			
-			if (!mHistory.empty())
-			{
-				String lastUrl = mHistory.peek();
-				Message msg = new Message();
-				msg.getData().putString("url", lastUrl);
-				mLoadHandler.sendMessage(msg);
-				
-				return true;
-			}
-		}
-		
-		return false;
-		
-	}
+
 
 	/**
 	 * Ensures that the menu items are consistent with the page loading state
