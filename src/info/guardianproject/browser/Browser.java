@@ -46,7 +46,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
 import android.app.DownloadManager.Query;
@@ -70,7 +69,6 @@ import android.graphics.drawable.PaintDrawable;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -87,7 +85,6 @@ import android.webkit.DownloadListener;
 import android.webkit.SslErrorHandler;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings.PluginState;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -266,7 +263,13 @@ public class Browser extends SherlockActivity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setProxy();		
+		mPrefs = PreferenceManager
+				.getDefaultSharedPreferences(getApplicationContext());
+
+		//check if Orbot is installed running
+		mOrbotHelper = new OrbotHelper(this.getApplicationContext());
+
+		
 		
 		requestWindowFeature(Window.FEATURE_PROGRESS);
 		
@@ -275,9 +278,6 @@ public class Browser extends SherlockActivity implements
 
 		setContentView(R.layout.main);
 
-		mPrefs = PreferenceManager
-				.getDefaultSharedPreferences(getApplicationContext());
-		
 		mPrefs.registerOnSharedPreferenceChangeListener(new OnSharedPreferenceChangeListener ()
 		{
 
@@ -291,28 +291,28 @@ public class Browser extends SherlockActivity implements
 			
 		});
 		
-		String starturl = mPrefs.getString(getString(R.string.pref_homepage),
-				getString(R.string.default_homepage));
 
 		initUI();
-
-		//check if Orbot is installed running
-		mOrbotHelper = new OrbotHelper(this.getApplicationContext());
-		
-		
 		initSettings();
 
 		CacheManager.getCacheManager().setBrowser(this);
+
+		setProxy();	
 		
 		boolean handled = handleIntent(getIntent());
 		
 		if (!handled)
 		{
 			Message msg = new Message();
-        	
+
+			String starturl = mPrefs.getString(getString(R.string.pref_homepage),
+					getString(R.string.default_homepage));
+
 			msg.getData().putString("url", starturl);
 			mLoadHandler.sendMessage(msg);
 		}
+		
+		
 	}
 	
 	private void initUI ()
@@ -921,14 +921,22 @@ public class Browser extends SherlockActivity implements
 		}
 		catch (Exception e)
 		{
+			Log.e("Orweb","error setting proxy",e);
 			proxyWorked = false;
 		}
 		
+		/*
 		if (!proxyWorked)
 		{
-			Toast.makeText(this, "Orweb is unable to configure proxy settings on your device.", Toast.LENGTH_LONG).show();
-			finish();
-		}
+			Toast.makeText(this, "Please MANUALLY configure your proxy: host=" + mProxyHost + " port=" +mProxyPort, Toast.LENGTH_LONG).show();
+
+			  Intent intent = new Intent();
+			  intent.setClassName(this,"com.android.settings.ProxySelector");
+			  
+			  startActivity(intent);
+
+	//		finish();
+		}*/
 		
 	}
 	
