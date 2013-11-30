@@ -9,7 +9,6 @@ projectdir=`dirname $f`
 done
 android update project -p . --subprojects -t $target --name orweb
 
-
 cp libs/android-support-v4.jar external/ActionBarSherlock/actionbarsherlock/libs/android-support-v4.jar
 cp libs/android-support-v4.jar external/netcipher/libonionkit/libs/android-support-v4.jar
 
