@@ -1,6 +1,6 @@
 #!/bin/sh
 
-target="android-17"
+target="android-19"
 
 for f in `find external/ -name project.properties`; do
 projectdir=`dirname $f`
