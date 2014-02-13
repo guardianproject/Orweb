@@ -69,6 +69,7 @@ import android.graphics.drawable.PaintDrawable;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -269,6 +270,7 @@ public class Browser extends SherlockActivity implements
 		//check if Orbot is installed running
 		mOrbotHelper = new OrbotHelper(this.getApplicationContext());
 
+		
 		
 		
 		requestWindowFeature(Window.FEATURE_PROGRESS);
@@ -917,7 +919,7 @@ public class Browser extends SherlockActivity implements
 		//enable the proxy whether Tor is running or not		
 		try { 
 			
-			proxyWorked = WebkitProxy.setProxy(this, mProxyHost,mProxyPort);
+			proxyWorked = WebkitProxy.setProxy("info.guardianproject.browser.OrwebApp",getApplicationContext(), mProxyHost,mProxyPort);
 		}
 		catch (Exception e)
 		{
@@ -925,19 +927,7 @@ public class Browser extends SherlockActivity implements
 			proxyWorked = false;
 		}
 		
-		/*
-		if (!proxyWorked)
-		{
-			Toast.makeText(this, "Please MANUALLY configure your proxy: host=" + mProxyHost + " port=" +mProxyPort, Toast.LENGTH_LONG).show();
-
-			  Intent intent = new Intent();
-			  intent.setClassName(this,"com.android.settings.ProxySelector");
-			  
-			  startActivity(intent);
-
-	//		finish();
-		}*/
-		
+				
 	}
 	
 	 private class checkTorTask extends AsyncTask<String, Integer, Long> {
