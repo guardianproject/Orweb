@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+  <string name="pref_images">pref_images</string>
+  <string name="pref_javascript">pref_javascript</string>
+  <string name="app_name">Orweb</string>
+  <string name="errorHtml">&lt;b&gt;Barkatu, zeozer txarto joan da...&lt;/b&gt;</string>
+  <string name="torInactive">Datu konexio anonimoa ez dago martxan</string>
+  <string name="torConnecting">Konektatzen...</string>
+  <string name="starttor">Ezarpenak ireki</string>
+  <string name="search_label">Nabigatzailea</string>
+  <string name="search_hint">Web helbidea edo bilaketa</string>
+  <string name="search_button_text">Joan</string>
+  <string name="default_homepage">https://check.torproject.org</string>
+  <string name="pref_homepage">pref_homepage</string>
+  <string name="pref_clearcache">pref_clearcache</string>
+  <string name="internal_web_url">http://orweb/</string>
+  <string name="torProxyNotInstalled">Orweb-ek Orbot aplikazioa instalatuta egotea behar du.</string>
+  <string name="cookiesBlockedFirstLine">Cookie-ak</string>
+  <string name="cookiesBlockedSecondLine">Blokeatuta</string>
+  <string name="allCookiesAreBlocked">Cookie guztiak blokeatuta. Portaera hau ezarpenetan aldatu dezakezu.</string>
+  <string name="acceptCookiesFrom">Hemengo cookie-ak onartu:</string>
+  <string name="willAddToWhitelist">Gune hauetan tikatzean zure cookien zerrenda zurira gehituko dira.</string>
+  <string name="pref_proxy_group">Proxy zerbitzariaren ezarpenak</string>
+  <string name="pref_proxy_host">Proxy ostalaria</string>
+  <string name="pref_proxy_host_summary">HTTP proxy zerbitzariaren ostalari izena edo IP helbidea</string>
+  <string name="pref_proxy_port">Proxy portua</string>
+  <string name="pref_proxy_port_summary">HTTP proxy zerbitzariaren socket portua</string>
+  <string name="pref_user_agent_summary">Nabigatzaileak bere burua nola identifikatzen duen aldatu</string>
+  <string name="pref_user_agent_title">Erabiltzaile agentea</string>
+  <string name="menu_go">Joan</string>
+  <string name="menu_stop">Gelditu</string>
+  <string name="menu_forward">Aurrera</string>
+  <string name="menu_about">Honi buruz</string>
+  <string name="menu_settings">Ezarpenak</string>
+  <string name="menu_reload">Birkargatu</string>
+  <string name="menu_homepage">Hasiera orria</string>
+  <string name="set_locale_title">Hizkuntza ezarri</string>
+  <string name="set_locale_summary">Orweb-en lehenetsitako hizkuntza hautatu</string>
+  <string name="load_images">Irudiak kargatu</string>
+  <string name="display_images_on_web_pages">Web orrietan irudiak erakutsi</string>
+  <string name="enable_javascript">Gaitu JavaScript</string>
+  <string name="set_homepage">Hasiera orria ezarri</string>
+  <string name="clear_cache">Katxea garbitu</string>
+  <string name="clear_cache_summary">Katxeatutako eduki guztia garbitu</string>
+  <string name="clear_cache_message">Katxea garbituko da.</string>
+  <string name="ref_title">Erreferentzia informazioa bidali		&lt;string name="prompt_do_you_want_to_open_this_file_for_viewing_"&gt;Fitxategi hau ireki nahi duzu?&lt;/string&gt;
+    </string>
+  <string name="prompt_do_you_want_to_open_this_file_for_viewing_">Fitxategi hau ireki nahi duzu?</string>
+  <string name="ref_summary">Erreferentzia informazioak zure nabigazio historia agerian erakutsi dezake</string>
+  <string name="history_title">Atzerako historia garbitu</string>
+  <string name="history_summary">Nabigazio historia guztia ezabatu. Kontuz: hau ezin da desegin.</string>
+  <string name="clear_cookies_title">Cookien datuak garbitu</string>
+  <string name="clear_cookies_summary">Nabigatzaileko cookie guztiak garbitu</string>
+  <string name="clear_cookies_message">Cookie-ak garbituko dira.</string>
+  <string name="cookie_behave_title">Cookie-en portaera</string>
+  <string name="cookie_behave_summary">Cookie-ak onartu edo blokeatu</string>
+  <string name="cookie_whitelist_title">Cookie-n zerrenda zuria</string>
+  <string name="cookie_whitelist_summary">Cookie-ak zein webgunek gorde ditzaketen ezarri</string>
+  <string name="add_site_whitelist">Gunea zerrenda zurira gehitu</string>
+  <string name="title_download_manager">Deskarga kudeatzailea</string>
+  <string name="prompt_would_you_like_to_download_this_file_">Fitxategi hau deskargatu nahi duzu?</string>
+  <string name="prompt_do_you_want_to_open_this_file_for_viewing_">Fitxategi hau ireki nahi duzu?</string>
+  <string name="orweb_proxy_error">Orweb-ek ezin ditu zure gailuko proxy ezarpenak konfiguratu.</string>
+</resources>
