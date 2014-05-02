@@ -31,9 +31,10 @@ import info.guardianproject.onionkit.trust.StrongHttpsClient;
 import info.guardianproject.onionkit.ui.OrbotHelper;
 import info.guardianproject.onionkit.web.WebkitProxy;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -69,20 +70,26 @@ import android.graphics.drawable.PaintDrawable;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.view.Window;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.DownloadListener;
+import android.webkit.MimeTypeMap;
 import android.webkit.SslErrorHandler;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -96,12 +103,6 @@ import ch.boye.httpclientandroidlib.HttpHeaders;
 import ch.boye.httpclientandroidlib.HttpResponse;
 import ch.boye.httpclientandroidlib.client.methods.HttpGet;
 
-import com.actionbarsherlock.app.SherlockActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.view.Window;
-
 /**
  * The main browser activity
  * @author Connell Gauld
@@ -110,7 +111,7 @@ import com.actionbarsherlock.view.Window;
 
 //public class Browser extends Activity implements UrlInterceptHandler,
 	//	OnClickListener {
-public class Browser extends SherlockActivity implements
+public class Browser extends ActionBarActivity implements
 	OnClickListener {
 
 	// TorProxy service
@@ -186,7 +187,6 @@ public class Browser extends SherlockActivity implements
 						
 				mWebView.setBlockedCookies(mCookieManager.hasBlockedCookies());
 				
-				getSherlock().getActionBar().show();
 				mWebView.loadUrl(url, aHeaders);
 				
 			}
@@ -328,9 +328,9 @@ public class Browser extends SherlockActivity implements
 			public boolean onTouch(View v, MotionEvent event) {
 				
 				if (mWebView.getScrollY() > 10)
-					Browser.this.getSherlock().getActionBar().hide();
+					Browser.this.getSupportActionBar().hide();
 				else
-					Browser.this.getSherlock().getActionBar().show();
+					Browser.this.getSupportActionBar().show();
 				
 				return false;
 			}
@@ -394,18 +394,18 @@ public class Browser extends SherlockActivity implements
 		{
 			   
         
-    		Uri uri = Uri.parse(url);
+    		Uri uriOriginal = Uri.parse(url);
     		
     		String filename = java.util.UUID.randomUUID().toString(); //generate random name
     		
-    		String[] fileparts = uri.getLastPathSegment().split(".");
+    		String[] fileparts = uriOriginal.getEncodedPath().split("\\.");
     		if (fileparts.length > 0)
     		{
     			filename += "." + fileparts[fileparts.length-1];
     		}
     		
     		String newUrl = "http://localhost:9999/" + filename + "?url=" + URLEncoder.encode(url);
-    		uri = Uri.parse(newUrl);
+    		Uri uriDownload = Uri.parse(newUrl);
     		
     		boolean doStream = false;
     		
@@ -418,18 +418,18 @@ public class Browser extends SherlockActivity implements
     			 {
     				 Intent intent = new Intent(Intent.ACTION_VIEW);
     			    	//String metaMime = mimeType.substring(0,mimeType.indexOf("/")) + "/*";
-    			    	intent.setDataAndType(uri, mimetype);
+    			    	intent.setDataAndType(uriDownload, mimetype);
     			   // 	intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
     			   	 	startActivity(intent);
     			 }
     			 else
     			 {
-    				 doDownloadManager(uri);
+    				 doDownloadManager(uriDownload, mimetype, getString(R.string.app_name) + ": " + uriOriginal.getLastPathSegment());
     			 }
     		 }
     		 catch (Exception e)
     		 {
-    			 Log.e("Orweb","problem downloading: " + uri,e);
+    			 Log.e("Orweb","problem downloading: " + uriOriginal,e);
     		 }
         	
         
@@ -585,7 +585,7 @@ public class Browser extends SherlockActivity implements
 		d.setLayerInset(1, 2, 2, 2, 2);
 		//getWindow().setFeatureDrawable(Window.FEATURE_LEFT_ICON, d);
 		
-		this.getSherlock().getActionBar().setIcon(d);
+		getSupportActionBar().setIcon(d);
 		
 	}
 
@@ -869,10 +869,10 @@ public class Browser extends SherlockActivity implements
 
 	public boolean onCreateOptionsMenu(Menu menu) {
 		mMenu = menu;
-		MenuInflater inflater = getSupportMenuInflater();
+		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main, menu);
 
-		getSherlock().getActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setHomeButtonEnabled(true);
 		
 		return true;
 	}
@@ -1033,7 +1033,7 @@ public class Browser extends SherlockActivity implements
 	 */
 	private void updateTitle(String url, String title) {
 		
-		getSherlock().getActionBar().show();
+		getSupportActionBar().show();
 
 		setTitle(buildUrlTitle(url, title));
 		
@@ -1358,6 +1358,48 @@ public class Browser extends SherlockActivity implements
 			}
 		}
 		
+		public void showFile (String pathDownload, String mimeType)
+		{
+
+			File fileDownload = new File (pathDownload);
+			if (!fileDownload.exists())
+			{
+				fileDownload = new File(pathDownload.substring(5));// remove file:
+				
+				if (!fileDownload.exists())
+					return;
+			}
+			
+			Intent newIntent = new Intent(android.content.Intent.ACTION_VIEW);
+			
+			newIntent.setDataAndType(Uri.fromFile(fileDownload),mimeType);
+			newIntent.setFlags(newIntent.FLAG_ACTIVITY_NEW_TASK);
+			try {
+			    startActivity(newIntent);
+			} catch (android.content.ActivityNotFoundException e) {
+			    Toast.makeText(this, "No handler for this type of file.", 4000).show();
+			}
+		}
+		
+		private String fileExt(String url) {
+		    if (url.indexOf("?")>-1) {
+		        url = url.substring(0,url.indexOf("?"));
+		    }
+		    if (url.lastIndexOf(".") == -1) {
+		        return null;
+		    } else {
+		        String ext = url.substring(url.lastIndexOf(".") );
+		        if (ext.indexOf("%")>-1) {
+		            ext = ext.substring(0,ext.indexOf("%"));
+		        }
+		        if (ext.indexOf("/")>-1) {
+		            ext = ext.substring(0,ext.indexOf("/"));
+		        }
+		        return ext.toLowerCase();
+
+		    }
+		}
+		
 		private void unloadDownloadManager ()
 		{
 			if (mgr != null)
@@ -1369,7 +1411,7 @@ public class Browser extends SherlockActivity implements
 			}
 		}
 		
-		private void doDownloadManager (Uri uri) throws IOException
+		private void doDownloadManager (Uri uri, String mimeType, String title) throws IOException
 		{
 			
 		    lastDownload=
@@ -1378,8 +1420,12 @@ public class Browser extends SherlockActivity implements
 		                                          DownloadManager.Request.NETWORK_MOBILE)
 		                  .setAllowedOverRoaming(false)
 		                  .setVisibleInDownloadsUi(true)
-		                  .setDestinationInExternalFilesDir(getApplicationContext(), null, uri.getLastPathSegment()));
+		                  .setMimeType(mimeType)
+		                  .setShowRunningNotification(true)
+		                  .setTitle(title)
+		                  .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, uri.getLastPathSegment()));
 		}
+		
 		
 		 BroadcastReceiver onComplete=new BroadcastReceiver() {
 			    public void onReceive(Context ctxt, Intent intent) {
@@ -1416,11 +1462,7 @@ public class Browser extends SherlockActivity implements
 		                		        downloadDialog.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 		                		            public void onClick(DialogInterface dialogInterface, int i) {
 		                		            	 
-
-				                        		Intent intentView = new Intent(Intent.ACTION_VIEW);
-				                        		intentView.setDataAndType(Uri.parse(uriString), mimetype);
-				                        		
-				                        		Browser.this.startActivity(intentView);
+				                        		showFile (uriString,mimetype);
 				                        		
 		                		        		 dialogInterface.dismiss();
 		                		            }
@@ -1439,6 +1481,7 @@ public class Browser extends SherlockActivity implements
 		                }
 			    }
 		  };
+		  
 		  
 		  BroadcastReceiver onNotificationClick=new BroadcastReceiver() {
 		    public void onReceive(Context ctxt, Intent intent) {
@@ -1489,7 +1532,7 @@ public class Browser extends SherlockActivity implements
 					HttpEntity respEntity = response.getEntity();
 					String mimeType = respEntity.getContentType().getValue();
 					
-					BufferedInputStream bis = new BufferedInputStream(respEntity.getContent());			
+					DataInputStream bis = new DataInputStream(respEntity.getContent());			
 							
 					Response resp = new Response(Status.OK,mimeType,bis);
 					resp.addHeader("Content-Length", respEntity.getContentLength()+"");
