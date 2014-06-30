@@ -151,6 +151,9 @@ public class Browser extends ActionBarActivity implements
 	public static String DEFAULT_PROXY_TYPE = "HTTP";
 	
 	private String mCharSet = "utf-8";
+	private String mLanguage = "en";
+	
+	private Map<String,String> mHeaderOverride;
 	
 	private String mProxyHost = DEFAULT_PROXY_HOST;
 	private int mProxyPort = Integer.parseInt(DEFAULT_PROXY_PORT);
@@ -178,16 +181,9 @@ public class Browser extends ActionBarActivity implements
 				
 				url = smartUrlFilter(url);
 				
-				Map<String,String> aHeaders = new HashMap<String,String>();
-				aHeaders.put("Accept", DEFAULT_HEADER_ACCEPT);
-				
-				if (!mShowReferrer)
-					aHeaders.put("Referer","");
-				
-						
 				mWebView.setBlockedCookies(mCookieManager.hasBlockedCookies());
 				
-				mWebView.loadUrl(url, aHeaders);
+				mWebView.loadUrl(url, mHeaderOverride);
 				
 			}
 			else if (msg.what == 1) //install Orbot
@@ -489,14 +485,26 @@ public class Browser extends ActionBarActivity implements
 			mDoJavascript = 
 					mPrefs.getBoolean(getString(R.string.pref_javascript), false);
 			mWebView.getSettings().setJavaScriptEnabled(mDoJavascript);
-	
 			
+			
+	
 		}
 		catch (Exception e)
 		{
 			Toast.makeText(this, "Error configuring Tor proxy settings... exiting", Toast.LENGTH_LONG).show();
 			finish();
 		}
+		
+
+		mHeaderOverride = new HashMap<String,String>();
+		mHeaderOverride.put("Accept", DEFAULT_HEADER_ACCEPT);
+		
+
+		if (!mShowReferrer)
+			mHeaderOverride.put("Referer","");
+		
+		mHeaderOverride.put("Accept-Language", mLanguage);
+		mHeaderOverride.put("User-Agent",DEFAULT_USER_AGENT);
 	}
 	
 
@@ -1094,9 +1102,10 @@ public class Browser extends ActionBarActivity implements
 				SslError error) {
 			super.onReceivedSslError(view, handler, error);
 			
-			Log.w("SSLError","SSL error: " + error.getPrimaryError());
+			String msg = "SSL error: " + error.getPrimaryError();
+			Log.w("SSLError",msg);
 
-			Toast.makeText(Browser.this, "SSL error: " + error.getPrimaryError(),Toast.LENGTH_LONG).show();
+			Toast.makeText(Browser.this,msg,Toast.LENGTH_LONG).show();
 			
 		}
 
@@ -1585,6 +1594,9 @@ public class Browser extends ActionBarActivity implements
 			
 			hget.setHeader(HttpHeaders.REFERER,"");
 			hget.setHeader(HttpHeaders.ACCEPT_CHARSET,mCharSet);
+			
+			hget.setHeader(HttpHeaders.ACCEPT_LANGUAGE,mLanguage);
+			
 			
 			
 			
