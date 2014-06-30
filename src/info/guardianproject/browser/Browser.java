@@ -47,6 +47,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
 import android.app.DownloadManager.Query;
@@ -70,6 +71,7 @@ import android.graphics.drawable.PaintDrawable;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -93,6 +95,7 @@ import android.webkit.MimeTypeMap;
 import android.webkit.SslErrorHandler;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings.PluginState;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -151,7 +154,7 @@ public class Browser extends ActionBarActivity implements
 	public static String DEFAULT_PROXY_TYPE = "HTTP";
 	
 	private String mCharSet = "utf-8";
-	private String mLanguage = "en";
+	private String mLanguage = "en-US";
 	
 	private Map<String,String> mHeaderOverride;
 	
@@ -454,6 +457,7 @@ public class Browser extends ActionBarActivity implements
 	    }
 	}
 
+	@SuppressLint("NewApi")
 	public void initSettings ()
 	{
 
@@ -468,35 +472,41 @@ public class Browser extends ActionBarActivity implements
 
 		mWebView.getSettings().setPluginState(PluginState.OFF);
 		
-		try
-		{
-
-			mShowImages = mPrefs.getBoolean("pref_images", true);
-			
-			mWebView.getSettings().setLoadsImagesAutomatically(mShowImages);
-			 
-			mWebView.setBlockedCookiesView(mCookieIcon);			
-
-			String ua = mPrefs.getString("pref_user_agent", DEFAULT_USER_AGENT);
-			mWebView.getSettings().setUserAgentString(ua);
-			mCookieManager.setBehaviour(mPrefs.getString("pref_cookiebehaviour",
-					"accept"));
-			
-			mDoJavascript = 
-					mPrefs.getBoolean(getString(R.string.pref_javascript), false);
-			mWebView.getSettings().setJavaScriptEnabled(mDoJavascript);
-			
-			
 	
-		}
-		catch (Exception e)
+		mShowImages = mPrefs.getBoolean("pref_images", true);
+		
+		mWebView.getSettings().setLoadsImagesAutomatically(mShowImages);
+		
+		mWebView.setBlockedCookiesView(mCookieIcon);			
+
+		String ua = mPrefs.getString("pref_user_agent", DEFAULT_USER_AGENT);
+		mWebView.getSettings().setUserAgentString(ua);
+		mCookieManager.setBehaviour(mPrefs.getString("pref_cookiebehaviour",
+				"accept"));
+		
+		mDoJavascript = 
+				mPrefs.getBoolean(getString(R.string.pref_javascript), false);
+		mWebView.getSettings().setJavaScriptEnabled(mDoJavascript);
+		
+		
+		if (Build.VERSION.SDK_INT >= 16)
 		{
-			Toast.makeText(this, "Error configuring Tor proxy settings... exiting", Toast.LENGTH_LONG).show();
-			finish();
+
+			mWebView.getSettings().setAllowFileAccessFromFileURLs(false);
+			mWebView.getSettings().setAllowUniversalAccessFromFileURLs(false);
+			
 		}
 		
+		if (Build.VERSION.SDK_INT >= 17)
+		{
+			mWebView.getSettings().setMediaPlaybackRequiresUserGesture(true);
+			
+			
+		}
 
 		mHeaderOverride = new HashMap<String,String>();
+
+		mHeaderOverride.put("User-Agent",DEFAULT_USER_AGENT);
 		mHeaderOverride.put("Accept", DEFAULT_HEADER_ACCEPT);
 		
 
@@ -504,7 +514,14 @@ public class Browser extends ActionBarActivity implements
 			mHeaderOverride.put("Referer","");
 		
 		mHeaderOverride.put("Accept-Language", mLanguage);
-		mHeaderOverride.put("User-Agent",DEFAULT_USER_AGENT);
+		mHeaderOverride.put("Language", mLanguage);
+		
+		mHeaderOverride.put("x-requested-with","");
+		mHeaderOverride.put("Authentication","");
+		mHeaderOverride.put("Signature","");
+		
+		
+		
 	}
 	
 
@@ -705,106 +722,6 @@ public class Browser extends ActionBarActivity implements
 		return urlTitle;
 	}
 
-	/*
-	 * Intercept the HTTP requests and tunnel over AnonProxy
-	 *
-	 * @see android.webkit.UrlInterceptHandler#getPluginData(java.lang.String,
-	 * java.util.Map)
-	 */
-	/*
-	public PluginData getPluginData(String url, Map<String, String> headers) {
-
-		//Log.i("Shadow", "Getting: " + url);
-
-		// Intercept internal urls
-		String internalWebUrl = getString(R.string.internal_web_url);
-		if (url.startsWith(internalWebUrl)) {
-			return getFromAsset(url.substring(internalWebUrl.length()));
-		}
-
-		// Intercept HTTPS since it doesn't work
-		// if (url.toLowerCase().startsWith("https://"))
-		// return getFromAsset("sslerror.htm");
-
-		try {
-			return mAnonProxy.get(url, headers);
-		} catch (UnknownHostException e) {
-			return getFromAsset("unknownhosterror.htm");
-		} catch (ClientProtocolException e) {
-			// Not much we can do except output error page
-			// TODO: implement exception specific error page
-			e.printStackTrace();
-			return getErrorPage();
-		} catch (InterruptedIOException e) {
-			return stringToPluginData("", 200);
-		} catch (Exception e) {
-			// Not much we can do except output error page
-			// TODO: implement exception specific error page
-			e.printStackTrace();
-			return getErrorPage();
-		}
-	}
-*/
-	/**
-	 * Fetches an asset as if it were an HTTP request.
-	 *
-	 * @param path
-	 *            the path of the asset to get
-	 * @return the PluginData structure containing the asset
-	 */
-	/*
-	private PluginData getFromAsset(String path) {
-		InputStream in;
-		try {
-			// Fetch an InputStream of the asset
-			in = this.getAssets().open("internal_web/" + path);
-		} catch (IOException e) {
-			return stringToPluginData("An error has occurred: " + e.toString(),
-					200);
-		}
-
-		return new PluginData(in, 0L, new HashMap<String, String[]>(), 200);
-	}
-*/
-	/**
-	 * Returns a PluginData object filled with HTML from a string
-	 *
-	 * @param s
-	 *            the string containing HTML
-	 * @param statuscode
-	 *            the HTTP status code for the object
-	 * @return an appropriate PluginData object
-	 */
-	/*
-	private PluginData stringToPluginData(String s, int statuscode) {
-
-		// Default error if can't convert provided string
-		byte[] err = { 68, 111, 104 }; // Doh
-		try {
-			err = s.getBytes("utf-8");
-		} catch (UnsupportedEncodingException e) {
-			// Oh dear. Not much we can do if UTF-8 isn't supported
-			// except go with "Doh"
-			e.printStackTrace();
-		}
-
-		ByteArrayInputStream b = new ByteArrayInputStream(err);
-		PluginData p = new PluginData(b, err.length,
-				new HashMap<String, String[]>(), statuscode);
-		return p;
-	}
-
-	public PluginData getErrorPage() {
-		return getFromAsset("error.htm");
-	}
-
-	@Override
-	public CacheResult service(String arg0, Map<String, String> arg1) {
-		// Deprecated; do nothing. Isn't even called any more.
-		Log.i("Browser","cache result service called");
-		return null;
-	}
-*/
 	@Override
 	public boolean onOptionsItemSelected(MenuItem arg0) {
 		Message msg = new Message();
@@ -1151,12 +1068,31 @@ public class Browser extends ActionBarActivity implements
 			
 			mInLoad = true;
 			
+			//Log.d("orweb","load request: " + url);
+
 			
 			
 			super.onLoadResource(view, url);
 			
+			mInLoad = false;
 			
+		}
+		
+		
+		
+		@SuppressLint("NewApi")
+		@Override
+		public WebResourceResponse shouldInterceptRequest(WebView view,
+				String url) {
 			
+		//	Log.d("orweb","resource request: " + url);
+			
+			return super.shouldInterceptRequest(view, url);
+		}
+
+		public boolean shouldOverrideUrlLoading(WebView view, String url){
+		    // handle by yourself
+		    return false;
 		}
 
 		@Override
@@ -1514,6 +1450,7 @@ public class Browser extends ActionBarActivity implements
 				
 				
 				mHttpClient.useProxy(true,mProxyType,mProxyHost, mProxyPort);
+				
 			
 				return mHttpClient;
 			}
@@ -1532,6 +1469,9 @@ public class Browser extends ActionBarActivity implements
 				mHttpClient = getHttpClient ();
 				HttpGet hget = new HttpGet(url);
 				
+				for (String key : mHeaderOverride.keySet())
+					hget.addHeader(key, mHeaderOverride.get(key));
+					
 				try
 				{
 					mHttpClient.useProxy(true,mProxyType,mProxyHost, mProxyPort);
