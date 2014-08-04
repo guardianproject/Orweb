@@ -1,0 +1,27 @@
+Surfa anonymt
+Orweb är den mest privata och anonyma webbläsaren på Android för att besöka vilken webbsida som helst, även om den normalt är censurerad, övervakad, eller är på den gömda webben.
+★ ACCEPTERA INGA SUBSTITUT: Orweb är den säkraste webbläsaren på Android. Punkt. Orweb går runt övervakning och censur genom att studsa din krypterade trafik flera gånger genom datorer över hela världen, istället för att ansluta dig direkt som VPNs och proxies. Denna process tar lite längre tid, men den starkaste personliga integriteten och identitetsskyddet är värt väntan.
+★ GÅ RUNT BRANDVÄGGAR OCH RESTRIKTIONER: Blockerar ditt kontor, skola, eler region vissa webbsidor? Inte nu längre. Orweb går runt nästan alla typer av nätverksrestriktioner.
+★ SURFA ANONYMT: Som New York Times skriver, "när en kommunikation anländer från Tor vet du aldrig var eller vem det är från." Ingen teknologi är 100% effektiv, men Orweb är så nära anonymitet som det är möjligt att komma på Android.
+★ INTEGRITET DU KAN LITA PÅ: Electronic Frontier Foundation (EFF) säger att "det banbrytande arbetet från Tor projektet hjälper användare överallt att förbättra säkerheten hos sin online kommunikation."
+***VIKTIGT***
+Kräver det kostnadsfria Orbot tillägget. Ladda ner det här: http://goo.gl/IzfFG
+***Funktioner***
+★ INGEN SURFHISTORIK: Orweb lagrar inte någon information om webbsidorna du besöker.
+★ FLEXIBEL KAK-KONTROLL: Du kan hindra webbsidor du besöker från att installera kakor (vilka kan spåra dina webbaktiviteter), tillåta dem selektivt, eller tillåta alla sidor att skapa kakor.
+★ FÖRKLÄ DIN ENHET: Du kan välja vilken telefon eller dator webbsidor du besöker tror att du använder.
+★ RESISTENT MOT JAVASCRIPT ATTACKER: JavaScript, en vanlig attackmetod för skadlig mjukvara, är inaktiverad som standard.
+★ RESISTENT MOT FLASH SÅRBARHETER: Orweb försöker hindra Flash från att ladda på sidor du besöker, och blockerar därmed vanliga säkerhetshot.
+★ ENKELT ATT ANVÄNDA: Du är bara några få klick ifrån gratis, anonym webbsurfning. För en snabb, interaktiv genomgång, besök vår webbsida: https://guardianproject.info/howto/browsefreely
+★ ÖPPEN KÄLLKOD: Vår kod är transparent. Du kan ta en titt eller gå med i vårt community och hjälpa att göra Orweb ännu bättre: https://github.com/guardianproject/orweb
+★ FRIHET I DITT SPRÅK: Orweb är tillgängligt i: Arabiska (العربية), Kinesiska (中文简体), Holländska (Nederlands), Engelska, Esperanto, Farsi (فارسی), Franska (Français), Tyska (Deutsch), Grekiska (Ελληνικά), Ungerska (Magyar Nyelv), Italienska (Italiano), Norska (Norsk), Ryska (Русский), Spanska (Español), Svenska (Svensk), och Tibetanska (བོད་སྐད།).
+Ser du inte ditt språk? Gå med oss och hjälp oss översätta appen: https://www.transifex.com/projects/p/orweb
+***Lär dig mer***
+★ OM OSS: Guardian Project är en grupp av utvecklare som skapar säkra mobilappar och open-source kod för en bättre morgondag.
+★ VÅR WEBBSIDA: http://GuardianProject.info för att lära dig mer om oss.
+★ PÅ TWITTER: https://twitter.com/guardianproject
+★ ÖPPEN KÄLLKOD: Orweb är gratis mjukvara. Du kan ta en titt på källkoden, eller gå med i vårt community och hjälpa att göra Orweb ännu bättre: https://github.com/guardianproject/Orweb
+★ KONTAKTA OSS: Saknas din favoritfunktion? Hittat en jobbig bugg? Låt oss veta! Vi vill gärna höra ifrån dig. Skicka oss ett mail till: root@guardianproject.info.
+***Ansvarsfriskrivning***
+The Guardian Project gör appar som är designade för att skydda din säkerhet och anonymitet. De protokoll som vi använder är vida ansedda som bäst inom säkerhetsteknologi. Medan vi konstant uppgraderar vår mjukvara för att bekämpa de senaste hoten och eliminera buggar så är ingen teknologi 100% felsäker. För maximal säkerhet och anonymitet måste användare använda bästa praxis för att skydda sig själva. Du kan hitta en bra introduktionsguide till dessa ämnen på https://securityinabox.org
+Anonym, Anonym Surfning, Anonymitet, Censur, Kringgående, Darknet, Spåra Ej, Filtrering, Brandvägg, Guardian Project, Identitet, Incognito, Integritet, Privatliv, Proxy, Säkerhet, Tor

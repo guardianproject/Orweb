@@ -1,0 +1,27 @@
+Navegar em modo privado
+Orweb é o mais privativo e anônimo navegador web para Android para visitar qualquer site web, mesmo que este seja censurado, monitorado ou na hidden web.
+★ NÃO ACEITE SUBSTITUTOS: Orweb é o mais rápido navegador para Android. Orweb evita rastreamento e censura saltando seu tráfego encriptado muitas vezes através de computadores ao redor do mundo, ao invés de te conectar diretamente como VPNs e proxies. Este processo demora um pouco, mas a forte privacidade e proteção de identidade disponíveis valem a espera.
+★ DESVIE DE FIREWALLS E RESTRIÇÕES: Seu escritório, escola ou região bloqueiam alguns sites web? Não mais. Orweb atravessa quase todos os tipos de restrições de rede.
+★ NAVEGUE ANONIMAMENTE: Como escrito no The New York Times, "quando a comunicação chega de Tor, você não pode nunca saber de onde ou de quem ela veio." Nenhuma tecnologia é 100% efetiva, mas Orweb é tão perto do anonimato quanto é possível obter no Android.
+★ PRIVACIDADE QUE VOCÊ PODE CONFIAR: A Electronic Frontier Foundation (EFF) disse "o inovador trabalho do projeto Tor ajuda usuários em todo lugar a melhorar a segurança de suas comunicações online."
+***IMPORTANTE***
+Requer o plugin gratuito Orbot. Baixe-o aqui: http://goo.gl/IzfFG
+***Características***
+★ SEM HISTÓRICO DE NAVEGAÇÃO: Orweb não armazena nenhuma informação sobre sites web que você visita.
+★ CONTROLE FLEXÍVEL DE COOKIE: Você pode evitar que sites que você visitou instalem qualquer cookie (quais podem rastrear suas atividades na web), permiti-los seletivamente, ou permitir que qualquer site crie cookies.
+★ DISFARCE SEU DISPOSITIVO: Você pode escolher qual telefone ou computador para os sites web pensarem que você está usando-os.
+★ RESISTENTE À ATAQUES DE JAVASCRIPT: JavaScript, um método de ataque comum por software malicioso, é desabilitado por padrão.
+★ RESISTENTE ÀS VULNERABILIDADES DO FLASH: Orweb tenta bloquear que Flash seja carregados nos sites que você visita, bloqueando muitas das ameaças comuns de segurança.
+★ FÁCIL DE USAR: Você está somente a poucos passos distantes da livre, anônima navegação web. Para um rápido, interativo passo a passo, visite nosso site web: https://guardianproject.info/howto/browsefreely
+★ CÓDIGO ABERTO: Nosso código é transparente. Você pode dar uma olhada ou se juntar à comunidade para ajudar a fazer o Orweb melhor: https://github.com/guardianproject/orweb
+★ LIBERDADE EM SEU IDIOMA: Orweb está disponível em: Árabe (العربية), Chinês (中文简体), Holandês (Nederlands), Inglês, Esperanto, Farsi (فارسی), Francês (Français), Alemão (Deutsch), Grego (Ελληνικά), Húngaro (Magyar Nyelv), Italiano (Italiano), Norueguês (Norsk), Russo (Русский), Espanhol (Español), Sueco (Svensk), and Tibetano (བོད་སྐད།), além do Português.
+Não vê em seu idioma? Se junte a nós e ajude a traduzir o aplicativo: https://www.transifex.com/projects/p/orweb
+***Saiba Mais***
+★ SOBRE NÓS: O Guardian Project é um grupo de desenvolvedores que fazem aplicativos móveis seguros e de código fonte aberto para um melhor amanhã.
+★ NOSSO SITE WEB: http://GuardianProject.info para saber mais sobre nós.
+★ NO TWITTER: https://twitter.com/guardianproject
+★ CÓDIGO FONTE ABERTO: Orweb é um software livre. Você pode dar uma olhada em nosso código fonte, ou se juntar à comunidade para fazer mesmo o Orweb melhor:  https://github.com/guardianproject/Orweb
+★ CONTACTE-NOS: Estamos esquecendo de sua funcionalidade favorita? Encontrou algum erro chato? Por favor nos informe! Nós iremos adorar ouví-lo. Envie-nos um e-mail: root@guardianproject.info.
+***Aviso***
+O Guardian Project faz aplicativos que são desenhados para proteger sua segurança e anonimato. Os protocolos que nós usamos são largamente reconhecidos como o estado da arte em segurança tecnológica. Enquanto nós estamos constantemente atualizando nosso software para combater as últimas ameaças e eliminar erros, nenhuma tecnologia é 100% à prova de erro. Para uma segurança e anonimato máximos usuários dever utilizar as melhores práticas para se manterem seguros. Você pode pesquisar por um bom guia introdutório para estes tópicos em https://securityinabox.org
+Anônimo, Navegação anônima, Anonimato, Censura, Desvio, Darknet, Não rastrear, Filtragem, Firewall, Guardian Project, Escondido, Identidade, Incógnito, Privacidade, Privado, Navegação privada, Web Privada, Proxy, Segurança, Tor

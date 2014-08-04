@@ -1,0 +1,27 @@
+Modu pribatuan nabigatu
+Orweb Android plataformarako dagoen nabigatzailerik pribatu eta anonimoena da, edozein webgunetan ibiltzeko, nahiz eta zentsuratua, monitorizatua edo izkutatuta egon
+KOPIARIK EZ ONARTU: Orweb Android-en dagoen nabigatzailerik seguruena da. Orweb jarraipena eta zentsura sahiesten du zure trafikoa zenbait alditan enkriptatuz munduko hainbat zerbitzarietan, VPN edo proxyetara zuzenean konektatu ordez. Prozesu hau pixkat luzeagoa bada ere, pribatutasuna eta identitatea gehiago babesteagatik itxarotea merezi du.
+SU-HEZIAK ETA MURRIZPENAK sahiestu: Zure bulegoa, ikastetxea edo zonaldeak web batzuk blokeatzen ditu? Inoiz ez berriro. Orweb-ek ia edozein murrizpen sahiestu dezake.
+ANONIMOKI NABIGATU: New York Times-ek esandakoaren arabera, "Tor bidez komunikazio bat datorrenean, ezin da jakin nondik datorren." Ez dago 100% eraginkorra den teknologiarik, baina Orweb Android-en lor daitekeen anonimotasun mailarik handiena emango digu.
+FIDAGARRIA DEN PRIBATUTASUNA: Electronic Frontier Foundation (EFF) esan zuen "Tor proiektuko lan izugarriak edozein tokitatko erabiltzaileen online komunikazioen segurtasuna hobetzen laguntzen du"
+***GARRANTZITSUA***
+Orbot plugin librea beharrezkoa da. Hemendik jaitsi: http://goo.gl/IzfFG
+***Ezaugarriak***
+NABIGAZIOAREN HISTORIKORIK EZ: Orweb-ek nabigatutako webguneei buruzko informaziorik ez du gordetzen.
+COOKIEN KONTROL MALGUA: Webguneek cookieak instalatzea galarazi dezakezu (zure aktibitateen jarraipenerako erabil daitezkeelako), batzuk onartu, edo edozein webguneri cookieak instalatzea baimendu dezakezu.
+ZURE GAILUA MOZORROTU: Bisitatzen duzun webguneetan hauta dezakezu ze telefono edo konputagailu bezala aurkezten zaren.
+JAVASCRIPT ERASOEKIKO ERRESISTENTEA: Javascript, software maltzurraren biderik ohikoena, defektuz desaktibatuta dago.
+FLASH AHULEZIEKIKO ERRESISTENTEA: Orweb-ek Flash kargatzea ekiditen du, segurtasun mehatxu orokorrenak sahiestuz
+Erabilterraza: Nabigazio aske eta anonimotik klik batzuetara zaude. Programaren demo elkarreragile eta azkarra ikusi nahi izanez gero, gure webgunera sar zaitez: https://guardianproject.info/howto/browsefreely
+SOFTWARE LIBREA: gure kodea gardena da. Begirada bat bota ahal diozu, edo komunitatean sartu Orweb hobeagoa bihurtzeko: https://github.com/guardianproject/orweb
+ASKATASUNA ZURE HIZKUNTZAN: Orweb hizkuntza hauetan erabil daiteke: Arabic (العربية), Chinese (中文简体), Dutch (Nederlands), English, Esperanto, Farsi (فارسی), French (Français), German (Deutsch), Greek (Ελληνικά), Hungarian (Magyar Nyelv), Italian (Italiano), Norwegian (Norsk), Russian (Русский), Spanish (Español), Swedish (Svensk), Basque (euskara) eta Tibetan (བོད་སྐད།).
+Ez duzu zure hizkuntza ikusten? Lagun gaitzazu app-a itzultzen: https://www.transifex.com/projects/p/orweb
+***Ikasi gehiago***
+HONI BURUZ: Guardian Project mobientzako aplikazio seguru eta kode irekikoak egiten dituzten garatzaile talde bat da, etorkizun hobeagoa izateko asmoz
+GURE WEBGUNEA: http://GuardianProject.info guri buruz gehiago jakiteko
+TWITTER-REN:  https://twitter.com/guardianproject
+KODE-IREKIA: Orweb software librea da. Gure kode irekia begira dezakezu, edo komunitatean sartu Orweb hobeagoa bihurtzeko: https://github.com/guardianproject/Orweb
+IDATZ GAITZAZU: Ezaugarririk gogokoena faltan botatzen duzu? bug harrigarri bat topatu duzu? Esaiguzu mesedez! Gustora irakurriko dugu, bidali email bat:  root@guardianproject.info-ra.
+***Abisua***
+Guardian Project-ek zure segurtasuna eta anonimotasuna babesteko aplikazioak egiten ditu. Erabiltzen ditugun protokoloak segurtasun munduan oso erabiliak diren teknologietan oinarritzen dira. Bug-ak eta arriskuak ekiditeko etengabe kodea eguneratuta ere, ez dago 100%ean fidagarria den teknologiarik. Anonimotasun eta segurtasun maila gorena lortzeko erabiltzaileek portaera ziurrak egin behar dituzte, bere buruak salbu izateko. Esteka honetan https://securityinabox.org gai honi buruzko sarrera-gida on bat topa dezakezu
+Anonimotasuna, Nabigazio Anonimoa, Zentsura, Darknet, Jarraipenik ez, Filtratzea, Su-hezia, Guardian Project, Ezkutatuta, Identitatea, Inkognitoa, Pribatutasuna, Pribatua, Nabigazio Pribatua, Web Pribatua, Proxy, Segurtasuna, Tor

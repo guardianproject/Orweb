@@ -1,0 +1,27 @@
+Prohlížejte Privátně
+Orweb je nejbezpečnější anonymní prohlížeč na Android pro prohlížení jakékoliv stránky, i když je normálně cenzurovaná, monitorovaná nebo na skrytém webu.
+★ NEPŘÍJÍMEJTE ŽÁDNÉ ÚSTUPKY: Orweb je nejbezpečnější prohlížeč na Android. Tečka. Orweb blokuje sledování a cenzurování posíláním Vašich šifrovaných dat přes několik počítačů po celém světě, namísto přímého připojení jako u VPN a proxy. Tento proces zabere trochu více času, ale nejlepší možná ochrana soukromí a identity stojí za čekání.
+★ OBCHÁZENÍ FIREWALLŮ A OMEZENÍ: Blokuje vaše škola, kancelář nebo region nějaké webové stránky? Už ne! Orweb obchází skoro každý druh síťových omezení.
+★ BROUZDEJTE ANONYMNĚ: Jak napsal New York Times, "když přijdou data z Tor, nikdy nevíte odkuď jsou". Žádná technologie není 100% účinná, ale Orweb je nejblíž anonymitě, co vůbec můžete na Androidu mít.
+★ JISTOTA KTERÉ MŮŽETE VĚŘIT: Electronic Frontier Foundation (EFF) říká: "průkopnická práce od Tor project pomáhá uživatelům vylepšit bezpečnost při jejich online komunikaci."
+***Důležité***
+Vyžaduje plugin Orbot. Stáhněte si ho zdarma na: http://goo.gl/IzfFG
+***Funkce***
+★ ŽÁDNÁ HISTORIE PROHLÍŽENÍ: Orweb neukládá žádné informace týkající se navštívených stránek.
+★ FLEXIBILNÍ KONTROLA COOKIES: Můžete zabránit stránkám, které navštívíte instalovat jakékoliv cookies (které můžou sledovat vaši webovou aktivitu), povolit je výběrem nebo povolit jakékoliv stránce vytvářet cookies.
+★ ZAMASKUJTE SVOJE ZAŘÍZENÍ: Vyberte si, za jaké zařízení nebo prohlížeč se má Orweb na webu vydávat.
+★ ODOLNÉ VŮČI JAVASCRIPTOVÝM ÚTOKŮM: Javascript, což je velice častá metoda útoku pro přenos škodlivého kódu, je standardně vypnutý.
+★ ODOLNÉ VŮČI CHYBÁM VE FLASHI: Orweb se snaží zabránit Flashi načítání stránek, které navštívíte, díky tomu blokuje mnoho častých bezpečnostních rizik.
+★ LEHKÉ NA POUŽITÍ: Jste jenom pár kliknutí od anonymního prohlížeče zdarma. Pro rychlou, interaktivní ukázku navštivte naši stránku: https://guardianproject.info/howto/browsefreely
+★ OPEN-SOURCE: Náš kód je transparentní. Můžete se podívat nebo se připojit ke komunitě abyste pomohli udělat Orweb ještě lepší: https://github.com/guardianproject/orweb
+★ MNOHO PŘEKLADŮ: Orweb je dostupný v: Arabšitně  (العربية), Čínštině (中文简体), Holandštině (Nederlands), Angličtině, ----, Perštině (فارسی), Francouzštině (Français), Němčině (Deutsch), Řečtině (Ελληνικά), Maďarštině (Magyar Nyelv), Italštině (Italiano), Norštině (Norsk), Ruštině (Русский), Španělštině (Español), Švédštině (Svensk), a Tibetštině (བོད་སྐད།).
+Nevidíte zde svůj jazyk? Připojte se k nám a pomozte s překladem na: https://www.transifex.com/projects/p/orweb
+***Zjistit více***
+★ O NÁS: Guardian Project je zkupina vývojářů, vytvářející bezpečné mobilní aplikace a open-source kód pro lepší zítřky.
+★ NAŠE STRÁNKY: Zjistěte si o nás více na http://GuardianProject.info
+★ NA TWITTERU: https://twitter.com/guardianproject
+★ OPEN-SOURCE: Orweb je volný software. Můžete se kouknout na náš zdrojový kód nebo se přidat k naší komunitě - můžete pomoci udělat Orweb ještě lepším: https://github.com/guardianproject/Orweb.
+★ NAPIŠTE NÁM: Chybí vám vaše oblíbená funkce? Našli jste nepříjemnou chybu? Napište nám!  Budeme rádi, za oznámení všech chyb. Napište nám na email: root@guardianproject.info.
+***Prohlášení***
+Projekt Guardian vyrábí aplikace, které jsou určeny k ochraně bezpečnosti a anonymity. Protokoly, které používáme, jsou široce považovány za nejmodernější v bezpečnostních technologiích. Zatímco se neustále modernizuje náš software pro boj s nejnovějšími hrozbami a eliminuje chyby, žádná technologie není 100% spolehlivá. Pro zajištění maximální bezpečnosti a anonymity uživatelé musí využívat osvědčené postupy, aby byli v bezpečí. Můžete si najít dobré úvodní tipy k těmto tématům na https://securityinabox.org.
+Anonymous, Anonymous Browsing, Anonymity, Censorship, Circumvention, Darknet, Do Not Track, Filtering, Firewall, Guardian Project, Hidden, Identity, Incognito, Privacy, Private, Private Browsing, Private Web, Proxy, Security, Tor

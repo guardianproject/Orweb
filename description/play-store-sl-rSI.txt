@@ -1,0 +1,29 @@
+Brskaj zasebno
+Orweb je med najbolj zasebnimi in anonimnimi brskalniki za Android, namenjen obisku vseh spletnih strani, tudi cenzuriranih, nadziranih ali na skritem spletu.
+★ NE SPREJMITE NADOMESTKOV: Orweb je najvarnejši brskalnik za Android. Pika. Orweb obide sledenje in cenzuro, tako da nekajkrat preusmeri vaš šifriran promet skozi računalnike po celem svetu, prav nasprotno od posredovalnih strežnikov in dostopov prek varnih zasebnih (VPN) povezav. Ta proces lahko traja malce dlje, toda najbolje možno varovani zasebnost in identiteta sta vredni čakanja.
+★ ZAOBIDITE POŽARNE ZIDOVE IN OMEJITVE: Ali vaša pisarna, šola, morda celo regija, blokirajo določene spletne strani? Nič več. Orweb obide skoraj vse vrste mrežnih omejevanj.
+★ BRSKAJTE ANONIMNO: Kot poroča New York Times: "Ko promet izvira iz omrežja Tor, nikoli ne veste od kod in od koga izvira." Nobena tehnološka rešitev ni 100 %-na, toda Orweb se je anonimnosti približal, kolikor se ji je možno, na Androidu.
+★ ZASEBNOSTI, KI JI LAHKO ZAUPATE: Pri Electronic Frontier Foundation (EFF) pravijo: "Ta prelomna stvaritev Tor Project-a pomaga uporabnikom od povsod izboljšati varnost komunikacije."
+***POMEMBNO***
+Potreben je brezplačni Orbot vtičnik. Naložite ga od tu: http://goo.gl/IzfFG
+***Zmožnosti***
+★ BREZ ZGODOVINE BRSKANJA: Orweb ne shranjuje nobenih informacij o spletnih straneh, ki jih obiskujete.
+★ PROŽEN NADZOR PIŠKOTKOV: Lahko preprečite stranem, ki jih obiskujete, da bi vam nameščale katere koli piškotke (ki bi lahko sledili vašim spletnim dejavnostim), jih selektivno dovoljujete ali dovoljujete vsem spletnim stranem.
+★ ZAKRITE SVOJ TELEFON: Vi lahko izbirate kot kateri telefon ali računalnik se boste predstavili spletnim stranem, ki jih obiskujete.
+★ ODPOREN PROTI NAPADOM V JAVASCRIPT-U: JavaScript, pogosta metoda napada škodljivega programja, je privzeto onemogočen.  
+
+JavaScript, a common attack method for malicious software, is disabled by default.
+★ ODPOREN NA RANLJIVOSTI V FLASH-U: Orweb skuša preprečiti, da bi se nalagal Flash na straneh, ki jih obiskujete, in s tem zapira številne pogoste varnostne luknje.
+★ PREPROST ZA UPORABO: Ste le nekaj klikov stran od brezplačnega in anonimnega spletnega brskanja. Za kratek interaktivni sprehod po aplikaciji obiščite našo spletno stran: https://guardianproject.info/howto/browsefreely
+★ ODPRTO-KODEN: Naša izvorna koda je transparentna. Lahko si jo ogledate ali se pridružite skupnosti in priskočite na pomoč pri razvoju in nenehnih izboljšavah: https://github.com/guardianproject/orweb
+★ SVOBODA V VAŠEM JEZIKU: Orweb je navoljo v: Arabic (العربية), Chinese (中文简体), Dutch (Nederlands), English, Esperanto, Farsi (فارسی), French (Français), German (Deutsch), Greek (Ελληνικά), Hungarian (Magyar Nyelv), Italian (Italiano), Norwegian (Norsk), Russian (Русский), Spanish (Español), Swedish (Svensk), Tibetan (བོད་སྐད།) and Slovenian (Slovenščini).
+Nimate na izbiro vašega jezika? Priskočite nam na pomoč pri prevajanju te aplikacije: https://www.transifex.com/projects/p/orweb
+***Izvedi več***
+O NAS: Guardian Project je skupina razvijalcev, ki ustvarjamo varne mobilne aplikacije in odprto kodo za boljši jutri.
+NAŠA SPLETNA STRAN: http://GuardianProject.info da bi lahko izvedeli več o nas.
+MA TWITTERJU: https://twitter.com/guardianproject
+★ ODPRTO-KODNO: Orweb je brezplačen program. Lahko si tudi ogledate njegovo izvorno kodo ali se pridružite skupnosti in priskočite na pomoč pri razvoju in nenehnih izboljšavah: https://github.com/guardianproject/Orweb
+★ PIŠITE NAM: Ali pogrešate vašo najljubšo funkcionalnost? Ste morda našli nadležnega hrošča? Prosimo, sporočite nam! Z veseljem pričakujemo vašo e-pošto. Pišite nam na: root@guardianproject.info. 
+***Opozorilo***
+Guardian Project izdeluje aplikacije, ki so zasnovane, da bi zaščitile vašo varnost in vam zagotovile anonimnost. Protokole, ki jih uporabljamo so široko uporabljani in označeni za vrhunske varnostne tehnologije. Ne glede na naša prizadevanja, da bi programje neprestano posodabljali, z namenom izločiti hrošče ter se boriti proti drugim grožnjam, nobena tehnološka rešitev ni 100 %-no zanesljiva. Za kar največjo varnost in anonimnost mora biti tudi uporabnik vešč dobrih praks. Dober uvod na to temo lahko najdete na: https://securityinabox.org
+Anonimno, anonimno brskanje, anonimnost, cenzura, zaobhajanje, darknet, ne sledi, filtriranje, požarni zid, Guardian Project, hidden, identiteta, incognito, zasebnost, zasebna zasebno brskanje, zasebni splet, varnost, tor

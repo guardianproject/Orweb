@@ -1,0 +1,27 @@
+Przeglądaj prywatnie.
+Orweb jest naj prywatniejszą i anonimową przeglądarką dla Android-a do zwiedzania każdej strony, nawet jeśli jest to zazwyczaj cenzurowane, monitorowane, lub na ukrytej sieci.
+★ NIE AKCEPTUJ SUBSTYTUTÓW: Orweb jest najbezpieczniejszą przeglądarką dla Android-a. Kropka. Orweb wymyka śledzenie i cenzurę odbijając zaszyfrowanych danych kilka razy poprzez komputery na całym świecie, bez konieczności łączenia bezpośrednio jak VPN i proxy. Ten proces trwa dłużej, ale jest warto zaczekąc dla najsilniejszej ochrony prywatności i tożsamości użytkownika.
+★ OMIJAJ ZAPORY SIECIOWE I OGRANICZENIA: Czy twoje praca, szkoła lub rejon blokuje szczególne strony? Teraz nie; Orweb wymyka prawie każdą metode restrykcji sieci.
+★ PRZEGLĄDAJ PRYWATNIE: "Gdy komunikacja dociera z Tor-a, nigdy nie wiadomo skąd ona pochodzi" -informuje New York Times. Nie istnieje technologia efektywna na 100%, ale Orweb jest najlepszym rozwiązaniem dla tych, którzy chcą być anonimowi na Android-że.
+★ PRYWATNOŚĆ KTÓREJ MOŻESZ UWIEŻYĆ: Electronic Frontier Foundation (EFF) mówi "przełomowa praca z projektem Tor umożliwia użytkownikom wszędzie poprawy bezpieczeństwa ich komunikacji online."
+**WAŻNE**
+Wymaga darmową wtyczke Orbot. Szczągnij ją tu: http://goo.gl/IzfFG
+**Funkcje**
+★ BRAK HISTORII PRZEGLĄDANIA: Orweb nie przechowuje żadnych informacji o odwiedzanych witryn.
+★ WSZECHSTRONNA KONTROLA NAD CIASTECZKAMI: Można uniemożliwić instalowania ciasteczek przez odwiedzanych witryn  (które mogą śledzić działania na sieci), pozwolić selektywne instalowanie, lub zezwolić tworzenie ciasteczek przez każdą strone.
+★ ZAMASKUJ SWOJE URZĄDZENIE: Ukryj urządzenie przed odwiedzanych witryn internetowych jako inny telefon, tablet, lub komputer.
+★ ODPORNY NA ATAKI JAVASCRIPT: JavaScript, powszechna metoda ataku złośliwego oprogramowania, jest domyślnie wyłączony.
+★ ODPORNA NA ATAKI FLASH-A: Orweb stara uniemożliwić ładowania Flash-a na zwiedzanych witrynach, blokując wiele typowych zagrożeń bezpieczeństwa.
+★ PROSTA OBSŁUGA: Przed tobą tylko kilka kliknięć od bezpłatnej sieci anonimowego surfowania. Dla szybkiej, interaktywnej instrukcji, odwiedź naszą stronę internetową: https://guardianproject.info/howto/browsefreely
+★ OTWARTE OPROGRAMOWANIE: W każdej chwili możesz spojrzeć na nasz kod, lub dołączyć się do naszej wspólnoty i pomóc ulepszyć Orweb na naszej stronie Github: https://github.com/guardianproject/orweb
+★ WOLNOŚĆ W TWOIM JĘZYKU: Orweb jest dostępny w: arabskim (العربية), chińskim (中文简体), holenderskim (Nederlands), angielskim (English), esperanto, perskim (فارسی), francuskim (Français), niemieckim (Deutsch), greckim (Ελληνικά), węgierskim (Magyar Nyelv), włoskim (Italiano), norweskim (Norsk), rosyjskim (Русский), hiszpańskim (Español), szwedzkim (Svensk), i tybetańskim (བོད་སྐད།).
+Nie widać swojego języku? Dołącz do nas i pomóż w tłumaczeniu aplikacji: https://www.transifex.com/projects/p/orweb
+***Dowiedz się więcej***
+★ O NAS: Projekt 'Guardian' jest grupą deweloperów, którzy tworzą bezpieczne aplikacje mobilne i kod "open-source" na lepsze jutro.
+★ NASZA STRONA: http://GuardianProject.info aby się dowiedzieć więcej.
+★ NA TWITTER-RZE: https://twitter.com/guardianproject
+★ OTWARTE OPROGRAMOWANIE: Orweb jest darmową aplikacją. W każdej chwili możesz spojrzeć na nasz kod, lub dołączyć się do naszej wspólnoty i pomóc ulepszyć Orweb na naszej stronie Github: https://github.com/guardianproject/Orweb
+★ POWIADOM NAS: Czy brakuje nam twoja ulubiona funkcja? Znalazłeś irytujący glitcz? Powiedz nam! Bardzo chcielibyśmy usłyszeć od ciebie. Wyślij nam email-a: root@guardianproject.info.
+***Zastrzeżenie***
+Projekt 'Guardian' tworzy aplikacje, które zostały zaprojektowane w celu ochrony bezpieczeństwa i anonimowości. Protokoły, które stosujemy są powszechnie uważane za najlepsze w dziedzinie techniki bezpieczeństwa. Choć nieustannie podwyższamy oprogramowanie do zwalczania najnowszych zagrożeń i wyeliminowania błędów, żadna technologia nie jest w 100% niezawodna. Dla maksymalnego bezpieczeństwa i anonimowości użytkownicy muszą korzystać z najlepszych praktyk w celu zachowania bezpieczeństwa. Możesz znaleźć dobry przewodnik wprowadzający do tych tematów na https://securityinabox.org
+Anonimowe, Anonimowe przeglądanie, Anonimowość, Cenzura, Obejście, Darknet, Not Track, Filtrowanie, Firewall, Projekt Guardian, Ukryte, Tożsamość, Incognito, Prywatność, Prywatne, Przeglądanie Prywatne, Prywatna Sieć, Proxy, Bezpieczeństwo, Tor

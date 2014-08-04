@@ -1,0 +1,27 @@
+Naviga in Privato
+Orweb è il più privato e anonimo browser web per Android per visitare qualsiasi sito, anche se normalmente è censurato, monitorato o sul web nascosto.
+★ NON ACCETTARE SOSTITUTI: Orweb è il browser più sicuro per Android. Orweb evita il tracking dei dati e la censura facendo rimbalzare il vostro traffico criptato varie volte attraverso computer di tutto il mondo, invece di connetervi direttamente come le VPNs e i proxy. Questo processo è un po' più lungo, ma la maggiore privacy e protezione dell'identità che produce valgono il tempo di attesa.
+★ AGGIRA I FIREWALL E I BLOCCHI: Il vostro ufficio, scuola o stato bloccano certi siti? Non più. Orweb bypassa quasi ogni tipo di restrizione della rete.
+★ NAVIGA ANONIMAMENTE: Come scrive il New York Times, "quando una comunicazione proviene da Tor, non potete mai sapere da dove o da chi è partita." Nessuna tecnologia è efficace al 100%, ma Orweb è quanto di più vicino possibile all'anonimato si possa ottenere su Android.
+★ PRIVACY DI CUI TI PUOI FIDARE: L'Electronic Frontier Foundation (EFF) dice "Il rivoluzionario lavoro da parte di Tor project aiuta gli utenti da ogni parte del mondo a migliorare la sicurezza delle loro comunicazioni online."
+***IMPORTANTE***
+È necessario il plugin Orbot (gratuito). Scaricalo da qui: http://goo.gl/IzfFG
+***Caratteristiche***
+★ NESSUNA CRONOLOGIA DI NAVIGAZIONE: Orweb non salva alcuna informazione riguardo ai siti che visitate.
+★ CONTROLLO FLESSIBILE DEI COOKIE: Potete evitare che i siti che visitate salvino dei cookies (i quali potrebbero tracciare le vostre attività sul web), consentirlo selettivamente oppure consentire a qualunque sito di salvare i cookies.
+★ NASCONDI IL TUO DISPOSITIVO: Voi decidete quale telefono o computer far credere stiate usando al sito che state visitando.
+★ RESISTENTE AGLI ATTACCHI JAVASCRIPT: Il JavaScript, un metodo di attacco comune per i software corrotti, è disabilitato di default.
+★ RESISTENTE ALLE VULNERABILITÁ FLASH: Orweb cerca di prevenire il caricamento dei contenuti Flash sui siti che visitate, bloccando molti comuni rischi per la sicurezza.
+★ FACILE DA USARE: Siete solo a pochi click dalla navigazione anonima e gratuita. Per una guida rapida e interattiva, visitate il nostro sito (in inglese): https://guardianproject.info/howto/browsefreely
+★ OPEN-SOURCE: Il nostro codice è trasparente. Potete dare un occhiata o unirvi alla community per aiutare a migliorare ulteriormente Orweb: https://github.com/guardianproject/orweb
+★ LIBERTÀ NELLA VOSTRA LINGUA: Orweb è disponibile in: Arabo (العربية), Cinese (中文简体), Olandese (Nederlands), Inglese, Esperanto, Farsi (فارسی), Francese (Français), Tedesco (Deutsch), Greco (Ελληνικά), Ungherese (Magyar Nyelv), Italiano (Italiano), Norvegese (Norsk), Russo (Русский), Spagnolo (Español), Svedese (Svensk), and Tibetano (བོད་སྐད།).
+Non trovate la vostra lingua? Unitevi a noi e aiutate a tradurre l'app: https://www.transifex.com/projects/p/orweb
+***Maggiori Informazioni***
+★ SU DI NOI: Guardian Project è un gruppo di sviluppatori che crea apps sicure per dispositivi mobile e codice open-source per un domani migliore.
+★ IL NOSTRO SITO: http://GuardianProject.info per saperne di più su di noi.
+★ SU TWITTER: https://twitter.com/guardianproject
+★ OPEN-SOURCE: Orweb è un software libero. Potete dare un occhiata al nostro codice sorgente, oppure unirvi alla comunità per aiutare a migliorare ulteriormente Orweb: https://github.com/guardianproject/Orweb
+★ SCRIVICI: Abbiamo dimenticato la vostra caratteristica preferita? Avete trovato un bug fastidioso? Scrivetecelo! Apprezzeremmo molto i vostri messaggi. Scriveteci una email: root@guardianproject.info
+***Disclaimer***
+The Guardian Project crea app che sono studiate per proteggere la vostra sicurezza e anonimato. I protocolli che noi usiamo sono vastamente riconosciuti come lo stato dell'arte nelle tecnologie della sicurezza. Nonostante noi aggiorniamo continuamente il nostro software per combattere le ultime minacce e per eliminare i bug, nessuna tecnologia è sicura la 100%. Per avere massima sicurezza e anonimato gli utenti devono utilizzare i migliori metodi per proteggere se stessi. Potete trovare un'ottima guida introduttiva a questi argomenti su: https://securityinabox.org
+Anonimo, Navigazione Anonima, Anonimato, Censura, Aggirare, Darknet, Do Not Track, Non Tracciare, Filtrare, Firewall, Guardian Project, Nascosto, Identità, Incognito, Privacy, Privato, Navigazione Privata, Web Segreto, Proxy, Sicurezza, Tor

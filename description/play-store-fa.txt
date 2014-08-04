@@ -1,0 +1,27 @@
+وبگردی ناشناس
+Orweb بهترین مرورگر اینترنتی برای اندرویید است که مرور هر وب سایتی را به صورت ناشناس و شخصی شده فراهم می کند، حتی اگر این سایت سانسورشده، مورد مراقبت قرار گرفته یا در بخش پنهان وب باشد.
+★هیچ جایگزینی ندارد:Orweb پرشتابترین مرورگر آنرویید است.سخنی برای گفتن باقی نمی گذارد.Orweb رهگیری و سانسور را با بکارگیری  گذراندن ترافیک چندبار رمزنگاری شده شما از رایانه های پخش شده در سراسر جهان کاهش می دهد، به جای ارتباط مستقیم مانند VPN و پروکسی ها. این فرایند شاید اندکی بیشتر زمان ببرد ولی قدرتمندترین نگاهبانی از امنیت و هویت شخصی ارزشش را دارد.
+پشتِ دیوار آتشین و اینترنت فیلتر: محلِ کارتان ، مدرسهٔ شما یا اینترنت محل سکونت شما برخی‌ از سایت‌ها را فیلتر کرده است؟ از این پس دیگر نه! "اوروب" تقریبا همهٔ سایت‌های فیلتر را باز می‌کند
+وبگردی به صورت ناشناس: همانطور که مجله نیویورک تایمز می‌نویسد ` از زمانی‌ که ارتباطات اینترنتی نرم‌افزار تور آمده است، شما هرگز نمیتوانید متوجه شوید چه کاربری از کجا اونلاین شده است. هیچ فناوری به طور 100% کارامد نیست، اما اوروب تقریبا به طور کامل، ناشناس وصل میشود و امکان استفاده در سیستم اندروید را دارد.
+محدوده خصوصی که می‌توان به آن اعتماد کرد: گروه اینترنتی "الکترونیک فرنتیر فاندیشن" می‌گوید: پیشگامی و ابداع گروه پروژه تور به تمام کاربران در هرجا کمک می‌کند که بتوانند تنظیمات خصوصی ارتباطات اینترنتی خود را افزایش دهند.
+*** مهم ***
+به افزونه رایگان Orbot نیاز دارد. از اینجا بارگذاری کنید: http://goo.gl/IzfFG
+*** توانایی ها ***
+                                                                                بدون ثبت اطلاعاتی‌ از شما: اوروب اطلاعاتی‌ در مورد سایت هایی که شما دیدن می‌کنید ذخیره نمیکند
+ کنترل راحت کوکیها: شما میتوانید از نصب کوکیها توسط سایت هایی که دیدن می‌کنید جلوگیری کنید.(کوکیها میتوانند فعالیت شما را رهگیری کنند) میتوانید آنها را انتخاب کنید یا اینکه به برخی‌ اجازه ساختن کوکی دهید
+  تغییر اسم دستگاه کاربریِ شما: شما میتوانید وب سایت‌ها را فریب داده و اسم دستگاه رایانه یا موبایل خود را تغییر دهید تا متوجه نشوند با چه دستگاهی اونلاین هستید
+★ RESISTANT TO JAVASCRIPT ATTACKS: JavaScript, a common attack method for malicious software, is disabled by default.
+★ RESISTANT TO FLASH VULNERABILITIES: Orweb attempts to prevent Flash from loading on sites you visit, blocking many common security threats.
+★ EASY TO USE: You’re just a few clicks away from free, anonymous web surfing. For a quick, interactive walkthrough, visit our website: https://guardianproject.info/howto/browsefreely
+★ OPEN-SOURCE: Our code is transparent. You can take a look or join the community to help make Orweb even better: https://github.com/guardianproject/orweb
+★ آزادی در برگزیدن زبان برنامه: Orweb با این زبانها در دسترس است: Arabic (العربية), Chinese (中文简体), Dutch (Nederlands), English, Esperanto, Farsi (فارسی), French (Français), German (Deutsch), Greek (Ελληνικά), Hungarian (Magyar Nyelv), Italian (Italiano), Norwegian (Norsk), Russian (Русский), Spanish (Español), Swedish (Svensk), and Tibetan (བོད་སྐད།).
+Don’t see your language? Join us and help translate the app: https://www.transifex.com/projects/p/orweb
+*** فراگیری بیشتر ***
+★ ABOUT US: Guardian Project is a group of developers that make secure mobile apps and open-source code for a better tomorrow.
+★ OUR WEBSITE: http://GuardianProject.info to learn more about us.
+★ ON TWITTER: https://twitter.com/guardianproject
+★ OPEN-SOURCE: Orweb is free software. You can take a look at our source code, or join the community to help make Orweb even better: https://github.com/guardianproject/Orweb
+★ MESSAGE US: Are we missing your favorite feature? Found an annoying bug? Please tell us! We’d love to hear from you. Send us an email: root@guardianproject.info.
+*** نپذیرفتن مسئولیت ***
+The Guardian Project makes apps that are designed to protect your security and anonymity. The protocols that we use are widely regarded as the state of the art in security technology. While we are constantly upgrading our software to combat the latest threats and eliminate bugs, no technology is 100% foolproof. For maximum security and anonymity users must utilize best practices to keep themselves safe. You can find a good introductory guide to these topics at https://securityinabox.org
+Anonymous, Anonymous Browsing, Anonymity, Censorship, Circumvention, Darknet, Do Not Track, Filtering, Firewall, Guardian Project, Hidden, Identity, Incognito, Privacy, Private, Private Browsing, Private Web, Proxy, Security, Tor

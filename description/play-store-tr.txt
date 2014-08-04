@@ -1,0 +1,28 @@
+İnterneti gizlice tarayın
+Orweb Android işletim sisteminde gizliliğe ve mahremiyete en çok önem veren internet tarayıcıdır. Herhangi bir web sitesi sansürlenmiş, gözetim altında veya gizli internette olsa dahi ulaşmanızı sağlar.
+★ ALTERNATİF KABUL ETMEYİN: Orweb Android sistemindeki en güvenli tarayıcıdır. Nokta. Orweb doğrudan VPN veya Proxy sunucularına bağlanmaktan farklı olarak şifrelenmiş internet trafiğinizi dünya üzerindeki pek çok başka bilgisayarlardan geçirerek izlenmenizi ve sansürü engeller. Bu yöntem biraz daha zaman alır, ancak en güçlü güvenlik ve gizliliğinizin korunması biraz beklemeye değer.
+★ GÜVENLİK DUVARLARINI VE SINIRLANDIRMALARI AŞIN: İş yeriniz, okulunuz veya yaşadığınız yer bazı web adreslerini engelliyor mu? Artık değil. Orweb neredeyse her tür ağ sınırlandırmasını aşabilir.
+★ İNTERNETTE ANONİM OLARAK DOLAŞIN: New York Times'ın yazdığı gibi “eğer bir mesaj Tor Ağı üzerinden ulaşıyorsa kimden veya nereden geldiğini bilmek mümkün değil”. Hiçbir teknoloji %100 etkili değildir, ama Orweb uygulaması Android sisteminde mümkün olan en anonim şekilde internette dolaşmanızı sağlar.
+★ GÜVENEBİLECEĞİNİZ GİZLİLİK: Electronic Frontier Foundation (EFF) Tor hakkında şunları söylemiştir: “Tor Projesi dünyanın her yerindeki kullanıcıların internet üzerindeki iletişimlerini güvenli hale getirmede çığır açan bir çalışmadır”.
+***ÖNEMLİ***
+Bu uygulamayı kullanmak için ücretsiz Orbot eklentisini kurmalısınız. Şu adresten indirebilirsiniz:  http://goo.gl/IzfFG
+***Özellikler***
+★ TARAYICI GEÇMİŞİ YOK: Orweb ziyaret ettiğiniz web adreslerine dair hiçbir bilgi kaydetmez.
+★ ESNEK ÇEREZ KONTROLÜ: Ziyaret ettiğiniz sitelerin çerez kullanmasını tamamen engelleyebilirsiniz (çerezler sizin internetteki diğer aktivitelerinizi kayıt altına alan küçük dosyalardır), dilerseniz bazı sitelere veya tüm sitelere izin verebilirsiniz.
+★ KULLANDIĞINIZ ALETİN ÖZELLİKLERİNİ GİZLEYİN: Ziyaret ettiğiniz internet adreslerinin sizin hangi tarayıcıyı kullandığınızı bileceğine karar verin.
+★ JAVASCRIPT SALDIRILARINA DAYANIKLI: Pek çok kötü amaçlı yazılımın saldırma yöntemi olan JavaScript devre dışı bırakılmıştır.
+★ FLASH AÇIKLARINA KARŞI DAYANIKLI: Orweb Flash uygulamarını engelleyerek bilinen pek çok güvenlik tehdidine karşı sizi korur.
+★ KULLANIMI KOLAY: Ücretsiz ve anonim internet kullanımından sadece birkaç tık uzaktasınız. Hızlı ve interaktif kullanım kılavuzu için internet sitemizi ziyaret edin: https://guardianproject.info/howto/browsefreely
+★ AÇIK KAYNAK KODU: Kodumuz tamamen açıktır. Kaynak kodumuza bakabilir, ve Orweb'i geliştirmek için destek grubuna katılabilirsiniz: https://github.com/guardianproject/orweb
+★ SİZİN DİLİNİZDE ÖZGÜRLÜK: Orweb'i şu dillerde kullanabilirsiniz: Arabic (العربية), Chinese (中文简体), Dutch (Nederlands), English, Esperanto, Farsi (فارسی), French (Français), German (Deutsch), Greek (Ελληνικά), Hungarian (Magyar Nyelv), Italian (Italiano), Norwegian (Norsk), Russian (Русский), Spanish (Español), Swedish (Svensk), Tibetan (བོད་སྐད།) and Turkish (Türkçe).
+İstediğiniz dil yok mu? Bize katılın ve uygulamayı kendi dilinize çevirmemize yardımcı olun:
+https://www.transifex.com/projects/p/orweb
+***Daha fazla bilgi edinin***
+★ HAKKIMIZDA: Guardian Projesi daha iyi bir gelecek için güvenli mobil uygulamalar ve açık kaynak kodları yazan bir grup yazılımcıdan oluşur.
+★ WEB SİTEMİZ: http://GuardianProject.info daha fazla bilgi için lütfen ziyaret edin.
+★ TWİTTER ADRESİMİZ: https://twitter.com/guardianproject
+★ AÇIK KAYNAK KODU: Orweb ücretsiz bir uygulamadır. Kaynak kodumuza bakabilir, ve Orweb'i geliştirmek için destek grubuna katılabilirsiniz: https://github.com/guardianproject/Orweb
+★ BİZE YAZIN: İstediğiniz bir özellik eksik mi? Uygulamada bir hata mı buldunuz? Lütfen bize bildirin! Sizden geri bildirim almak bizi çok mutlu eder. Bize e-posta yazabilirsiniz: root@guardianproject.info 
+***Yasal uyarı***
+Guardian Projesi güvenliğinizi ve mahremiyetinizi korumak için uygulamalar geliştirir. Bunun için güvenlik teknolojileri sektöründeki en gelişmiş iletişim kurallarını kullanmaktayız. Yeni tehditleri engellemek ve hataları azaltmak için yazılımı sürekli geliştirsek de hiçbir teknoloji %100 kusursuz değildir. Maximum güvenlik ve gizlilik için kullanıcılar en iyi yöntemleri kullanarak kendi güvenliklerini sağlayabilirler. Bu konulardaki temel bilgiye şu adresten ulaşabilirsiniz: https://securityinabox.org
+Gizli, Anonim İnternet, Gizlilik, Sansür, Sınırları Aşma, Darknet, İzleme, Filtreleme, Güvenlik Duvarı, Guardian Projesi, Saklanmış, Kimlik, Adsız, Mahremiyet, Gizli İnternet Tarama, Proxy, Güvenlik, Tor
