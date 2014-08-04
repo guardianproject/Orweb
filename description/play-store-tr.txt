@@ -5,7 +5,7 @@ Orweb Android işletim sisteminde gizliliğe ve mahremiyete en çok önem veren 
 ★ İNTERNETTE ANONİM OLARAK DOLAŞIN: New York Times'ın yazdığı gibi “eğer bir mesaj Tor Ağı üzerinden ulaşıyorsa kimden veya nereden geldiğini bilmek mümkün değil”. Hiçbir teknoloji %100 etkili değildir, ama Orweb uygulaması Android sisteminde mümkün olan en anonim şekilde internette dolaşmanızı sağlar.
 ★ GÜVENEBİLECEĞİNİZ GİZLİLİK: Electronic Frontier Foundation (EFF) Tor hakkında şunları söylemiştir: “Tor Projesi dünyanın her yerindeki kullanıcıların internet üzerindeki iletişimlerini güvenli hale getirmede çığır açan bir çalışmadır”.
 ***ÖNEMLİ***
-Bu uygulamayı kullanmak için ücretsiz Orbot eklentisini kurmalısınız. Şu adresten indirebilirsiniz:  http://goo.gl/IzfFG
+Bu uygulamayı kullanmak için ücretsiz Orbot eklentisini kurmalısınız. Şu adresten indirebilirsiniz:  https://goo.gl/IzfFG
 ***Özellikler***
 ★ TARAYICI GEÇMİŞİ YOK: Orweb ziyaret ettiğiniz web adreslerine dair hiçbir bilgi kaydetmez.
 ★ ESNEK ÇEREZ KONTROLÜ: Ziyaret ettiğiniz sitelerin çerez kullanmasını tamamen engelleyebilirsiniz (çerezler sizin internetteki diğer aktivitelerinizi kayıt altına alan küçük dosyalardır), dilerseniz bazı sitelere veya tüm sitelere izin verebilirsiniz.
@@ -19,7 +19,7 @@ Bu uygulamayı kullanmak için ücretsiz Orbot eklentisini kurmalısınız. Şu 
 https://www.transifex.com/projects/p/orweb
 ***Daha fazla bilgi edinin***
 ★ HAKKIMIZDA: Guardian Projesi daha iyi bir gelecek için güvenli mobil uygulamalar ve açık kaynak kodları yazan bir grup yazılımcıdan oluşur.
-★ WEB SİTEMİZ: http://GuardianProject.info daha fazla bilgi için lütfen ziyaret edin.
+★ WEB SİTEMİZ: https://GuardianProject.info daha fazla bilgi için lütfen ziyaret edin.
 ★ TWİTTER ADRESİMİZ: https://twitter.com/guardianproject
 ★ AÇIK KAYNAK KODU: Orweb ücretsiz bir uygulamadır. Kaynak kodumuza bakabilir, ve Orweb'i geliştirmek için destek grubuna katılabilirsiniz: https://github.com/guardianproject/Orweb
 ★ BİZE YAZIN: İstediğiniz bir özellik eksik mi? Uygulamada bir hata mı buldunuz? Lütfen bize bildirin! Sizden geri bildirim almak bizi çok mutlu eder. Bize e-posta yazabilirsiniz: root@guardianproject.info 

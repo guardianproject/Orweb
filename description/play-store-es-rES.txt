@@ -5,7 +5,7 @@ Orweb proporciona una navegación anónima y privada en cualquier sitio web, inc
 ★ NAVEGUE ANÓNIMAMENTE: Según el New York Times: “cuando la comunicación llega de Tor, nunca puedes saber de dónde o de quien proviene.” Ninguna tecnologia es 100% infalible, pero Orweb garantiza el mayor grado de anonimato que es posible en Android.
 ★ PRIVACIDAD EN LA QUE PUEDES CONFIAR: La Electronic Frontier Foundation (EFF) dice “el innovador trabajo del proyecto Tor ayuda a usuarios de cualquier parte del mundo a mejorar la seguridad de sus comunicaciones en línea.”
 ***IMPORTANTE***
-Require el plugin gratuito Orbot. Descárguelo aquí: http://goo.gl/IzfFG
+Require el plugin gratuito Orbot. Descárguelo aquí: https://goo.gl/IzfFG
 ***Características***
 ★ SIN HISTORIAL: Orweb no guarda información alguna sobre los sitios web a los que accede.
 ★ CONTROL FLEXIBLE DE COOKIES: Puede impedir que los sitios que visita instalen cookies (que podrían rastrear su actividad) de forma selectiva o totalmente.

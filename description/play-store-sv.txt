@@ -5,7 +5,7 @@ Orweb är den mest privata och anonyma webbläsaren på Android för att besöka
 ★ SURFA ANONYMT: Som New York Times skriver, "när en kommunikation anländer från Tor vet du aldrig var eller vem det är från." Ingen teknologi är 100% effektiv, men Orweb är så nära anonymitet som det är möjligt att komma på Android.
 ★ INTEGRITET DU KAN LITA PÅ: Electronic Frontier Foundation (EFF) säger att "det banbrytande arbetet från Tor projektet hjälper användare överallt att förbättra säkerheten hos sin online kommunikation."
 ***VIKTIGT***
-Kräver det kostnadsfria Orbot tillägget. Ladda ner det här: http://goo.gl/IzfFG
+Kräver det kostnadsfria Orbot tillägget. Ladda ner det här: https://goo.gl/IzfFG
 ***Funktioner***
 ★ INGEN SURFHISTORIK: Orweb lagrar inte någon information om webbsidorna du besöker.
 ★ FLEXIBEL KAK-KONTROLL: Du kan hindra webbsidor du besöker från att installera kakor (vilka kan spåra dina webbaktiviteter), tillåta dem selektivt, eller tillåta alla sidor att skapa kakor.
@@ -18,7 +18,7 @@ Kräver det kostnadsfria Orbot tillägget. Ladda ner det här: http://goo.gl/Izf
 Ser du inte ditt språk? Gå med oss och hjälp oss översätta appen: https://www.transifex.com/projects/p/orweb
 ***Lär dig mer***
 ★ OM OSS: Guardian Project är en grupp av utvecklare som skapar säkra mobilappar och open-source kod för en bättre morgondag.
-★ VÅR WEBBSIDA: http://GuardianProject.info för att lära dig mer om oss.
+★ VÅR WEBBSIDA: https://GuardianProject.info för att lära dig mer om oss.
 ★ PÅ TWITTER: https://twitter.com/guardianproject
 ★ ÖPPEN KÄLLKOD: Orweb är gratis mjukvara. Du kan ta en titt på källkoden, eller gå med i vårt community och hjälpa att göra Orweb ännu bättre: https://github.com/guardianproject/Orweb
 ★ KONTAKTA OSS: Saknas din favoritfunktion? Hittat en jobbig bugg? Låt oss veta! Vi vill gärna höra ifrån dig. Skicka oss ett mail till: root@guardianproject.info.

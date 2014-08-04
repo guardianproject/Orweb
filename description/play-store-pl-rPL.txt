@@ -5,7 +5,7 @@ Orweb jest naj prywatniejszą i anonimową przeglądarką dla Android-a do zwied
 ★ PRZEGLĄDAJ PRYWATNIE: "Gdy komunikacja dociera z Tor-a, nigdy nie wiadomo skąd ona pochodzi" -informuje New York Times. Nie istnieje technologia efektywna na 100%, ale Orweb jest najlepszym rozwiązaniem dla tych, którzy chcą być anonimowi na Android-że.
 ★ PRYWATNOŚĆ KTÓREJ MOŻESZ UWIEŻYĆ: Electronic Frontier Foundation (EFF) mówi "przełomowa praca z projektem Tor umożliwia użytkownikom wszędzie poprawy bezpieczeństwa ich komunikacji online."
 **WAŻNE**
-Wymaga darmową wtyczke Orbot. Szczągnij ją tu: http://goo.gl/IzfFG
+Wymaga darmową wtyczke Orbot. Szczągnij ją tu: https://goo.gl/IzfFG
 **Funkcje**
 ★ BRAK HISTORII PRZEGLĄDANIA: Orweb nie przechowuje żadnych informacji o odwiedzanych witryn.
 ★ WSZECHSTRONNA KONTROLA NAD CIASTECZKAMI: Można uniemożliwić instalowania ciasteczek przez odwiedzanych witryn  (które mogą śledzić działania na sieci), pozwolić selektywne instalowanie, lub zezwolić tworzenie ciasteczek przez każdą strone.
@@ -18,7 +18,7 @@ Wymaga darmową wtyczke Orbot. Szczągnij ją tu: http://goo.gl/IzfFG
 Nie widać swojego języku? Dołącz do nas i pomóż w tłumaczeniu aplikacji: https://www.transifex.com/projects/p/orweb
 ***Dowiedz się więcej***
 ★ O NAS: Projekt 'Guardian' jest grupą deweloperów, którzy tworzą bezpieczne aplikacje mobilne i kod "open-source" na lepsze jutro.
-★ NASZA STRONA: http://GuardianProject.info aby się dowiedzieć więcej.
+★ NASZA STRONA: https://GuardianProject.info aby się dowiedzieć więcej.
 ★ NA TWITTER-RZE: https://twitter.com/guardianproject
 ★ OTWARTE OPROGRAMOWANIE: Orweb jest darmową aplikacją. W każdej chwili możesz spojrzeć na nasz kod, lub dołączyć się do naszej wspólnoty i pomóc ulepszyć Orweb na naszej stronie Github: https://github.com/guardianproject/Orweb
 ★ POWIADOM NAS: Czy brakuje nam twoja ulubiona funkcja? Znalazłeś irytujący glitcz? Powiedz nam! Bardzo chcielibyśmy usłyszeć od ciebie. Wyślij nam email-a: root@guardianproject.info.

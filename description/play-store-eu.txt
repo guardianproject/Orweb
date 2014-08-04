@@ -5,7 +5,7 @@ SU-HEZIAK ETA MURRIZPENAK sahiestu: Zure bulegoa, ikastetxea edo zonaldeak web b
 ANONIMOKI NABIGATU: New York Times-ek esandakoaren arabera, "Tor bidez komunikazio bat datorrenean, ezin da jakin nondik datorren." Ez dago 100% eraginkorra den teknologiarik, baina Orweb Android-en lor daitekeen anonimotasun mailarik handiena emango digu.
 FIDAGARRIA DEN PRIBATUTASUNA: Electronic Frontier Foundation (EFF) esan zuen "Tor proiektuko lan izugarriak edozein tokitatko erabiltzaileen online komunikazioen segurtasuna hobetzen laguntzen du"
 ***GARRANTZITSUA***
-Orbot plugin librea beharrezkoa da. Hemendik jaitsi: http://goo.gl/IzfFG
+Orbot plugin librea beharrezkoa da. Hemendik jaitsi: https://goo.gl/IzfFG
 ***Ezaugarriak***
 NABIGAZIOAREN HISTORIKORIK EZ: Orweb-ek nabigatutako webguneei buruzko informaziorik ez du gordetzen.
 COOKIEN KONTROL MALGUA: Webguneek cookieak instalatzea galarazi dezakezu (zure aktibitateen jarraipenerako erabil daitezkeelako), batzuk onartu, edo edozein webguneri cookieak instalatzea baimendu dezakezu.
@@ -18,7 +18,7 @@ ASKATASUNA ZURE HIZKUNTZAN: Orweb hizkuntza hauetan erabil daiteke: Arabic (ال
 Ez duzu zure hizkuntza ikusten? Lagun gaitzazu app-a itzultzen: https://www.transifex.com/projects/p/orweb
 ***Ikasi gehiago***
 HONI BURUZ: Guardian Project mobientzako aplikazio seguru eta kode irekikoak egiten dituzten garatzaile talde bat da, etorkizun hobeagoa izateko asmoz
-GURE WEBGUNEA: http://GuardianProject.info guri buruz gehiago jakiteko
+GURE WEBGUNEA: https://GuardianProject.info guri buruz gehiago jakiteko
 TWITTER-REN:  https://twitter.com/guardianproject
 KODE-IREKIA: Orweb software librea da. Gure kode irekia begira dezakezu, edo komunitatean sartu Orweb hobeagoa bihurtzeko: https://github.com/guardianproject/Orweb
 IDATZ GAITZAZU: Ezaugarririk gogokoena faltan botatzen duzu? bug harrigarri bat topatu duzu? Esaiguzu mesedez! Gustora irakurriko dugu, bidali email bat:  root@guardianproject.info-ra.

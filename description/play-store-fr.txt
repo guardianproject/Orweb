@@ -5,7 +5,7 @@ Orweb est le navigateur web le plus privé et le plus anonyme sur Android pour v
 ★ NAVIGUEZ ANONYMEMENT : comme l'écrit le New York Times, "quand une communication arrive de Tor, vous ne pouvez jamais savoir d'où ni de qui elle est." Aucune technologie n'est efficace à 100%, mais Orweb est aussi proche de l'anonymat qu'il est possible d'obtenir sur Android.
 ★ LA PROTECTION DE VIE PRIVEE A LAQUELLE VOUS POUVEZ FAIRE CONFIANCE: l'Electronic Frontier Foundation (EFF), dit "le travail novateur du projet Tor permet aux utilisateurs d'améliorer partout la sécurité de leurs communications en ligne."
 *** IMPORTANT ***
-Nécessite le plugin gratuit Orbot. Téléchargez-le depuis ici : http://goo.gl/IzfFG
+Nécessite le plugin gratuit Orbot. Téléchargez-le depuis ici : https://goo.gl/IzfFG
 *** Caractéristiques ***
 ★ PAS D'HISTORIQUE DE NAVIGATION : Orweb ne stocke aucune information concernant les sites web que vous visitez.
 ★ CONTROLE FLEXBILE DES COOKIES : vous pouvez empêcher les sites que vous visitez d'installer des cookies (qui pourrait suivre vos activités sur le web), les autoriser de manière sélective, ou autoriser tous les sites à créer des cookies.
@@ -18,7 +18,7 @@ Nécessite le plugin gratuit Orbot. Téléchargez-le depuis ici : http://goo.gl/
 Vous ne trouvez pas votre langue ? Rejoignez-nous et aidez à traduire l'application : https://www.transifex.com/projects/p/orweb
 *** En savoir davantage ***
 ★À NOTRE SUJET  : Project Guardian est un groupe de développeurs qui font des applications mobiles sécurisées et en code open-source pour un avenir meilleur.
-★ NOTRE SITE WEB : http://GuardianProject.info pour en apprendre davantage sur nous.
+★ NOTRE SITE WEB : https://GuardianProject.info pour en apprendre davantage sur nous.
 ★ SUR TWITTER: https://twitter.com/guardianproject
 ★ OPEN-SOURCE : Orweb est un logiciel libre. Vous pouvez jeter un oeil à notre code source, ou rejoindre notre communauté pour nous aider à améliorer Orweb : https://github.com/guardianproject/Orweb
 ★ CONTACTEZ-NOUS : avons-nous oublié votre fonctionnalité préférée ? Avez-vous avez trouvé un bug ? Dites-le nous ! Nous voulons avoir votre retour. Envoyez-nous un email : root@guardianproject.info

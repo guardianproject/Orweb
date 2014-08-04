@@ -5,7 +5,7 @@ Orweb je med najbolj zasebnimi in anonimnimi brskalniki za Android, namenjen obi
 ★ BRSKAJTE ANONIMNO: Kot poroča New York Times: "Ko promet izvira iz omrežja Tor, nikoli ne veste od kod in od koga izvira." Nobena tehnološka rešitev ni 100 %-na, toda Orweb se je anonimnosti približal, kolikor se ji je možno, na Androidu.
 ★ ZASEBNOSTI, KI JI LAHKO ZAUPATE: Pri Electronic Frontier Foundation (EFF) pravijo: "Ta prelomna stvaritev Tor Project-a pomaga uporabnikom od povsod izboljšati varnost komunikacije."
 ***POMEMBNO***
-Potreben je brezplačni Orbot vtičnik. Naložite ga od tu: http://goo.gl/IzfFG
+Potreben je brezplačni Orbot vtičnik. Naložite ga od tu: https://goo.gl/IzfFG
 ***Zmožnosti***
 ★ BREZ ZGODOVINE BRSKANJA: Orweb ne shranjuje nobenih informacij o spletnih straneh, ki jih obiskujete.
 ★ PROŽEN NADZOR PIŠKOTKOV: Lahko preprečite stranem, ki jih obiskujete, da bi vam nameščale katere koli piškotke (ki bi lahko sledili vašim spletnim dejavnostim), jih selektivno dovoljujete ali dovoljujete vsem spletnim stranem.
@@ -20,7 +20,7 @@ JavaScript, a common attack method for malicious software, is disabled by defaul
 Nimate na izbiro vašega jezika? Priskočite nam na pomoč pri prevajanju te aplikacije: https://www.transifex.com/projects/p/orweb
 ***Izvedi več***
 O NAS: Guardian Project je skupina razvijalcev, ki ustvarjamo varne mobilne aplikacije in odprto kodo za boljši jutri.
-NAŠA SPLETNA STRAN: http://GuardianProject.info da bi lahko izvedeli več o nas.
+NAŠA SPLETNA STRAN: https://GuardianProject.info da bi lahko izvedeli več o nas.
 MA TWITTERJU: https://twitter.com/guardianproject
 ★ ODPRTO-KODNO: Orweb je brezplačen program. Lahko si tudi ogledate njegovo izvorno kodo ali se pridružite skupnosti in priskočite na pomoč pri razvoju in nenehnih izboljšavah: https://github.com/guardianproject/Orweb
 ★ PIŠITE NAM: Ali pogrešate vašo najljubšo funkcionalnost? Ste morda našli nadležnega hrošča? Prosimo, sporočite nam! Z veseljem pričakujemo vašo e-pošto. Pišite nam na: root@guardianproject.info. 

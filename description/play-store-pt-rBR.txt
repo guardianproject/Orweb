@@ -5,7 +5,7 @@ Orweb é o mais privativo e anônimo navegador web para Android para visitar qua
 ★ NAVEGUE ANONIMAMENTE: Como escrito no The New York Times, "quando a comunicação chega de Tor, você não pode nunca saber de onde ou de quem ela veio." Nenhuma tecnologia é 100% efetiva, mas Orweb é tão perto do anonimato quanto é possível obter no Android.
 ★ PRIVACIDADE QUE VOCÊ PODE CONFIAR: A Electronic Frontier Foundation (EFF) disse "o inovador trabalho do projeto Tor ajuda usuários em todo lugar a melhorar a segurança de suas comunicações online."
 ***IMPORTANTE***
-Requer o plugin gratuito Orbot. Baixe-o aqui: http://goo.gl/IzfFG
+Requer o plugin gratuito Orbot. Baixe-o aqui: https://goo.gl/IzfFG
 ***Características***
 ★ SEM HISTÓRICO DE NAVEGAÇÃO: Orweb não armazena nenhuma informação sobre sites web que você visita.
 ★ CONTROLE FLEXÍVEL DE COOKIE: Você pode evitar que sites que você visitou instalem qualquer cookie (quais podem rastrear suas atividades na web), permiti-los seletivamente, ou permitir que qualquer site crie cookies.
@@ -18,7 +18,7 @@ Requer o plugin gratuito Orbot. Baixe-o aqui: http://goo.gl/IzfFG
 Não vê em seu idioma? Se junte a nós e ajude a traduzir o aplicativo: https://www.transifex.com/projects/p/orweb
 ***Saiba Mais***
 ★ SOBRE NÓS: O Guardian Project é um grupo de desenvolvedores que fazem aplicativos móveis seguros e de código fonte aberto para um melhor amanhã.
-★ NOSSO SITE WEB: http://GuardianProject.info para saber mais sobre nós.
+★ NOSSO SITE WEB: https://GuardianProject.info para saber mais sobre nós.
 ★ NO TWITTER: https://twitter.com/guardianproject
 ★ CÓDIGO FONTE ABERTO: Orweb é um software livre. Você pode dar uma olhada em nosso código fonte, ou se juntar à comunidade para fazer mesmo o Orweb melhor:  https://github.com/guardianproject/Orweb
 ★ CONTACTE-NOS: Estamos esquecendo de sua funcionalidade favorita? Encontrou algum erro chato? Por favor nos informe! Nós iremos adorar ouví-lo. Envie-nos um e-mail: root@guardianproject.info.

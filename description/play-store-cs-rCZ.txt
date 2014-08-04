@@ -5,7 +5,7 @@ Orweb je nejbezpečnější anonymní prohlížeč na Android pro prohlížení 
 ★ BROUZDEJTE ANONYMNĚ: Jak napsal New York Times, "když přijdou data z Tor, nikdy nevíte odkuď jsou". Žádná technologie není 100% účinná, ale Orweb je nejblíž anonymitě, co vůbec můžete na Androidu mít.
 ★ JISTOTA KTERÉ MŮŽETE VĚŘIT: Electronic Frontier Foundation (EFF) říká: "průkopnická práce od Tor project pomáhá uživatelům vylepšit bezpečnost při jejich online komunikaci."
 ***Důležité***
-Vyžaduje plugin Orbot. Stáhněte si ho zdarma na: http://goo.gl/IzfFG
+Vyžaduje plugin Orbot. Stáhněte si ho zdarma na: https://goo.gl/IzfFG
 ***Funkce***
 ★ ŽÁDNÁ HISTORIE PROHLÍŽENÍ: Orweb neukládá žádné informace týkající se navštívených stránek.
 ★ FLEXIBILNÍ KONTROLA COOKIES: Můžete zabránit stránkám, které navštívíte instalovat jakékoliv cookies (které můžou sledovat vaši webovou aktivitu), povolit je výběrem nebo povolit jakékoliv stránce vytvářet cookies.
@@ -18,7 +18,7 @@ Vyžaduje plugin Orbot. Stáhněte si ho zdarma na: http://goo.gl/IzfFG
 Nevidíte zde svůj jazyk? Připojte se k nám a pomozte s překladem na: https://www.transifex.com/projects/p/orweb
 ***Zjistit více***
 ★ O NÁS: Guardian Project je zkupina vývojářů, vytvářející bezpečné mobilní aplikace a open-source kód pro lepší zítřky.
-★ NAŠE STRÁNKY: Zjistěte si o nás více na http://GuardianProject.info
+★ NAŠE STRÁNKY: Zjistěte si o nás více na https://GuardianProject.info
 ★ NA TWITTERU: https://twitter.com/guardianproject
 ★ OPEN-SOURCE: Orweb je volný software. Můžete se kouknout na náš zdrojový kód nebo se přidat k naší komunitě - můžete pomoci udělat Orweb ještě lepším: https://github.com/guardianproject/Orweb.
 ★ NAPIŠTE NÁM: Chybí vám vaše oblíbená funkce? Našli jste nepříjemnou chybu? Napište nám!  Budeme rádi, za oznámení všech chyb. Napište nám na email: root@guardianproject.info.
