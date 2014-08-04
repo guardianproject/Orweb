@@ -55,8 +55,9 @@
 <string name="clear_cache_summary">Clear all cached page content</string>
 <string name="clear_cache_message">The cache will be cleared.</string>
 
-<string name="ref_title">Send referrer information		<string name="prompt_do_you_want_to_open_this_file_for_viewing_">Do you want to open this file for viewing?</string>
-    </string>
+<string name="ref_title">Send referrer information</string>
+<string name="prompt_do_you_want_to_open_this_file_for_viewing_">Do you want to open this file for viewing?</string>
+
 <string name="ref_summary">Referrer information may reveal your browsing history</string>
 
 <string name="history_title">Clear Back History</string>
