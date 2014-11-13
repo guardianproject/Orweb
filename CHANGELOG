@@ -1,4 +1,57 @@
 
+/** v0.7 / 13-Nov-2014 **/
+d76bb9b updates for Android L support
+76ab811 update appcompat resources
+d8549c7 update appcompat to v21 for Android L
+d486f32 update to latest for Android L support
+
+/** v0.6.1 **/
+aabcee6 additional header override attempt code
+a926917 enhance attempt to override default headers
+533d133 update netcipher to latest fix for http proxying
+b79f4cf newline formatting change
+0bc2f5e fix project files and setup
+627b0a8 update project depends and files
+ccfd9af peg to latest with fixes
+d33164d fix download support
+4805e49 fix styles for new actionbar appcompat
+fc1b4c6 don't need this http library built in anymore
+ba37d66 add appcompat library for actionbar stuff
+a8dd951 removed ABS
+f75bafa fix setup-ant to use android-19
+3101c8a updated manifest version and supported SDK
+be6a647 updated project version
+df7c101 added support for new kitkat proxy
+533b0d6 updated commit to fixed netcipher
+51514d0 update version
+b3e5bf3 update calls to setProxy()
+ccbfba1 update to latest netcipher head
+241be0d call setProxy earlier!
+4d6cd24 add setup script
+727436d adding local libs directory
+bf4ea44 added setupant script for building
+3d005dd peg to latest netcipher head
+fe387c7 fixes to browser imports
+26a8b47 fixes for Android 4.4 proxying
+bf1c508 gneeral updates and cleanup of app gui
+95ec9d0 updated onionkit/netcipher library
+7e4baf1 updates strings and cleaner layout
+f12ef61 added new prefs for better user-agent anon
+85885f3 updates to latest version of ABS
+1e9821d primary fixes for #1754 - strip out video and audio tags manually load pages using httpclient, and remove video and audio tag
+242d969 updated version
+2d7e222 added clear history and improve file downloading
+5f10a59 make gitmodule urls https read only
+261c109 Merge pull request #38 from mbelinsky/master
+3b13b22 Updated Feature Graphic
+57fb5bd Updated settings language
+decb016 Merge pull request #37 from mbelinsky/master
+8512416 Updated languages list
+78437b1 updated version number
+195f51a fixes freezing on start for some devices
+1680143 updates localised strings from transifex
+
+
 0.2.2
 - fixed rotation/reload problem
 - now clears browser history and memory cache onPause
