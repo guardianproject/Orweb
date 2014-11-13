@@ -91,7 +91,6 @@ import android.view.Window;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.DownloadListener;
-import android.webkit.MimeTypeMap;
 import android.webkit.SslErrorHandler;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -261,24 +260,26 @@ public class Browser extends ActionBarActivity implements
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		
+		requestWindowFeature(Window.FEATURE_PROGRESS);
+		
 		super.onCreate(savedInstanceState);
-
+		
 		mPrefs = PreferenceManager
 				.getDefaultSharedPreferences(getApplicationContext());
 
 		//check if Orbot is installed running
 		mOrbotHelper = new OrbotHelper(this.getApplicationContext());
 
-		
-		
-		
-		requestWindowFeature(Window.FEATURE_PROGRESS);
-		
 		// Allow search to start by just typing
 		setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
 
 		setContentView(R.layout.main);
 
+		getSupportActionBar().setHomeAsUpIndicator(R.drawable.icon_orweb_small);
+		getSupportActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		
 		mPrefs.registerOnSharedPreferenceChangeListener(new OnSharedPreferenceChangeListener ()
 		{
 
@@ -315,6 +316,7 @@ public class Browser extends ActionBarActivity implements
 		
 		
 	}
+
 	
 	private void initUI ()
 	{
