@@ -60,7 +60,7 @@
 <string name="ref_summary">Referrer information may reveal your browsing history</string>
 
 <string name="history_title">Clear Back History</string>
-<string name="history_summary">Clear all browser history as you browser. Warning: this cannot be undone.</string>
+<string name="history_summary">Clear all browser history as you browse. Warning: this cannot be undone.</string>
 
 <string name="clear_cookies_title">Clear cookie data</string>
 <string name="clear_cookies_summary">Clear all the browser cookies</string>
