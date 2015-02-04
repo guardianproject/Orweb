@@ -116,21 +116,10 @@ import ch.boye.httpclientandroidlib.client.methods.HttpGet;
 public class Browser extends ActionBarActivity implements
 	OnClickListener {
 
-	// TorProxy service
-	//private ITorProxyControl mControlService = null;
 	
-	//private final IntentFilter torStatusFilter = new IntentFilter(
-		//	TorProxyLib.STATUS_CHANGE_INTENT);
-	//private AnonProxy mAnonProxy = null;
-
 	// UI elements
 	private BrowserWebView mWebView = null;
-//	private LinearLayout mNoTorLayout = null;
-	//private LinearLayout mWebLayout = null;
-	
-//	private Button mStartTor = null;
 	private LinearLayout mCookieIcon = null;
-//	private TextView mTorStatus = null;"Error downloading"
 
 	// Misc
 	private Drawable mGenericFavicon = null;
@@ -276,9 +265,11 @@ public class Browser extends ActionBarActivity implements
 
 		setContentView(R.layout.main);
 
+		/*
 		getSupportActionBar().setHomeAsUpIndicator(R.drawable.icon_orweb_small);
 		getSupportActionBar().setHomeButtonEnabled(true);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		*/
 		
 		mPrefs.registerOnSharedPreferenceChangeListener(new OnSharedPreferenceChangeListener ()
 		{
@@ -328,10 +319,12 @@ public class Browser extends ActionBarActivity implements
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				
+				/*
 				if (mWebView.getScrollY() > 10)
 					Browser.this.getSupportActionBar().hide();
 				else
 					Browser.this.getSupportActionBar().show();
+				*/
 				
 				return false;
 			}
@@ -612,8 +605,8 @@ public class Browser extends ActionBarActivity implements
 		d.setLayerInset(1, 2, 2, 2, 2);
 		//getWindow().setFeatureDrawable(Window.FEATURE_LEFT_ICON, d);
 		
-		getSupportActionBar().setIcon(d);
-		
+		//getSupportActionBar().setIcon(d);
+	
 	}
 
 	/**
@@ -726,51 +719,38 @@ public class Browser extends ActionBarActivity implements
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem arg0) {
-		Message msg = new Message();
-		switch (arg0.getItemId()) {
-
-		case android.R.id.home:
-		case R.id.menu_go:
+		
+		if (arg0.getItemId() == R.id.menu_go)
+		{
 			onSearchRequested();
-			return true;
-/*
-		case R.id.menu_forward:
-			mWebView.goForward();
-			return true;
-*/
-		case R.id.menu_stop_reload:
+
+		}
+		else if (arg0.getItemId() == R.id.menu_stop_reload)
+		{
 			if (mInLoad) {
 				stopLoading();
 			} else {
 				mWebView.reload();
 			}
-			return true;
-
-		case R.id.menu_settings:
+		}
+		else if (arg0.getItemId() == R.id.menu_settings)
+		{
 			startActivity(new Intent(this, EditPreferences.class));
-			return true;
 
-		case R.id.menu_clear:
-			clearCachedData();
-			return true;
 			
-		case R.id.menu_about:
-		
-	
-			msg.getData().putString("url", ABOUT_URL);
-			mLoadHandler.sendMessage(msg);
-		
-			return true;
-			
-		case R.id.menu_homepage:
+		}
+		else if (arg0.getItemId() == R.id.menu_homepage)
+		{
+
+			Message msg = new Message();
 			
 			String starturl = mPrefs.getString(
 					getString(R.string.pref_homepage),
 					getString(R.string.default_homepage));
 			msg.getData().putString("url", starturl);
 			mLoadHandler.sendMessage(msg);
-			return true;
 		}
+		
 		
 		return super.onOptionsItemSelected(arg0);
 	}
@@ -797,10 +777,8 @@ public class Browser extends ActionBarActivity implements
 	public boolean onCreateOptionsMenu(Menu menu) {
 		mMenu = menu;
 		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.main, menu);
-
-		getSupportActionBar().setHomeButtonEnabled(true);
-		
+		inflater.inflate(R.menu.orweb_main, menu);
+	
 		return true;
 	}
 
@@ -846,7 +824,7 @@ public class Browser extends ActionBarActivity implements
 		//enable the proxy whether Tor is running or not		
 		try { 
 			
-			proxyWorked = WebkitProxy.setProxy("info.guardianproject.browser.OrwebApp",getApplicationContext(), mProxyHost,mProxyPort);
+			proxyWorked = WebkitProxy.setProxy(getApplicationContext().getApplicationInfo().className,getApplicationContext(), mWebView, mProxyHost,mProxyPort);
 		}
 		catch (Exception e)
 		{
@@ -943,12 +921,11 @@ public class Browser extends ActionBarActivity implements
 	}
 
 	public void onClick(View v) {
-		switch (v.getId()) {
 		
-		case R.id.CookieIcon:
+		if (v.getId() == R.id.CookieIcon) {
+		
 			CookiesBlockedDialog d = new CookiesBlockedDialog(this);
 			d.show();
-			break;
 		}
 	}
 
@@ -959,8 +936,6 @@ public class Browser extends ActionBarActivity implements
 	 *            the string to set the title to
 	 */
 	private void updateTitle(String url, String title) {
-		
-		getSupportActionBar().show();
 
 		setTitle(buildUrlTitle(url, title));
 		

@@ -68,14 +68,14 @@ public abstract class BrowserYesNoPreference extends DialogPreference implements
 		Dialog d = this.getDialog();
 		if (d == null) return;
 		
-		switch (v.getId()) {
-		case R.id.buttonOK:
+		if (v.getId() == R.id.buttonOK) {
+		
 			onOk();
 			d.dismiss();
-			break;
-		case R.id.buttonCancel:
+		}
+		else
+		{
 			d.cancel();
-			break;
 		}
 		return;
 	}
