@@ -40,7 +40,7 @@ public class OrwebApp extends Application
     	
     	boolean updated = false;
     	
-    	if (!config.locale.getLanguage().equals(lang))
+    	if (!config.locale.getLanguage().equalsIgnoreCase(lang))
     	{
     		config.locale = locale;
     		getResources().updateConfiguration(config, getResources().getDisplayMetrics());
