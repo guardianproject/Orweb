@@ -1,0 +1,31 @@
+Navegación privada
+Orweb proporciona una navegación anónima y privada en cualquier sitio web, incluso si se encuentra normalmente censurado, monitorizado o escondido.
+★ NO ACEPTE SUSTITUTOS: Orweb es el navegador más seguro para Android. Orweb evita el rastreo y la censura enrutando su tráfico de manera cifrada a través de ordenadores situados en cualquier parte del mundo. Evite el uso de conexiones directas a VPNs y proxys. A pesar de que este proceso es más lento, garantiza un mayor grado de privacidad y anonimato.
+★ ESQUIVE CORTAFUEGOS Y RESTRICCIONES: ¿Su oficina, colegio o país bloquea ciertos sitios web? Se acabó. Orweb sortea casi cualquier tipo de restricción.
+★ NAVEGUE ANÓNIMAMENTE: Según el New York Times: “cuando la comunicación llega de Tor, nunca puedes saber de dónde o de quien proviene.” Ninguna tecnologia es 100% infalible, pero Orweb garantiza el mayor grado de anonimato que es posible en Android.
+★ PRIVACIDAD EN LA QUE PUEDES CONFIAR: La Electronic Frontier Foundation (EFF) dice “el innovador trabajo del proyecto Tor ayuda a usuarios de cualquier parte del mundo a mejorar la seguridad de sus comunicaciones en línea.”
+***IMPORTANTE***
+Require el plugin gratuito Orbot. Descárguelo aquí: https://goo.gl/IzfFG
+***Características***
+★ SIN HISTORIAL: Orweb no guarda información alguna sobre los sitios web a los que accede.
+★ CONTROL FLEXIBLE DE COOKIES: Puede impedir que los sitios que visita instalen cookies (que podrían rastrear su actividad) de forma selectiva o totalmente.
+★ OCULTE SU DISPOSITIVO: Puede elegir qué teléfono u ordenador quiere que el sitio que visita crea que está utilizando.
+★ RESISTENTE A ATAQUES JAVASCRIPT: Dado que JavaScript se utiliza normalmente por software malintencionado, se encuentra desactivado por defecto.
+★ RESISTENTE A VULNERABILIDADES FLASH: Orweb impide la carga de Flash en los sitios que visita para bloquear distintas amenazas.
+★ FÁCIL DE USAR: Orweb es fácil de utilizar. Haga clic aquí para acceder a un fácil y rápido tutorial: https://guardianproject.info/howto/browsefreely
+★ CÓDIGO ABIERTO: Orweb es software libre. Puedes mirar el código fuente o ser parte de la comunidad y ayudar a mejorarlo:
+https://github.com/guardianproject/orweb
+HABLAMOS TU IDIOMA: Orweb está disponible para usuarios que hablan: Árabe (العربية), Chino (中文简体), 
+Neerlandés (Nederlands), Inglés, Esperanto, Farsi (فارسی), Francés (Français), Alemán (Deutsch), Griego (Ελληνικά), Húngaro (Magyar Nyelv), Italiano (Italiano), 
+Noruego (Norsk), Ruso (Русский), Español, Sueco (Svensk) y Tibetano (བོད་སྐད།).
+¿Orweb no se encuentra traducido a tu idioma? Ayúdanos a traducirlo: https://www.transifex.com/projects/p/orweb
+***Saber más***
+★ ACERCA DE NOSOTROS: Guardian Project es un grupo de desarrolladores que crean aplicaciones seguras para dispositivos móviles y escriben código fuente abierto para un futuro mejor.
+★ NUESTRA PÁGINA WEB: https://GuardianProject.info
+★ EN TWITTER: https://twitter.com/guardianproject
+★ CÓDIGO ABIERTO: Orweb es software libre. Puedes mirar el código fuente o ser parte de la comunidad y ayudar a mejorarlo:
+https://github.com/guardianproject/Orweb
+★ CONTÁCTENOS: ¿Cree que deberíamos añadir una nueva función? ¿Encontró un error? ¡Por favor contáctenos! Envíenos un e-mail a root@guardianproject.info
+***Declinación de responsabilidades***
+Guardian Project crea aplicaciones diseñadas para garantizar su seguridad y anonimato. Los procolos que utilizamos se consideran dentro del estado del arte en seguridad. No obstante, a pesar de que estamos continuamente actualizando nuestro software para mitigar las últimas amenazas y eliminar errores, ninguna tecnología es 100% infalible. Así, para garantizar los máximos niveles de seguridad y anonimato, los usuarios deben seguir determinadas prácticas. Puede consultar https://securityinabox.org para obtener una introducción a esos hábitos.
+Anonymous, Anonymous Browsing, Anonymity, Censorship, Circumvention, Darknet, Do Not Track, Filtering, Firewall, Guardian Project, Hidden, Identity, Incognito, Privacy, Private, Private Browsing, Private Web, Proxy, Security, Tor

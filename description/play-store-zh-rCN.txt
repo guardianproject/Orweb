@@ -1,0 +1,28 @@
+隐私地浏览
+Orweb是Android平台最隐私和匿名的浏览器，您可以浏览任何网站，尽管您要访问的网站是审查/监控或者是隐藏的网站。
+★ 接受无替代： Orweb是Android平台最安全的浏览器，在您访问期间，Orweb将会把流量加密并通过世界各地的电脑多次反弹，可以躲避追踪和网络审查，而不是使用您喜欢的VPN和代理。这个过程可能需要一些时间，不过为了最强壮的网络匿名性和身份保护而占用这点时间是值得的。
+★ 规避防火墙和限制：您的办公室，学校或者国家（地区）是否和谐了一些网站？这将不会再发生。Orweb可以绕过几乎所有种类的网络限制。
+★ 匿名地浏览：纽约时报说过：“当一个通讯经过Tor后，你将永远也不知道它来自哪里。” 虽然没有东西是100%完美的，不过Orweb是在Android平台是最尽可能的匿名。
+★ 你可以相信的隐私：电子前沿基金会(EFF)说：“Tor项目是一个有开创性的项目，可以帮助用户在任何地点提升他们的在线通讯安全。”
+***重要***
+需要免费的Orbot插件。在 https://goo.gl/IzfFG 下载
+***特性***
+★ 无历史记录：Orweb不会存储您访问过的网站的任何信息。
+★ 可塑性的Cookie控制：您可以防止您浏览过的网站放置任何Cookies(因为它们可以追踪您的网络活动)，可选择地允许他们或允许任何网站建立cookies.
+★ 伪装您的设备：您可以选择让网站页面识别您的设备类型为任何您想让他识别的，比如用手机浏览网站可以让他识别成您在用电脑上这个网站。。
+★ 限制Javascript脚本攻击：Javascript是很多种恶意软件的共用攻击方法，JS被默认禁用了。
+★ 限制FLASH泄密：Orweb尝试防止您浏览的网站加载Flash，同时封锁很多种安全威胁。
+★ 易用：您只需点击几次鼠标就可以自由，匿名的网上冲浪了。了解更多请看：https://guardianproject.info/howto/browsefreely
+★ 开源：我们的源代码是透明的，您可以看看也可以加入我们来帮助Orweb变得更好：https://github.com/guardianproject/orweb 
+★ 语言自由：Orweb当期支持的语言：Arabic (العربية), Chinese (中文简体), Dutch (Nederlands), English, Esperanto, Farsi (فارسی), French (Français), German (Deutsch), Greek (Ελληνικά), Hungarian (Magyar Nyelv), Italian (Italiano), Norwegian (Norsk), Russian (Русский), Spanish (Español), Swedish (Svensk), and Tibetan (བོད་སྐད།).
+没看到您的语言么？加入我们来翻译这款app
+https://www.transifex.com/projects/p/orweb
+***了解更多***
+★ 关于我们：Guardian项目是一群为了更好地明天而制造安全移动应用程序和开源代码的开发者们。
+★ 我们的网站：https://GuardianProject.info 可以了解更多关于我们的东西。
+★ 我们的twitter: https://twitter.com/guardianproject
+★ 开源：我们的源代码是透明的，您可以看看也可以加入我们来帮助Orweb变得更好：https://github.com/guardianproject/Orweb
+★ 给我们发消息：我们是否缺少了您喜欢的功能呢？或者找到了一些Bug？请告诉我们，我们喜欢听您的发言，请给我们发Email:root@guardianproject.info
+***免责声明***
+该项目制作的app是为了保护您的安全和匿名。我们使用的技术是被广泛认为是先进的安全技术。虽然我们正在不断提升我们的软件以打击最新的安全风险和修复错误，但是，没有任何技术是100％万无一失。为了获得最大的安全性和匿名性，用户必须提高自己的安全意识以保护自己的安全。你可以找到一个很好的入门指南在https://securityinabox.org
+匿名, 匿名浏览, 匿名性, 审查, 规避, 翻墙, Darknet, 请勿追踪, 过滤, 防火墙, Guardian Project, 隐藏, 身份, 隐私性, 隐私, 私人, 隐私浏览, 隐私网站, 代理, 安全, Tor

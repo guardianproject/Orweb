@@ -1,0 +1,27 @@
+Navega en privado
+Orweb es el navegador web con mas privacidad y anonimato en Android para visitar cualquier sitio web que normalmente sea censurado, monitorizado, o se encuentre en la web oculta
+★ ACCEPT NO SUBSTITUTES: Orweb is the safest browser on Android. Period. Orweb evades tracking and censorship by bouncing your encrypted traffic several times through computers around the world, instead of connecting you directly like VPNs and proxies. This process takes a little longer, but the strongest privacy and identity protection available is worth the wait.
+★ CIRCUMVENT FIREWALLS AND RESTRICTIONS: Does your office, school, or region block certain websites? Not anymore. Orweb bypasses almost every kind of network restriction.
+★ BROWSE ANONYMOUSLY: As the New York Times writes, “when a communication arrives from Tor, you can never know where or whom it’s from.” No technology is 100% effective, but Orweb is as close to anonymous as it’s possible to get on Android.
+★ PRIVACY YOU CAN TRUST: The Electronic Frontier Foundation (EFF) says “the groundbreaking work from the Tor project helps users everywhere improve the safety of their online communications.”
+***IMPORTANT***
+Requires the free Orbot plugin. Download it here: https://goo.gl/IzfFG
+***Features***
+★ NO BROWSING HISTORY: Orweb does not store any information about the websites you visit.
+★ FLEXIBLE COOKIE CONTROL: You can prevent sites you visit from installing any cookies (which could track your web activities), allow them selectively, or allow any site to create cookies.
+★ DISGUISE YOUR DEVICE: You choose which phone or computer websites you visit think you are using.
+★ RESISTANT TO JAVASCRIPT ATTACKS: JavaScript, a common attack method for malicious software, is disabled by default.
+★ RESISTANT TO FLASH VULNERABILITIES: Orweb attempts to prevent Flash from loading on sites you visit, blocking many common security threats.
+★ EASY TO USE: You’re just a few clicks away from free, anonymous web surfing. For a quick, interactive walkthrough, visit our website: https://guardianproject.info/howto/browsefreely
+★ OPEN-SOURCE: Our code is transparent. You can take a look or join the community to help make Orweb even better: https://github.com/guardianproject/orweb
+★ FREEDOM IN YOUR LANGUAGE: Orweb is available in: Arabic (العربية), Chinese (中文简体), Dutch (Nederlands), English, Esperanto, Farsi (فارسی), French (Français), German (Deutsch), Greek (Ελληνικά), Hungarian (Magyar Nyelv), Italian (Italiano), Norwegian (Norsk), Russian (Русский), Spanish (Español), Swedish (Svensk), and Tibetan (བོད་སྐད།).
+Don’t see your language? Join us and help translate the app: https://www.transifex.com/projects/p/orweb
+***Learn More***
+★ ABOUT US: Guardian Project is a group of developers that make secure mobile apps and open-source code for a better tomorrow.
+★ OUR WEBSITE: https://GuardianProject.info to learn more about us.
+★ ON TWITTER: https://twitter.com/guardianproject
+★ OPEN-SOURCE: Orweb is free software. You can take a look at our source code, or join the community to help make Orweb even better: https://github.com/guardianproject/Orweb
+★ MESSAGE US: Are we missing your favorite feature? Found an annoying bug? Please tell us! We’d love to hear from you. Send us an email: root@guardianproject.info.
+***Disclaimer***
+The Guardian Project makes apps that are designed to protect your security and anonymity. The protocols that we use are widely regarded as the state of the art in security technology. While we are constantly upgrading our software to combat the latest threats and eliminate bugs, no technology is 100% foolproof. For maximum security and anonymity users must utilize best practices to keep themselves safe. You can find a good introductory guide to these topics at https://securityinabox.org
+Anonymous, Anonymous Browsing, Anonymity, Censorship, Circumvention, Darknet, Do Not Track, Filtering, Firewall, Guardian Project, Hidden, Identity, Incognito, Privacy, Private, Private Browsing, Private Web, Proxy, Security, Tor

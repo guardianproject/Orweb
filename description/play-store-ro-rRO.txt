@@ -1,0 +1,27 @@
+Navighează Privat
+Orweb este browser-ul cel mai privat și anonim pe Android pentru vizitarea oricărui site web, chiar dacă este în mod normal cenzurat, monitorizat, sau pe web-ul ascuns.
+★ NU ACCEPTA ÎNLOCUITORI: Orweb este cel mai sigur browser pe Android. Orweb vă scapă de urmărire şi cenzură prin trimiterea traficului dvs. encriptat prin diverse calculatoare din întreaga lume, în loc să se conecteze direct la celelalte servicii de VPN si proxy. Acest proces durează puţin mai mult, dar cea mai bună protecţie a intimităţii şi a identităţii, merită aşteptarea.
+★ OCOLEŞTE FIREWALL-URI SI RESTRICŢII: Aveţi restricţii regionale, la şcoală sau la birou? De acum nu veţi mai avea. Orweb scapă de aproape orice fel de restricţii de reţea.
+★ NAVIGHEAZĂ ANONIM: cum scrie New York Times, "atunci când o conexiune vine din Tor, niciodată nu poţi ştii de unde sau de la cine vine." Nici o tehnologie este 100% infailibilă, dar Orweb este la fel de aproape de anonimitate atât cât se poate pe Android.
+★ INTIMITATEA PE CARE TE POŢI BAZA: Fundaţia Electronic Frontier (FEE) spune "munca inovatoare din cadrul proiectului Tor ajută utilizatorii să îmbunătățească pretutindeni siguranța lor de comunicații on-line."
+***IMPORTANT***
+Necesită plugin-ul gratuit Orbot. Descărcaţi-l de aici: https://goo.gl/IzfFG
+***Caracteristici***
+★ NICIUN ISTORIC DE NAVIGARE: Orweb nu stochează informaţii despre paginile web pe care le vizitaţi.
+★ CONTROL FLEXIBIL AL COOKIE-URILOR: Puteţi bloca site-urile pe care le vizitaţi să salveze cookie-uri (ce vă pot urmări activitatea pe web), să acordaţi permisiune selectivă sau să permiteţi oricărui site să creeze cookie-uri.
+★ DEGHIZAŢI-VĂ DISPOZITIVUL: Puteţi alege cum se identifică browserul astfel încât să nu permiteţi site-urilor pe care le vizitaţi să nu fiţi recunoscut.
+★ RESISTANT LA ATACURI JAVASCRIPT: JavaScript, o metodă de atac des utilizată pentru aplicaţii maliţioase, este dezactivată din setările implicite.
+★ REZISTENT LA VULNERABILITĂŢILE FLASH: Orweb încearcă sa prevină plug-in-ul Flash să fie încărcat pe paginile pe care le vizitaţi, blocând multe probleme de securitate.
+★ UŞOR DE FOLOSIT: Sunteţi la doar câteva click-uri distanţă de navigarea anonimă gratuită pe web. Pentru un tutorial rapid, vizitaţi pagina noastră: https://guardianproject.info/howto/browsefreely
+★ SURSĂ DESCHISĂ (OPEN-SOURCE): Codul nostru este transparent. Îl puteţi vizualiza sau să vă alăturaţi comunităţii pentru a ajuta la îmbunătăţirea aplicaţiei Orweb: https://github.com/guardianproject/orweb
+★ LIBERTATE ÎN LIMBA DVS.: Orweb este disponibil în: Arabă (العربية), Chineză (中文简体), Olandeză (Nederlands), Engleză, Esperanto, Farsi (فارسی), Franceză (Français), Germană (Deutsch), Greacă (Ελληνικά), Maghiară (Magyar Nyelv), Italiană (Italiano), Norvegiană (Norsk), Rusă (Русский), Spaniolă (Español), Suedeză (Svensk) şi Tibetană (བོད་སྐད།).
+Nu vă vedeţi limba? Alătură-te şi ajută la traducerea aplicaţiei : https://www.transifex.com/projects/p/orweb
+***Află mai multe***
+★ DESPRE NOI: Guardian Project este un grup de dezvoltatori care creează aplicaţii mobile securizate cu sursă deschisă pentru un viitor mai bun.
+★ WEBSITE-UL NOSTRU: https://GuardianProject.info pentru a afla mai multe despre noi.
+★ PE TWITTER: https://twitter.com/guardianproject
+★ SURSĂ DESCHISĂ(OPEN SOURCE): Orweb este un software gratuit. Puteţi vizualiza codul sursă sau să vă alăturaţi comunităţii pentru a ajuta la îmbunătăţirea aplicaţiei: https://github.com/guardianproject/Orweb
+★ DAŢI-NE UN MESAJ: Am omis caracteristica ta favorită? Aţi găsit un bug enervant? Vă rugăm să ne spuneţi! Ne-ar plăcea să vă auzim. Trimite-ne un mesaj: root@guardianproject.info.
+***Act de declinare a responsabilităţii***
+The Guardian Project creează aplicaţii ce sunt destinate să vă protejeze anonimitatea. Protocoalele pe care le folosim sunt larg considerate ca fiind de ultimă generație în tehnologia de securitate. În timp ce noi îmbunătăţim în mod constant software-ul nostru pentru a combate ultimele ameninţări şi să eliminăm bug-urile, nicio tehnologie nu este 100% infailibilă. Pentru un maxim de securitate şi anonimitate, utilizatorii trebuie sa folosească cele mai bune practici pentru a se proteja. Puteţi gasi o bună introducere in aceste domenii pe https://securityinabox.org
+Anonim, Navigare Anonimă, Anonimitate, Cenzură, Eludare, Darknet, Do Not,Track, Nu urmări, Filtrare, Firewall, Guardian Project, Ascuns, Identitate, Incognito, Tor, Securitate, Proxy, Navigare Privată, Web Privat, Intimitate

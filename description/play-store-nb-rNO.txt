@@ -1,0 +1,27 @@
+Surf anonymt
+Orweb er den mest private og anonyme nettleseren på Android for å besøke en hvilken som helst nettside, selv om den normalt er sensurert, overvåket eller på den skjulte delen av nettet.
+★ KUN EKTE VARE: Orweb er den sikreste nettleseren på Android. Ferdig arbeid. Orweb omgår spionering og sensur ved å sende trafikken din kryptert om flere noder rundt om i verden, istedenfor å koble til mellomledd direkte som VPN og proxy. Denne prosessen er litt mer langdrektig, men tilbyr den beste sikkerheten. Identitsbeskyttelse er verdt ventetiden.
+★OMGÅ BRANNMURER OG RESTRIKSJONER: Blokkerer ditt kontor, din skole eller region spesifikke nettsteder? Ikke nå lenger. Orweb omgår nesten enhver nettverksrestriksjon.
+★ SURF ANONYMT: Som New York Times skriver, "når kommunikasjonen ankommer fra Tor, kan du aldri være sikker på opphavet." Ingen teknologi er 100% effektiv, men Orweb er så nært opptil anonymitet som det er mulig å få det på Android.
+★ SIKKERHET DU KAN STOLE PÅ: ELEKTRONISK FORPOST EFF (EFN i Norge) sier "det banebrytende arbeidet til Tor-prosjektet hjelper brukere overalt med å forbedre sikkerheten til sine samtaler på nettet.
+***VIKTIG***
+Krever det kostnadsfrie tillegget Orbot. Last det ned her: https://goo.gl/IzfFG
+***Funksjoner***
+★ INGEN SURFELOGG: Orweb lagrer ingen informasjon om nettstedene du besøker.
+★ FLEKSIBEL KONTROLL AV INFORMASJONSKAPSLER: Du kan hindre sidene du besøker i å installere kaker (som sporer din aktivitet på nettet), tillate dem selektivt, eller tillate om du ønsker det.
+★ SKJUL DIN ENHET: Du kan velge hvilken profil, (telefon eller datamaskin) det skal se ut som du besøker nettsidene fra.
+★ IMUN MOT JAVASKRIPT-ANGREP: JavaScript, en gjengs angripsmetode for skadelig programvare, er avskrudd som standard.
+★ MOTSTÅR FLASH-HULL: Orweb hindrer lasting av Flash-innhold på nettsider du besøker, hvilket hindrer mange kjente sikkerhetstrusler.
+★ ENKEL I BRUK: Du er kun et par klikk unna fri, anonym websurfing. For en rask og interaktiv gjennomgang, besøk vår nettside: https://guardianproject.info/howto/browsefreely
+★ FRI PROGRAMVARE: Vår kode gjemmer seg ikke for noen. Du kan ta den i øyesyn selv og bli en av oss ved å hjelpe Orweb: https://github.com/guardianproject/orweb
+★ FRIHET på ditt språk: Orweb er tilgjengelig på: Svensk, Arabisk (العربية), Kinesisk (中文简体), Flamsk (Nederlands), Engelsk (English), Esperanto, Farsisk (فارسی), Fransk (Français), Tysk (Deutsch), Gresk (Ελληνικά), Ungarsk (Magyar Nyelv), Italiensk (Italiano), Russisk (Русский), Spansk (Español), og Tibetansk (བོད་སྐད།).
+Ser du ikke språket ditt? Hjelp oss med å oversette appen: https://www.transifex.com/projects/p/orweb
+***Lær mer***
+★ OM OSS: Guardian-prosjektet er en gruppe utviklere som lager sikre mobile løsninger og fri programvare for en bedre fremtid.
+★ NETTSIDEN VÅR: https://GuardianProject.info for å lære mer om oss.
+★ PÅ TWITTER: https://twitter.com/guardianproject
+★ FRI KILDEKODE: Orweb er fri programvare. Du kan ta en titt på kildekoden, eller bli med på laget gjennom å forbedre det: https://github.com/guardianproject/Orweb
+★ KONTAKT OSS: Mangler vi din favorittfunksjon? Funnet en irriterende feil? Vennligst fortell oss om det. Vi elsker tilbakemeldinger fra våre brukere. Send oss en epost: root@guardianproject.info
+***Ansvarsfraskrivelse***
+Guardian-prosjektets mykvare er designet for ivareta din sikkerhet og beskytte din anonymitet. Protokollene vi bruker har anseelse som det beste som finnes av sikkerhetsteknologi. Selv om vi kontinuerlig oppdaterer vår programvare for å hanskes med trusselbildet slik det utvikler seg er ingen teknologi 100% idiotsikker. For maksimal sikkerhet og anonymitet må brukerne nyttegjøre seg av en del forhåndsregler for å ta vare på sin egen sikkerhet. Du finner en god introduksjons-guide for disse temaene på https://securityinabox.org
+Anonym, Anonym surfing, Anonymitet, Sensur, Omgåelse, Darknet, Do Not Track, Filtrering, Brannmur, Guardian Project, Gjemt, Identitet, Inkognito, Personvern, Privat, Privat surfing, Privat surfing, Proxy, Sikkerhet, Tor 
