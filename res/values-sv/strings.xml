@@ -2,9 +2,10 @@
 <resources>
   <string name="pref_images">pref_images</string>
   <string name="pref_javascript">pref_javascript</string>
-  <string name="errorHtml">&lt;b&gt;Sorry, men något gick fel ...__ lessthan__/b&gt;</string>
+  <string name="app_name">Orweb</string>
+  <string name="errorHtml">&lt;b&gt;Ursäkta, men något gick fel...&lt;/b&gt;</string>
   <string name="torInactive">Anonym dataanslutning körs inte</string>
-  <string name="torConnecting">Anslutning ...</string>
+  <string name="torConnecting">Ansluter...</string>
   <string name="starttor">Öppna preferenser</string>
   <string name="search_label">Webbläsare</string>
   <string name="search_hint">Webbadress eller sök</string>
@@ -32,6 +33,7 @@
   <string name="menu_about">Om</string>
   <string name="menu_settings">Inställningar</string>
   <string name="menu_reload">Ladda om den</string>
+  <string name="menu_homepage">Hemsida</string>
   <string name="set_locale_title">Välj Plats</string>
   <string name="set_locale_summary">Välj plats och språk för Orbot</string>
   <string name="load_images">Ladda Bilder</string>
@@ -42,6 +44,7 @@
   <string name="clear_cache_summary">Rensa allt lagrat webbinnehåll</string>
   <string name="clear_cache_message">Cachen kommer rensas.</string>
   <string name="ref_summary">Referrer information kan avslöja din surfhistoria</string>
+  <string name="history_title">Rensa historia</string>
   <string name="clear_cookies_title">Rensa kakdata</string>
   <string name="clear_cookies_summary">Rensa alla webbläsarkakor</string>
   <string name="clear_cookies_message">Alla kakor kommer rensas.</string>
@@ -50,4 +53,8 @@
   <string name="cookie_whitelist_title">Kak vitlista</string>
   <string name="cookie_whitelist_summary">Bestäm vilka webbsidor som kan lagra kakor</string>
   <string name="add_site_whitelist">Vitlista sida</string>
+  <string name="title_download_manager">Nedladdningshanterare</string>
+  <string name="prompt_would_you_like_to_download_this_file_">Vill du ladda ner denna fil?</string>
+  <string name="prompt_do_you_want_to_open_this_file_for_viewing_">Vill du öppna denna fil för visning?</string>
+  <string name="orweb_proxy_error">Orweb kan inte konfigurera proxy inställningar på din enhet.</string>
 </resources>
