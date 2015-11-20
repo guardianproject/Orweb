@@ -88,6 +88,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.DownloadListener;
@@ -264,7 +265,8 @@ public class Browser extends ActionBarActivity implements
 	public void onCreate(Bundle savedInstanceState) {
 		
 		requestWindowFeature(Window.FEATURE_PROGRESS);
-		
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+
 		super.onCreate(savedInstanceState);
 		
 		mPrefs = PreferenceManager
