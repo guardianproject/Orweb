@@ -4,7 +4,7 @@
   <string name="pref_javascript">pref_javascript</string>
   <string name="errorHtml">&lt;b&gt;Sorry, maar ging er iets mis ...__ lessthan__/b&gt;</string>
   <string name="torInactive">Anonieme gegevens-verbinding niet actief</string>
-  <string name="torConnecting">Aansluiten van ...</string>
+  <string name="torConnecting">Aan het verbinden...</string>
   <string name="starttor">Open voorkeuren</string>
   <string name="search_label">Browser</string>
   <string name="search_hint">Webadres of zoeken</string>
@@ -13,17 +13,17 @@
   <string name="pref_homepage">pref_homepage</string>
   <string name="pref_clearcache">pref_clearcache</string>
   <string name="internal_web_url">http://orweb/</string>
-  <string name="torProxyNotInstalled">Orweb vereist dat de Orbot toepassing die wordt geïnstalleerd.</string>
-  <string name="cookiesBlockedFirstLine">Koekjes</string>
-  <string name="cookiesBlockedSecondLine">Geblokkeerde</string>
+  <string name="torProxyNotInstalled">Orweb vereist dat de Orbot toepassing wordt geïnstalleerd.</string>
+  <string name="cookiesBlockedFirstLine">Cookies</string>
+  <string name="cookiesBlockedSecondLine">Geblokkeerd</string>
   <string name="allCookiesAreBlocked">Alle cookies worden geblokkeerd. U kunt dit gedrag veranderen in de instellingen.</string>
-  <string name="acceptCookiesFrom">Cookies accepteren from:</string>
-  <string name="willAddToWhitelist">Ticking deze sites zal ze toevoegen aan uw cookie whitelist.</string>
-  <string name="pref_proxy_group">Proxy Server-instellingen</string>
+  <string name="acceptCookiesFrom">Cookies accepteren van:</string>
+  <string name="willAddToWhitelist">Als u deze sites selecteert staat u hen toe cookies op te slaan.</string>
+  <string name="pref_proxy_group">Proxy-Server instellingen</string>
   <string name="pref_proxy_host">Proxy Host</string>
   <string name="pref_proxy_host_summary">De hostnaam of IP-adres van de HTTP-proxy-server</string>
   <string name="pref_proxy_port">Proxy Port</string>
-  <string name="pref_proxy_port_summary">De aansluiting poort voor de HTTP-proxy-server</string>
+  <string name="pref_proxy_port_summary">De poort voor het aansluiten van de HTTP-proxy-server</string>
   <string name="pref_user_agent_summary">Verander de manier waarop de browser zich identificeert</string>
   <string name="pref_user_agent_title">User Agent</string>
   <string name="menu_go">Gaan</string>
@@ -32,8 +32,9 @@
   <string name="menu_about">Over</string>
   <string name="menu_settings">Instellingen</string>
   <string name="menu_reload">Reload</string>
-  <string name="set_locale_title">Taal Instellen</string>
-  <string name="set_locale_summary">Kies de gewenste taal voor Orbot</string>
+  <string name="menu_homepage">Homepagina</string>
+  <string name="set_locale_title">Kies een taal</string>
+  <string name="set_locale_summary">Kies de standaard taal voor Orweb</string>
   <string name="load_images">Afbeeldingen laden</string>
   <string name="display_images_on_web_pages">Afbeeldingen tonen op Webpagina\'s</string>
   <string name="enable_javascript">JavaScript toestaan</string>
@@ -41,7 +42,10 @@
   <string name="clear_cache">Cache legen</string>
   <string name="clear_cache_summary">Verwijder alle pagina-inhoud in het cache</string>
   <string name="clear_cache_message">Het cache wordt geleegd.</string>
+  <string name="prompt_do_you_want_to_open_this_file_for_viewing_">Wilt u dit bestand openen om het te bekijken?</string>
   <string name="ref_summary">Referrer informatie kan uw surfgeschiedenis onthullen</string>
+  <string name="history_title">Verwijder Geschiedenis </string>
+  <string name="history_summary">Verwijder alle browsergeschiedenis tijdens het browsen. Waarschuwing: dit kan niet teruggedraaid worden</string>
   <string name="clear_cookies_title">Verwijder cookie data</string>
   <string name="clear_cookies_summary">Verwijder alle browser cookies</string>
   <string name="clear_cookies_message">De cookies worden verwijderd.</string>
@@ -50,4 +54,8 @@
   <string name="cookie_whitelist_title">Toegestane cookies</string>
   <string name="cookie_whitelist_summary">Stel in welke website cookies mag opslaan</string>
   <string name="add_site_whitelist">Voeg website toe aan toegestane cookies</string>
+  <string name="title_download_manager">Download Manager</string>
+  <string name="prompt_would_you_like_to_download_this_file_">Wilt u dit bestand downloaden?</string>
+  <string name="prompt_do_you_want_to_open_this_file_for_viewing_">Wilt u dit bestand openen om het te bekijken?</string>
+  <string name="orweb_proxy_error">Orweb is niet in staat proxy instellingen te configureren op jouw apparaat</string>
 </resources>
