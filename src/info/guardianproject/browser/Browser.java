@@ -1334,7 +1334,7 @@ public class Browser extends ActionBarActivity implements
 			try {
 			    startActivity(newIntent);
 			} catch (android.content.ActivityNotFoundException e) {
-			    Toast.makeText(this, "No handler for this type of file.", 4000).show();
+			    Toast.makeText(this, "No handler for this type of file.", Toast.LENGTH_LONG).show();
 			}
 		}
 		
