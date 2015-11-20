@@ -6,6 +6,7 @@
 .project
 .metadata
 bin/
+gen/
 tmp/
 *.tmp
 *.bak
@@ -30,6 +31,9 @@ R.java
 # PDT-specific
 .buildpath
 
+# ant
+build.xml
+proguard-project.txt
 
 #################
 ## Visual Studio
