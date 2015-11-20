@@ -105,6 +105,8 @@ import ch.boye.httpclientandroidlib.HttpHeaders;
 import ch.boye.httpclientandroidlib.HttpResponse;
 import ch.boye.httpclientandroidlib.client.methods.HttpGet;
 
+import info.guardianproject.panic.Panic;
+
 /**
  * The main browser activity
  * @author Connell Gauld
@@ -1160,6 +1162,14 @@ public class Browser extends ActionBarActivity implements
 				mLoadHandler.sendMessage(msg);
 				
 				return true;
+			} else if (Panic.ACTION_TRIGGER.equals(action)) {
+			    clearCachedData();
+
+			    Message msg = new Message();
+			    msg.getData().putString("url", "about:blank");
+			    mLoadHandler.sendMessage(msg);
+
+			    return true;
 			}
 		}
 		

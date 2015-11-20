@@ -49,6 +49,11 @@
                 <data android:mimeType="application/xhtml+xml"/>
                 <data android:mimeType="application/vnd.wap.xhtml+xml"/>
             </intent-filter>
+            <intent-filter>
+                <action android:name="info.guardianproject.panic.action.TRIGGER" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         
              <meta-data android:name="android.app.searchable" 
                        android:resource="@xml/searchable"/> 
