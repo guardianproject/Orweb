@@ -3,9 +3,9 @@
   <string name="pref_images">tùybiến_hìnhảnh</string>
   <string name="pref_javascript">tùybiến_javascript</string>
   <string name="app_name">Orweb</string>
-  <string name="errorHtml">&lt;b&gt;Rất tiếc, nhưng đã xảy ra lỗi...&lt;/b&gt;</string>
+  <string name="errorHtml">&lt;b&gt;Rất tiếc, nhưng đã xảy ra lỗi…&lt;/b&gt;</string>
   <string name="torInactive">Kết nối dữ liệu ẩn danh vẫn chưa được chạy</string>
-  <string name="torConnecting">Đang kết nối...</string>
+  <string name="torConnecting">Đang kết nối…</string>
   <string name="starttor">Truy cập Tùy Biến</string>
   <string name="search_label">Trình duyệt</string>
   <string name="search_hint">Địa chỉ trang web hoặc tìm kiếm</string>

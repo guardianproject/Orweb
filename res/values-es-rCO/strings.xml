@@ -3,9 +3,9 @@
   <string name="pref_images">pref_images</string>
   <string name="pref_javascript">pref_javascript</string>
   <string name="app_name">Orweb</string>
-  <string name="errorHtml">&lt;b&gt;Lo sentimos, pero algo salió mal...&lt;/b&gt;</string>
+  <string name="errorHtml">&lt;b&gt;Lo sentimos, pero algo salió mal…&lt;/b&gt;</string>
   <string name="torInactive">La conexión de datos anónima no está corriendo</string>
-  <string name="torConnecting">Conectando...</string>
+  <string name="torConnecting">Conectando…</string>
   <string name="starttor">Abrir preferencias</string>
   <string name="search_label">Navegador</string>
   <string name="search_hint">Dirección web o búsqueda</string>

@@ -5,7 +5,7 @@
   <string name="app_name">Orweb</string>
   <string name="errorHtml">Bu sayfaya ulaşılamıyor | </string>
   <string name="torInactive">Anonim bağlantı aktif değil</string>
-  <string name="torConnecting">Bağlanılıyor...</string>
+  <string name="torConnecting">Bağlanılıyor…</string>
   <string name="starttor">Ayarları aç</string>
   <string name="search_label">Tarayıcı</string>
   <string name="search_hint">İnternet adresi veya arama</string>

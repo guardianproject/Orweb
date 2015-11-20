@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="torInactive">Conexión de datos anónimos no funciona</string>
-    <string name="torConnecting">Conexión ...</string>
+    <string name="torConnecting">Conexión …</string>
     <string name="starttor">Abra las preferencias de</string>
     <string name="search_label">Navegador</string>
     <string name="search_hint">Dirección web o la búsqueda</string>
@@ -19,7 +19,7 @@
     <string name="pref_proxy_port_summary">El puerto de socket para el servidor proxy HTTP</string>
     <string name="pref_user_agent_summary">Cambiar la forma en el navegador se identifica</string>
     <string name="pref_user_agent_title">User Agent</string>
-    <string name="errorHtml">&lt;b&gt;Sorry, pero algo salió mal ...__ lessthan__/b&gt;</string>
+    <string name="errorHtml">&lt;b&gt;Sorry, pero algo salió mal …__ lessthan__/b&gt;</string>
 <string name="menu_go">Ir</string>
     <string name="menu_stop">Parada</string>
     <string name="menu_forward">Adelante</string>

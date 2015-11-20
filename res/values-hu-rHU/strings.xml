@@ -3,7 +3,7 @@
   <string name="pref_images">pref_images</string>
   <string name="pref_javascript">pref_javascript</string>
   <string name="app_name">Orweb</string>
-  <string name="errorHtml">&amp;lt;b&amp;gtSajnálom, valami nem működik...&amp;lt;/b&amp;gt;</string>
+  <string name="errorHtml">&amp;lt;b&amp;gtSajnálom, valami nem működik…&amp;lt;/b&amp;gt;</string>
   <string name="torInactive">Nem fut névtelen adatkapcsolat</string>
   <string name="torConnecting">Kapcsolódás</string>
   <string name="starttor">Beállítások megnyitása</string>

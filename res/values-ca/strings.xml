@@ -3,9 +3,9 @@
   <string name="pref_images">Preferències d\'imatges</string>
   <string name="pref_javascript">Preferències de Javascript</string>
   <string name="app_name">Orweb</string>
-  <string name="errorHtml">&lt;b&gt;Alguna cosa ha anat malament...&lt;/b&gt;</string>
+  <string name="errorHtml">&lt;b&gt;Alguna cosa ha anat malament…&lt;/b&gt;</string>
   <string name="torInactive">La connexió de dades anònima no està funcionant</string>
-  <string name="torConnecting">S\'està connectant...</string>
+  <string name="torConnecting">S\'està connectant…</string>
   <string name="starttor">Obre les preferències</string>
   <string name="search_label">Navegador</string>
   <string name="search_hint">Adreça web o cerca</string>
@@ -30,7 +30,7 @@
   <string name="menu_go">Vés</string>
   <string name="menu_stop">Atura</string>
   <string name="menu_forward">Endavant</string>
-  <string name="menu_about">Quant a...</string>
+  <string name="menu_about">Quant a…</string>
   <string name="menu_settings">Preferències</string>
   <string name="menu_reload">Actualitza</string>
   <string name="menu_homepage">Pàgina d\'inici</string>

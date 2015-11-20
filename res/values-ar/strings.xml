@@ -5,7 +5,7 @@
   <string name="app_name">أور ويب</string>
   <string name="errorHtml">عذراً، حصل خطأ ما.</string>
   <string name="torInactive">الاتصال مجهول الهوية لا يعمل</string>
-  <string name="torConnecting">الاتصال...</string>
+  <string name="torConnecting">الاتصال…</string>
   <string name="starttor">فتح الاعدادات</string>
   <string name="search_label">متصفح</string>
   <string name="search_hint">عنوان الويب أو البحث</string>
