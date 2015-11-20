@@ -21,4 +21,4 @@ sed -i \
     -e "s,android:versionName=\"\([^\"][^\"]*\)\",android:versionName=\"\1.$versionNameDate\"," \
     AndroidManifest.xml
 
-./setup-ant.sh
+./setup-ant
