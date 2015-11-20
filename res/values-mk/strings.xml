@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+  <string name="pref_images">pref_images</string>
+  <string name="pref_javascript">pref_javascript</string>
+  <string name="app_name">Orweb</string>
+  <string name="errorHtml">&lt;b&gt;Извинете, но нешто не е во ред...&lt;/b&gt;</string>
+  <string name="torConnecting">Поврзување...</string>
+  <string name="starttor">Отвори нагодување</string>
+  <string name="search_label">Прелистувач</string>
+  <string name="search_hint">Веб-адреса или пребарај</string>
+  <string name="search_button_text">Ајде</string>
+  <string name="default_homepage">https://check.torproject.org</string>
+  <string name="pref_homepage">pref_homepage</string>
+  <string name="pref_clearcache">pref_clearcache</string>
+  <string name="internal_web_url">http://orweb/</string>
+  <string name="torProxyNotInstalled">Orweb бара да се инсталира Orbot апликацијата.</string>
+  <string name="cookiesBlockedFirstLine">Колачиња</string>
+  <string name="cookiesBlockedSecondLine">Блокирано</string>
+  <string name="allCookiesAreBlocked">Сите колачиња се блокирани. Ова однесување можете да го промените во нагодувањата.</string>
+  <string name="acceptCookiesFrom">Прифати колачиња од:</string>
+  <string name="pref_proxy_group">Нагодувања на прокси-сервер</string>
+  <string name="pref_proxy_host">Прокси сервер</string>
+  <string name="pref_proxy_host_summary">Име на домаќин или ИП-адресата на HTTP прокси-сервер</string>
+  <string name="pref_proxy_port">Прокси порта</string>
+  <string name="pref_user_agent_summary">Промени го начинот на кој прелистувачот се идентификува</string>
+  <string name="pref_user_agent_title">Кориснички агент</string>
+  <string name="menu_go">Ајде</string>
+  <string name="menu_stop">Стоп</string>
+  <string name="menu_forward">Напред</string>
+  <string name="menu_about">За прелистувачот</string>
+  <string name="menu_settings">Нагодувања</string>
+  <string name="menu_reload">Превчитува</string>
+  <string name="menu_homepage">Почетна страница</string>
+  <string name="load_images">Вчитај слики</string>
+  <string name="display_images_on_web_pages">Прикажи слики на веб-страници</string>
+  <string name="enable_javascript">Овозможи JavaScript</string>
+  <string name="set_homepage">Постави почетна страница </string>
+  <string name="clear_cookies_title">Избриши ги податоците на колачињата</string>
+  <string name="clear_cookies_summary">Избриши ги сите колачиња од прелистувачот</string>
+  <string name="clear_cookies_message">Колачињата ќе бидат избришани.</string>
+  <string name="cookie_behave_summary">Прифати или блокирај ги колачињата</string>
+  <string name="title_download_manager">Администратор за преземање</string>
+  <string name="prompt_would_you_like_to_download_this_file_">Дали сакате да ја преземете оваа датотека?</string>
+  <string name="orweb_proxy_error">Orweb не е во состојба да ги конфигурира прокси нагодувањата на Вашиот уред.</string>
+</resources>
