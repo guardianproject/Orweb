@@ -44,7 +44,6 @@
   <string name="clear_cache_summary">Den gesamten zwischengespeicherten Seiteninhalt löschen</string>
   <string name="clear_cache_message">Der Zwischenspeicher wird gelöscht.</string>
   <string name="ref_title">Referrer-Informationen senden</string>
-  <string name="prompt_do_you_want_to_open_this_file_for_viewing_">Möchten Sie diese Datei zur Ansicht öffnen?</string>
   <string name="ref_summary">Referrer-Informationen können Ihren Internetverlauf verraten</string>
   <string name="history_title">Den Verlauf löschen</string>
   <string name="history_summary">Den kompletten Internetverlauf löschen. Achtung: Das kann nicht rückgängig gemacht werden.</string>

@@ -43,7 +43,6 @@
   <string name="clear_cache">امسح البيانات المؤقتة</string>
   <string name="clear_cache_summary">امسح كل البيانات المؤقتة</string>
   <string name="clear_cache_message">البيانات المؤقتة ستمسح</string>
-  <string name="prompt_do_you_want_to_open_this_file_for_viewing_">هل تريد أن تفتح هذا الملف لعرضه؟</string>
   <string name="ref_summary">بيانات صفحة المصدر قد تظهر بعض من نشاطات تصفحك</string>
   <string name="history_title">مسح سجل التصفح لزر الرجوع</string>
   <string name="history_summary">امسح سجل التصفح أثناء تصفحك (لا يمكنك ضغط زر الرجوع)</string>

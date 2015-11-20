@@ -44,7 +44,6 @@
   <string name="clear_cache_summary">Очистить весь кэшированный контент страницы</string>
   <string name="clear_cache_message">Кэш будет очищен.</string>
   <string name="ref_title">Отправить информацию о ссылающемся домене</string>
-  <string name="prompt_do_you_want_to_open_this_file_for_viewing_">Вы хотите просмотреть содержимое этого файла?</string>
   <string name="ref_summary">Информация о ссылающемся домене может раскрыть историю ваших посещений</string>
   <string name="history_title">Очистить историю</string>
   <string name="history_summary">Очистить всю историю браузера. Предупреждение: это действие нельзя отменить.</string>

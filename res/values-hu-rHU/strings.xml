@@ -44,7 +44,6 @@
   <string name="clear_cache_summary">Minden cachelt oldaltartalom törlése</string>
   <string name="clear_cache_message">A cache törlődik.</string>
   <string name="ref_title">Hivatkozás információ küldése</string>
-  <string name="prompt_do_you_want_to_open_this_file_for_viewing_">Szeretnéd megnyitni ezt a fájlt megtekintésre?</string>
   <string name="ref_summary">A hivatkozás információ felfedheti a böngészési előzményeket</string>
   <string name="history_title">Előzmények Folyamatos Törlése</string>
   <string name="history_summary">Böngészés közben törölje a böngészési előzményeket. Vigyázat: nem vonható vissza.</string>

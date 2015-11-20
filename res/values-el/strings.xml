@@ -43,7 +43,6 @@
   <string name="clear_cache">Εκκαθαριση του cache</string>
   <string name="clear_cache_summary">Εκκαθαριση του περιεχομενου των σελιδων στο cache</string>
   <string name="clear_cache_message">Το cache θα εκκαθαριστει.</string>
-  <string name="prompt_do_you_want_to_open_this_file_for_viewing_">Θέλετε να ανοίξετε αυτό το αρχείο για την προβολή;</string>
   <string name="ref_summary">Παρέποπμη πληροφορίων  που μπορουν να αποκαλύψουν το ιστορικό περιήγησής σας</string>
   <string name="history_title">Εκκαθαριση ιστορικου</string>
   <string name="history_summary">Διαγραφή όλου του ιστορικού περιήγησης, όπως του browser σας (όχι πίσω nav!)</string>

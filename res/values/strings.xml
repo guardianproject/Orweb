@@ -56,7 +56,6 @@
 <string name="clear_cache_message">The cache will be cleared.</string>
 
 <string name="ref_title">Send referrer information</string>
-<string name="prompt_do_you_want_to_open_this_file_for_viewing_">Do you want to open this file for viewing?</string>
 
 <string name="ref_summary">Referrer information may reveal your browsing history</string>
 

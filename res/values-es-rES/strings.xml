@@ -43,7 +43,6 @@
   <string name="clear_cache">Vaciar caché</string>
   <string name="clear_cache_summary">Vaciar las páginas almacenadas en la caché</string>
   <string name="clear_cache_message">La memoria caché será vaciada</string>
-  <string name="prompt_do_you_want_to_open_this_file_for_viewing_">¿Quiere abrir este archivo?</string>
   <string name="ref_summary">La información de referencias podría revelar el historial de su navegador</string>
   <string name="history_title">Limpiar historial</string>
   <string name="history_summary">Limpiar todo el historial del navegador como su navegador</string>

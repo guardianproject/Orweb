@@ -42,7 +42,6 @@
   <string name="clear_cache">Cache legen</string>
   <string name="clear_cache_summary">Verwijder alle pagina-inhoud in het cache</string>
   <string name="clear_cache_message">Het cache wordt geleegd.</string>
-  <string name="prompt_do_you_want_to_open_this_file_for_viewing_">Wilt u dit bestand openen om het te bekijken?</string>
   <string name="ref_summary">Referrer informatie kan uw surfgeschiedenis onthullen</string>
   <string name="history_title">Verwijder Geschiedenis </string>
   <string name="history_summary">Verwijder alle browsergeschiedenis tijdens het browsen. Waarschuwing: dit kan niet teruggedraaid worden</string>
