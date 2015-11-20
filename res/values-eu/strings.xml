@@ -43,8 +43,7 @@
   <string name="clear_cache">Katxea garbitu</string>
   <string name="clear_cache_summary">Katxeatutako eduki guztia garbitu</string>
   <string name="clear_cache_message">Katxea garbituko da.</string>
-  <string name="ref_title">Erreferentzia informazioa bidali		&lt;string name="prompt_do_you_want_to_open_this_file_for_viewing_"&gt;Fitxategi hau ireki nahi duzu?&lt;/string&gt;
-    </string>
+  <string name="ref_title">Erreferentzia informazioa bidali</string>
   <string name="prompt_do_you_want_to_open_this_file_for_viewing_">Fitxategi hau ireki nahi duzu?</string>
   <string name="ref_summary">Erreferentzia informazioak zure nabigazio historia agerian erakutsi dezake</string>
   <string name="history_title">Atzerako historia garbitu</string>

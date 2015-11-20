@@ -43,7 +43,6 @@
   <string name="clear_cache">Slett hurtigminne</string>
   <string name="clear_cache_summary">Slett alt webinnhold fra hurtigminnet</string>
   <string name="clear_cache_message">Hurtigminnet vil bli slettes.</string>
-  <string name="ref_title"></string>
   <string name="prompt_do_you_want_to_open_this_file_for_viewing_">Vil du åpne denne filen for visning?</string>
   <string name="ref_summary">Referentinformasjon kan avsløre nettleserhistorikken din.</string>
   <string name="history_title">Slett nettleserhistorikk</string>
