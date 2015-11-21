@@ -1171,6 +1171,8 @@ public class Browser extends ActionBarActivity implements
 			    msg.getData().putString("url", "about:blank");
 			    mLoadHandler.sendMessage(msg);
 
+			    ExitActivity.exitAndRemoveFromRecentApps(this);
+
 			    return true;
 			}
 		}
