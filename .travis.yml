@@ -1,0 +1,39 @@
+language: android
+
+env:
+  global:
+    # switch glibc to a memory conserving mode
+    - MALLOC_ARENA_MAX=2
+    # wait 5 minutes for adb to connect to emulator. Travis-ci cancels a
+    # stalled build after 10 minutes, so this should be shorter than that so
+    # there is time for the build to report the error.
+    - ADB_INSTALL_TIMEOUT=5
+
+jdk:
+  # the release build infrastructure uses OpenJDK from Debian
+  - openjdk7
+  # many developers use the Oracle JDK
+  # (disabled because Travis cannot reliably start the emulator with these)
+  #- oraclejdk8
+  #- oraclejdk7
+
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-23.0.2
+  licenses:
+    # only approve the free software licenses
+    - 'android-sdk-preview-license-52d11cd2'
+    - 'android-sdk-license-.+'
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -y faketime
+
+script:
+  # run release build script
+  - ./make-release-build
+
+after_failure:
+  - find * -name lint-results.xml | xargs cat

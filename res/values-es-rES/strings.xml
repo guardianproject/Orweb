@@ -3,9 +3,9 @@
   <string name="pref_images">pref_images</string>
   <string name="pref_javascript">pref_javascript</string>
   <string name="app_name">Orweb</string>
-  <string name="errorHtml">&lt;b&gt;Lo sentimos, pero algo salió mal ...__ lessthan__/b&gt;</string>
+  <string name="errorHtml">&lt;b&gt;Lo sentimos, pero algo salió mal …__ lessthan__/b&gt;</string>
   <string name="torInactive">Conexión de datos anónimos no funciona</string>
-  <string name="torConnecting">Conexión ...</string>
+  <string name="torConnecting">Conexión …</string>
   <string name="starttor">Abra las preferencias de</string>
   <string name="search_label">Navegador</string>
   <string name="search_hint">Dirección web o la búsqueda</string>
@@ -43,8 +43,6 @@
   <string name="clear_cache">Vaciar caché</string>
   <string name="clear_cache_summary">Vaciar las páginas almacenadas en la caché</string>
   <string name="clear_cache_message">La memoria caché será vaciada</string>
-  <string name="ref_title"></string>
-  <string name="prompt_do_you_want_to_open_this_file_for_viewing_">¿Quiere abrir este archivo?</string>
   <string name="ref_summary">La información de referencias podría revelar el historial de su navegador</string>
   <string name="history_title">Limpiar historial</string>
   <string name="history_summary">Limpiar todo el historial del navegador como su navegador</string>

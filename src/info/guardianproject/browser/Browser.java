@@ -88,6 +88,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.DownloadListener;
@@ -104,6 +105,8 @@ import ch.boye.httpclientandroidlib.HttpEntity;
 import ch.boye.httpclientandroidlib.HttpHeaders;
 import ch.boye.httpclientandroidlib.HttpResponse;
 import ch.boye.httpclientandroidlib.client.methods.HttpGet;
+
+import info.guardianproject.panic.Panic;
 
 /**
  * The main browser activity
@@ -262,7 +265,8 @@ public class Browser extends ActionBarActivity implements
 	public void onCreate(Bundle savedInstanceState) {
 		
 		requestWindowFeature(Window.FEATURE_PROGRESS);
-		
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+
 		super.onCreate(savedInstanceState);
 		
 		mPrefs = PreferenceManager
@@ -1160,6 +1164,16 @@ public class Browser extends ActionBarActivity implements
 				mLoadHandler.sendMessage(msg);
 				
 				return true;
+			} else if (Panic.ACTION_TRIGGER.equals(action)) {
+			    clearCachedData();
+
+			    Message msg = new Message();
+			    msg.getData().putString("url", "about:blank");
+			    mLoadHandler.sendMessage(msg);
+
+			    ExitActivity.exitAndRemoveFromRecentApps(this);
+
+			    return true;
 			}
 		}
 		
@@ -1324,7 +1338,7 @@ public class Browser extends ActionBarActivity implements
 			try {
 			    startActivity(newIntent);
 			} catch (android.content.ActivityNotFoundException e) {
-			    Toast.makeText(this, "No handler for this type of file.", 4000).show();
+			    Toast.makeText(this, "No handler for this type of file.", Toast.LENGTH_LONG).show();
 			}
 		}
 		
